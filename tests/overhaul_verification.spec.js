@@ -19,7 +19,7 @@ test('verify Nagu Dental overhaul', async ({ page }) => {
           clearInterval(timer);
           resolve();
         }
-      }, 100);
+      }, 50);
     });
   });
 
@@ -33,43 +33,47 @@ test('verify Nagu Dental overhaul', async ({ page }) => {
   const header = page.locator('nav');
   await expect(header).toBeVisible();
   await expect(header).toContainText('NAGU DENTAL');
-  await expect(header.locator('a[href="#home"]')).toBeVisible();
-  await expect(header.locator('a[href="#services"]')).toBeVisible();
-  await expect(header.locator('a[href="#specialties"]')).toBeVisible();
-  await expect(header.locator('a[href="#book"]').first()).toBeVisible();
-  await expect(header.locator('a[href="#contact"]')).toBeVisible();
 
-  // Check Hero CTAs
+  // Check Hero Trust Badges
   const hero = page.locator('#home');
-  await expect(hero.locator('a:has-text("Schedule an Appointment")')).toBeVisible();
-  await expect(hero.locator('a:has-text("Call Clinic")')).toHaveAttribute('href', 'tel:+918861932535');
+  await expect(hero).toContainText('98%');
+  await expect(hero).toContainText('5000+');
+  await expect(hero).toContainText('15+');
 
-  // Check Specialty Matrix
+  // Check Services Section
+  const services = page.locator('#services');
+  await expect(services).toBeVisible();
+  await expect(services).toContainText('Clinical Offerings');
+  await expect(services).toContainText('Dental Implants');
+  await expect(services).toContainText('Root Canal Treatment');
+  await expect(services).toContainText('Crowns & Bridges');
+  await expect(services).toContainText('Laser Whitening');
+  await expect(services).toContainText('Dentures');
+  await expect(services).toContainText('Tooth Extractions');
+  await expect(services).toContainText('Cleaning & Polishing');
+
+  // Check Specialization Section
   const specialties = page.locator('#specialties');
-  await expect(specialties).toContainText('Digital Treatment Units');
-  await expect(specialties).toContainText('Intraoral Precision');
-  await expect(specialties).toContainText('Smart Ergonomics');
-  await expect(specialties).toContainText('Advanced Sterilization');
+  await expect(specialties).toContainText('Areas of Specialization');
+  await expect(specialties).toContainText('Complete Smile Restoration');
+  await expect(specialties).toContainText('Clear Aligners');
+  await expect(specialties).toContainText('Cosmetic & Aesthetic Dentistry');
+  await expect(specialties).toContainText('Oral & Maxillofacial Surgery');
+  await expect(specialties).toContainText('Smile Makeover & Design');
 
   // Check Booking Form
   const form = page.locator('#book form');
-  await expect(form.locator('input[placeholder="Full Name"]')).toBeVisible();
-  await expect(form.locator('input[placeholder="+91 00000 00000"]')).toBeVisible();
-  await expect(form.locator('select')).toBeVisible();
-  await expect(form.locator('input[value="JP Nagar"]')).toBeVisible();
-  await expect(form.locator('input[value="Chandra Layout"]')).toBeVisible();
-  await expect(form.locator('input[value="RR Nagar"]')).toBeVisible();
+  await expect(form.locator('input[placeholder="John Doe"]')).toBeVisible();
+  await expect(form.locator('input[placeholder="john@example.com"]')).toBeVisible();
+  await expect(form.locator('select')).toContainText('Crowns & Bridges');
+  await expect(form.locator('select')).toContainText('Invisalign aligners');
+  await expect(form.locator('textarea')).toBeVisible();
 
-  // Check Footer
+  // Check Footer Timing
   const footer = page.locator('footer');
-  await expect(footer).toBeVisible();
-  await expect(footer).toContainText('JP NAGAR');
-  await expect(footer).toContainText('CHANDRA LAYOUT');
-  await expect(footer).toContainText('RR NAGAR');
+  await expect(footer).toContainText('Mon-Sat: 9:00 AM - 8:00 PM');
+  await expect(footer).toContainText('Sun: 10:00 AM - 6:00 PM');
 
   // Screenshots
   await page.screenshot({ path: 'tests/overhaul_full.png', fullPage: true });
-  await hero.screenshot({ path: 'tests/hero.png' });
-  await specialties.screenshot({ path: 'tests/specialties.png' });
-  await page.locator('#book').screenshot({ path: 'tests/booking_form.png' });
 });
