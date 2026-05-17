@@ -3,10 +3,11 @@
 <head>
   <meta charset="utf-8" />
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-  <title>Nagu Dental · clinical sanctuary</title>
+  <title>Nagu Dental · Production Sanctuary</title>
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+  <link href="assets/css/style.css" rel="stylesheet" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   <script id="tailwind-config">
@@ -36,101 +37,6 @@
       },
     }
   </script>
-  <style>
-    .material-symbols-outlined {
-      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-    }
-    .glass-nav {
-      background: rgba(255, 255, 255, 0.75);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    .glass-card {
-      background: rgba(255, 255, 255, 0.03);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    .text-gradient {
-      background: linear-gradient(135deg, #006196 0%, #00a3ff 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .btn-haptic {
-      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .btn-haptic:active {
-      transform: scale(0.95);
-    }
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
-    .animate-float {
-      animation: float 4s ease-in-out infinite;
-    }
-    @keyframes pulse-custom {
-      0% { box-shadow: 0 0 0 0 rgba(0, 97, 150, 0.4); }
-      70% { box-shadow: 0 0 0 15px rgba(0, 97, 150, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(0, 97, 150, 0); }
-    }
-    .pulse-effect {
-      animation: pulse-custom 2s infinite;
-    }
-    .masonry {
-      column-count: 1;
-      column-gap: 1.5rem;
-    }
-    @media (min-width: 768px) { .masonry { column-count: 2; } }
-    @media (min-width: 1024px) { .masonry { column-count: 3; } }
-    .masonry-item { break-inside: avoid; margin-bottom: 1.5rem; }
-    .reveal { opacity: 0; transform: translateY(30px); }
-    
-    /* Permanent floating CTA container */
-    .floating-cta {
-      position: fixed;
-      bottom: 2rem;
-      right: 2rem;
-      z-index: 50;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-    .floating-cta-button {
-      width: 4rem;
-      height: 4rem;
-      border-radius: 9999px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-      transition: all 0.2s ease;
-    }
-    .floating-cta-button:hover {
-      transform: scale(1.1);
-    }
-    .floating-cta-button.whatsapp {
-      background-color: #25D366;
-      color: white;
-    }
-    .floating-cta-button.call {
-      background-color: #006196;
-      color: white;
-      animation: pulse-custom 2s infinite;
-    }
-    @media (min-width: 768px) {
-      .floating-cta-button {
-        width: 4.5rem;
-        height: 4.5rem;
-      }
-    }
-    @media (max-width: 640px) {
-      .floating-cta {
-        bottom: 1.5rem;
-        right: 1.5rem;
-        gap: 0.75rem;
-      }
-    }
-  </style>
 </head>
 <body class="bg-surface font-body text-on-surface selection:bg-primary/20">
 
@@ -144,13 +50,13 @@
     <div class="hidden lg:flex items-center gap-10 font-headline font-bold text-sm tracking-wide">
       <a class="text-primary border-b-2 border-primary pb-1" href="#home">HOME</a>
       <a class="text-on-surface-variant hover:text-primary transition-colors" href="#services">SERVICES</a>
-      <a class="text-on-surface-variant hover:text-primary transition-colors" href="#doctors">VISIONARIES</a>
-      <a class="text-on-surface-variant hover:text-primary transition-colors" href="#gallery">SANCTUARY</a>
-      <a class="text-on-surface-variant hover:text-primary transition-colors" href="#articles">INSIGHTS</a>
+      <a class="text-on-surface-variant hover:text-primary transition-colors" href="#specialties">SOLUTIONS</a>
+      <a class="text-on-surface-variant hover:text-primary transition-colors" href="#book">APPOINTMENT</a>
+      <a class="text-on-surface-variant hover:text-primary transition-colors" href="#contact">CONTACT</a>
     </div>
-    <button class="btn-haptic bg-primary text-white px-8 py-3 rounded-xl font-bold text-sm shadow-xl shadow-primary/20 hover:bg-primary-container">
+    <a href="#book" class="btn-haptic bg-primary text-white px-8 py-3 rounded-xl font-bold text-sm shadow-xl shadow-primary/20 hover:bg-primary-container">
       BOOK NOW
-    </button>
+    </a>
   </div>
 </nav>
 
@@ -169,13 +75,14 @@
           Step into an advanced dental sanctuary where architectural tranquility meets surgical mastery. Redefining the clinical experience.
         </p>
         <div class="flex flex-wrap gap-6">
-          <button class="btn-haptic bg-primary text-white px-10 py-5 rounded-2xl font-extrabold text-lg flex items-center gap-3 shadow-2xl shadow-primary/30">
-            Consultation
-            <span class="material-symbols-outlined">arrow_forward</span>
-          </button>
-          <button class="btn-haptic bg-white text-primary border border-primary/10 px-10 py-5 rounded-2xl font-extrabold text-lg">
-            Our Philosophy
-          </button>
+          <a href="#book" class="btn-haptic bg-primary text-white px-10 py-5 rounded-2xl font-extrabold text-lg flex items-center gap-3 shadow-2xl shadow-primary/30">
+            Schedule an Appointment
+            <i class="fa-solid fa-calendar-check"></i>
+          </a>
+          <a href="tel:+918861932535" class="btn-haptic bg-white text-primary border border-primary/10 px-10 py-5 rounded-2xl font-extrabold text-lg flex items-center gap-3">
+            Call Clinic
+            <i class="fa-solid fa-phone"></i>
+          </a>
         </div>
       </div>
       <div class="relative group reveal">
@@ -185,7 +92,7 @@
           <div class="absolute bottom-12 left-12 animate-float">
             <div class="glass-card p-6 rounded-3xl shadow-2xl flex items-center gap-5 bg-white/80 backdrop-blur-xl">
               <div class="bg-primary/10 text-primary p-4 rounded-2xl">
-                <span class="material-symbols-outlined text-3xl font-bold">verified_user</span>
+                <i class="fa-solid fa-shield-halved text-3xl"></i>
               </div>
               <div>
                 <p class="text-[10px] font-black text-primary/60 uppercase tracking-widest">Global Standard</p>
@@ -198,319 +105,147 @@
     </div>
   </section>
 
-  <!-- Visionaries Section -->
-  <section class="bg-[#f0f4f8] py-32" id="doctors">
-    <div class="max-w-7xl mx-auto px-6 lg:px-12">
-      <div class="text-center mb-24 reveal">
-        <h2 class="font-headline text-4xl lg:text-5xl font-extrabold text-on-background mb-4">The Visionaries</h2>
-        <div class="w-16 h-1 bg-primary mx-auto rounded-full mb-6"></div>
-        <p class="text-on-surface-variant max-w-xl mx-auto font-medium">Meet the clinical masters redefining aesthetic and surgical dental excellence.</p>
-      </div>
-      <div class="grid md:grid-cols-2 gap-12">
-        <!-- Dr. Bashishta -->
-        <div class="reveal group glass-card bg-white p-10 rounded-[2.5rem] flex flex-col lg:flex-row gap-10 items-center transition-all duration-500 hover:shadow-2xl">
-          <div class="w-full lg:w-2/5 aspect-square rounded-3xl overflow-hidden shadow-xl">
-            <img alt="Dr. Bashishta" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMkO1M9VvdMPhihVNHlQKnTabgYR1D2VgPk6eYKwDch4kGo81_K_jBm5N1SwfvW84plxlatLW-KuVjfNUgwIeDBawYwtXEQRGI4UI8xhACBxPr0I3YukdDiZ7ve_VU4-Jgw3l4qPF_m3O-L0fMsQ82USV4MJ6DXYgIBElKQ2NLUvG70IXCbO3xbRqm8M5GHaVHfx9JeXlOWxZzHi_WaI9Csu3hgdpIeaWAFSt0zV_1r6m32Bf615HhCLZMOSNaowO5QxO5OdK0GDL0" />
-          </div>
-          <div class="w-full lg:w-3/5">
-            <span class="text-primary font-black tracking-[0.2em] text-[10px] uppercase mb-3 block">SURGICAL MASTER</span>
-            <h3 class="font-headline text-3xl font-extrabold mb-4">Dr. Bashishta <span class="text-slate-300 font-medium">B.D.S</span></h3>
-            <p class="text-on-surface-variant mb-8 text-sm leading-relaxed font-medium">10+ years of mastery in Microscopic Endodontics. Specializing in advanced surgical precision and complex, trauma-free extractions.</p>
-            <div class="flex flex-wrap gap-3">
-              <span class="px-4 py-1.5 bg-primary/5 text-primary text-[10px] font-bold rounded-full border border-primary/10">ENDODONTICS</span>
-              <span class="px-4 py-1.5 bg-primary/5 text-primary text-[10px] font-bold rounded-full border border-primary/10">ORAL SURGERY</span>
-            </div>
-          </div>
-        </div>
-        <!-- Dr. Ankita Reddy -->
-        <div class="reveal group glass-card bg-white p-10 rounded-[2.5rem] flex flex-col lg:flex-row gap-10 items-center transition-all duration-500 hover:shadow-2xl">
-          <div class="w-full lg:w-2/5 aspect-square rounded-3xl overflow-hidden shadow-xl">
-            <img alt="Dr. Ankita Reddy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDijuJI841d08vRM9b5VCJCpZgu3K06baA4lMvys5aAqP5lxhdjKU27h-_xTQ3fU9qCrCF5QABdrSpYOPxHd2H6B--E-jTUjHJdd71ifo-uGXz4Z_K5vWH8xamd0hy8sFmpJ2Y62Tuwqsb_TTo3XWMtJb11x5HLrjiiUw9njhnB4z42N2R1QsYsRSRzRQKheETc5zPUflhbD3id2jPtyZ0OHoIEvE06YhfvpToLszil4GGjkmP6N25zefO9oDp2mg17YibPswW4FYQ3" />
-          </div>
-          <div class="w-full lg:w-3/5">
-            <span class="text-primary font-black tracking-[0.2em] text-[10px] uppercase mb-3 block">AESTHETIC ARCHITECT</span>
-            <h3 class="font-headline text-3xl font-extrabold mb-4">Dr. Ankita <span class="text-slate-300 font-medium">B.D.S</span></h3>
-            <p class="text-on-surface-variant mb-8 text-sm leading-relaxed font-medium">A mastermind of cosmetic dentistry. Dedicated to creating symmetrical, radiant smiles through bespoke porcelain veneers and smile design.</p>
-            <div class="flex flex-wrap gap-3">
-              <span class="px-4 py-1.5 bg-primary/5 text-primary text-[10px] font-bold rounded-full border border-primary/10">SMILE DESIGN</span>
-              <span class="px-4 py-1.5 bg-primary/5 text-primary text-[10px] font-bold rounded-full border border-primary/10">VENEERS</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Clinical Suite -->
-  <section class="py-32 px-6 lg:px-12 max-w-7xl mx-auto" id="services">
+  <!-- Advanced Dental Solutions matrix -->
+  <section class="py-32 px-6 lg:px-12 max-w-7xl mx-auto" id="specialties">
     <div class="text-center mb-24 reveal">
-      <h2 class="font-headline text-4xl lg:text-5xl font-extrabold text-on-background mb-4">The Clinical Suite</h2>
-      <p class="text-on-surface-variant max-w-2xl mx-auto font-medium opacity-80">Precision engineering for human wellness.</p>
+      <h2 class="font-headline text-4xl lg:text-5xl font-extrabold text-on-background mb-4">Advanced Dental Solutions</h2>
+      <p class="text-on-surface-variant max-w-2xl mx-auto font-medium opacity-80">Showcasing our core specialties with surgical precision.</p>
     </div>
-    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-      <!-- Root Canal -->
-      <div class="reveal group bg-white p-8 rounded-[2rem] border border-black/5 hover:border-primary/20 transition-all duration-300 hover:-translate-y-3">
-        <div class="w-16 h-16 bg-primary/5 rounded-2xl flex items-center justify-center mb-10 group-hover:bg-primary transition-colors">
-          <span class="material-symbols-outlined text-primary text-3xl group-hover:text-white transition-colors">biotech</span>
-        </div>
-        <h4 class="font-headline text-xl font-extrabold mb-4">Root Canal</h4>
-        <p class="text-on-surface-variant text-sm leading-relaxed mb-8 font-medium">Microscopic endodontics with 98% success rate. Pain-free workflow.</p>
-        <div class="pt-6 border-t border-slate-100 flex flex-col gap-3">
-          <span class="flex items-center gap-2 text-[10px] font-black text-primary tracking-widest uppercase"><span class="material-symbols-outlined text-sm">verified</span> Microscopic Precision</span>
-        </div>
-      </div>
+    <div class="grid md:grid-cols-3 gap-8">
       <!-- Implants -->
-      <div class="reveal group bg-white p-8 rounded-[2rem] border border-black/5 hover:border-primary/20 transition-all duration-300 hover:-translate-y-3">
-        <div class="w-16 h-16 bg-primary/5 rounded-2xl flex items-center justify-center mb-10 group-hover:bg-primary transition-colors">
-          <span class="material-symbols-outlined text-primary text-3xl group-hover:text-white transition-colors">precision_manufacturing</span>
+      <div class="reveal group bg-white p-10 rounded-[2.5rem] border border-black/5 hover:border-primary/20 transition-all duration-500 hover:-translate-y-4 shadow-sm hover:shadow-2xl">
+        <div class="w-20 h-20 bg-primary/5 rounded-3xl flex items-center justify-center mb-10 group-hover:bg-primary transition-colors duration-500">
+          <i class="fa-solid fa-tooth text-primary text-4xl group-hover:text-white transition-colors duration-500"></i>
         </div>
-        <h4 class="font-headline text-xl font-extrabold mb-4">Dental Implants</h4>
-        <p class="text-on-surface-variant text-sm leading-relaxed mb-8 font-medium">Grade 5 Titanium implants with 3D Guided surgery for lifelong stability.</p>
-        <div class="pt-6 border-t border-slate-100 flex flex-col gap-3">
-          <span class="flex items-center gap-2 text-[10px] font-black text-primary tracking-widest uppercase"><span class="material-symbols-outlined text-sm">verified</span> Grade 5 Titanium</span>
-        </div>
-      </div>
-      <!-- Orthodontics -->
-      <div class="reveal group bg-white p-8 rounded-[2rem] border border-black/5 hover:border-primary/20 transition-all duration-300 hover:-translate-y-3">
-        <div class="w-16 h-16 bg-primary/5 rounded-2xl flex items-center justify-center mb-10 group-hover:bg-primary transition-colors">
-          <span class="material-symbols-outlined text-primary text-3xl group-hover:text-white transition-colors">align_horizontal_center</span>
-        </div>
-        <h4 class="font-headline text-xl font-extrabold mb-4">Orthodontics</h4>
-        <p class="text-on-surface-variant text-sm leading-relaxed mb-8 font-medium">Clear aligners and 'Precision Fit' ceramic braces for optimal alignment.</p>
-        <div class="pt-6 border-t border-slate-100 flex flex-col gap-3">
-          <span class="flex items-center gap-2 text-[10px] font-black text-primary tracking-widest uppercase"><span class="material-symbols-outlined text-sm">verified</span> Invisible Aligners</span>
+        <h4 class="font-headline text-2xl font-extrabold mb-4">Dental Implants</h4>
+        <p class="text-on-surface-variant leading-relaxed mb-8 font-medium">Titanium grade 5 implants with 3D guided surgery for lifelong functional and aesthetic restoration.</p>
+        <div class="pt-6 border-t border-slate-100">
+          <span class="flex items-center gap-2 text-[10px] font-black text-primary tracking-widest uppercase"><i class="fa-solid fa-circle-check"></i> Precision Fit Architecture</span>
         </div>
       </div>
-      <!-- Whitening -->
-      <div class="reveal group bg-white p-8 rounded-[2rem] border border-black/5 hover:border-primary/20 transition-all duration-300 hover:-translate-y-3">
-        <div class="w-16 h-16 bg-primary/5 rounded-2xl flex items-center justify-center mb-10 group-hover:bg-primary transition-colors">
-          <span class="material-symbols-outlined text-primary text-3xl group-hover:text-white transition-colors">flare</span>
+      <!-- Root Canal Therapy -->
+      <div class="reveal group bg-white p-10 rounded-[2.5rem] border border-black/5 hover:border-primary/20 transition-all duration-500 hover:-translate-y-4 shadow-sm hover:shadow-2xl">
+        <div class="w-20 h-20 bg-primary/5 rounded-3xl flex items-center justify-center mb-10 group-hover:bg-primary transition-colors duration-500">
+          <i class="fa-solid fa-microscope text-primary text-4xl group-hover:text-white transition-colors duration-500"></i>
         </div>
-        <h4 class="font-headline text-xl font-extrabold mb-4">Teeth Whitening</h4>
-        <p class="text-on-surface-variant text-sm leading-relaxed mb-8 font-medium">Laser-activated whitening with enamel protection and zero sensitivity.</p>
-        <div class="pt-6 border-t border-slate-100 flex flex-col gap-3">
-          <span class="flex items-center gap-2 text-[10px] font-black text-primary tracking-widest uppercase"><span class="material-symbols-outlined text-sm">verified</span> Laser Activated</span>
+        <h4 class="font-headline text-2xl font-extrabold mb-4">Root Canal Therapy</h4>
+        <p class="text-on-surface-variant leading-relaxed mb-8 font-medium">Microscopic endodontic procedures ensuring painless experience and long-term tooth preservation.</p>
+        <div class="pt-6 border-t border-slate-100">
+          <span class="flex items-center gap-2 text-[10px] font-black text-primary tracking-widest uppercase"><i class="fa-solid fa-circle-check"></i> Zero Trauma Protocol</span>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- Why Choose Us -->
-  <section class="bg-primary text-white py-32 px-6 lg:px-12 relative overflow-hidden" id="why-us">
-    <div class="absolute top-0 right-0 w-1/2 h-full bg-white/5 skew-x-[-15deg] translate-x-32"></div>
-    <div class="max-w-7xl mx-auto relative z-10">
-      <div class="grid lg:grid-cols-2 gap-20 items-center">
-        <div class="reveal">
-          <h2 class="font-headline text-4xl lg:text-6xl font-extrabold mb-12 leading-tight">Engineered for <br /><span class="opacity-50">Zero Distraction.</span></h2>
-          <div class="grid sm:grid-cols-2 gap-10">
-            <div class="glass-card p-8 rounded-3xl animate-float" style="animation-delay: 0.2s">
-              <span class="material-symbols-outlined text-3xl mb-4 block opacity-50">sanitizer</span>
-              <h5 class="text-lg font-bold mb-2">ISO Sterile</h5>
-              <p class="text-white/60 text-xs leading-relaxed font-medium">5-step autoclave process for zero-infection safety.</p>
-            </div>
-            <div class="glass-card p-8 rounded-3xl animate-float" style="animation-delay: 0.4s">
-              <span class="material-symbols-outlined text-3xl mb-4 block opacity-50">medical_information</span>
-              <h5 class="text-lg font-bold mb-2">Painless Tech</h5>
-              <p class="text-white/60 text-xs leading-relaxed font-medium">Digital anesthesia eliminates the fear of needles.</p>
-            </div>
-            <div class="glass-card p-8 rounded-3xl animate-float" style="animation-delay: 0.6s">
-              <span class="material-symbols-outlined text-3xl mb-4 block opacity-50">concierge</span>
-              <h5 class="text-lg font-bold mb-2">Elite Care</h5>
-              <p class="text-white/60 text-xs leading-relaxed font-medium">Concierge-level service in a premium sanctuary.</p>
-            </div>
-            <div class="glass-card p-8 rounded-3xl animate-float" style="animation-delay: 0.8s">
-              <span class="material-symbols-outlined text-3xl mb-4 block opacity-50">emergency</span>
-              <h5 class="text-lg font-bold mb-2">24/7 Access</h5>
-              <p class="text-white/60 text-xs leading-relaxed font-medium">Round-the-clock support for dental emergencies.</p>
-            </div>
-          </div>
+      <!-- Cosmetic Smile Design -->
+      <div class="reveal group bg-white p-10 rounded-[2.5rem] border border-black/5 hover:border-primary/20 transition-all duration-500 hover:-translate-y-4 shadow-sm hover:shadow-2xl">
+        <div class="w-20 h-20 bg-primary/5 rounded-3xl flex items-center justify-center mb-10 group-hover:bg-primary transition-colors duration-500">
+          <i class="fa-solid fa-wand-magic-sparkles text-primary text-4xl group-hover:text-white transition-colors duration-500"></i>
         </div>
-        <div class="reveal relative lg:block hidden">
-          <div class="rounded-[4rem] overflow-hidden border-[12px] border-white/5 shadow-2xl">
-            <img alt="Advanced Equipment" class="w-full h-[650px] object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuClXC9qjn4NrVZTHUU6ZQMe4JU5LDanRSB5WaJOnGk6PGiMjxXaK7VQy5DYQBNfHco77i9YlMGRjIJxaPNYHGyJjgBRAJFHVqXuPvKl6Wr8k9e-Nl1Vbdx89zr0XvopNMskulwXiKAOkaLQDsL8TvZnmnO3B04190VRjkTZ8f6ZibWrwnx8IeMWLcXF3mRwH7eem-q9Jr8VqEK0eiDnGYVZupQcJ2Js7q6HqkreJqO8ZQAg2lCr0hxCtzNmqv3cCsJbXJ0-XVLT7Mlc" />
-          </div>
-          <div class="absolute -bottom-10 -right-10 bg-white p-12 rounded-[3rem] text-primary shadow-2xl">
-            <span class="text-6xl font-black block mb-2">100%</span>
-            <span class="text-[10px] font-black uppercase tracking-[0.3em] opacity-60">Safety Matrix</span>
-          </div>
+        <h4 class="font-headline text-2xl font-extrabold mb-4">Cosmetic Smile Design</h4>
+        <p class="text-on-surface-variant leading-relaxed mb-8 font-medium">Architectural smile crafting using porcelain veneers and digital mockups for radiant symmetry.</p>
+        <div class="pt-6 border-t border-slate-100">
+          <span class="flex items-center gap-2 text-[10px] font-black text-primary tracking-widest uppercase"><i class="fa-solid fa-circle-check"></i> Aesthetic Radiance</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Sanctuary Gallery -->
-  <section class="py-32 px-6 lg:px-12 max-w-7xl mx-auto" id="gallery">
-    <div class="flex flex-col items-center mb-24 reveal">
-      <h2 class="font-headline text-4xl lg:text-5xl font-extrabold text-on-background mb-6">The Clinical Sanctuary</h2>
-      <div class="w-16 h-1 bg-primary rounded-full mb-6"></div>
-      <p class="text-on-surface-variant font-medium opacity-80">Architecture meets clinical excellence.</p>
-    </div>
-    <div class="masonry reveal">
-      <div class="masonry-item rounded-3xl overflow-hidden group relative">
-        <img alt="Gallery 1" class="w-full h-auto group-hover:scale-110 transition-transform duration-1000" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBcHchugh4lBPZdWH8I2BsF0cuA52y9GU_LyWwJRrjOjVCwqjJJUFdmHZu7HuGkMZad-2RGoj0_Xl6EWUu1Vdy2y_xyigk2aSqfDaXNS2WGAOApKwfGDiA8KgtLW151uT4rcXJAXwqk0z9Me78y21FDgE2ghl7NPJQwYfk8bSiLvSII483ID__WJgskVEWoxoKYKT5erSVE3YiEbS_KnzxUMYpne3LTlD5HSfVKIEe_xPspgLJqwPa_eckoCoGAOt-rPP_S2Bi1S9Pu" />
-        <div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-8">
-          <span class="text-white font-bold text-lg">Patient Lounge</span>
-        </div>
-      </div>
-      <div class="masonry-item rounded-3xl overflow-hidden group relative">
-        <img alt="Gallery 2" class="w-full h-auto group-hover:scale-110 transition-transform duration-1000" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCkzgQg3fp5YSsTPd6H9mRDq4rWSHJx_GaJu9u5a_vjc4U2IjbyVyXAdUy3JSkYKlS_1UjugJOc5k70Yt-xAC4DCB3Op6Cjti8JM9eCQQ8FeyuKQaNxkggAH5fdS74apGLCj83LPVkdPG-VdzT_48SImkkjCuir70OkaCPFLo7uywaDTdp2upuVLU8wm8ZoRdTK758SsumsGuIJ-9zdBLIMxC0LJwYyh-wneDvNfTDQ0EajvLaI61tH8pXRB8yOI0puakkoV6tVMHlL" />
-        <div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-8">
-          <span class="text-white font-bold text-lg">Sterile Environment</span>
-        </div>
-      </div>
-      <div class="masonry-item rounded-3xl overflow-hidden group relative">
-        <img alt="Gallery 3" class="w-full h-auto group-hover:scale-110 transition-transform duration-1000" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZkrrwM4XMPfuomwqqHTsMviC6fj7mGDWN2el5M923UXPC5Am84STfx7TIzoekicNUukHMFkJsvMtUWe7wO5dAtDsoNP-e1a57PbbuXAnPF0k_hHzQLAObrxboOfw1TXN05DDXVtzu8rVAwZez63R8C_iNSY5PKeptjYxd8jFirVIR6GgJ_208hPOp0YIjo7Ncn-GjNsLcOAZGXwut_nOmzK3vRarKE2iEDCV6kgeC8XkriLlbvCu-KqfZ9bp2WwCZkaOlAR9BBjdq" />
-        <div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-8">
-          <span class="text-white font-bold text-lg">Advanced Diagnostics</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Oral Health Insights -->
-  <section class="bg-slate-50 py-32 px-6 lg:px-12" id="articles">
-    <div class="max-w-7xl mx-auto">
-      <div class="flex items-center justify-between mb-24 reveal">
-        <div>
-          <h2 class="font-headline text-4xl font-extrabold text-on-background mb-4">Oral Health Insights</h2>
-          <p class="text-on-surface-variant font-medium opacity-80">Research-backed dental wellness articles.</p>
-        </div>
-        <a class="text-primary font-black text-xs tracking-widest flex items-center gap-2 hover:underline" href="#">VIEW ALL ARTICLES <span class="material-symbols-outlined text-sm">north_east</span></a>
-      </div>
-      <div class="grid md:grid-cols-3 gap-12">
-        <!-- Blog 1 -->
-        <div class="reveal group bg-white rounded-[2.5rem] overflow-hidden border border-black/5 hover:shadow-2xl transition-all duration-500">
-          <div class="h-64 overflow-hidden">
-            <img alt="Article 1" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFtjh1QCRAIjWsZoJf3YnbywufGKVrOVb4_qwQkFct24P5lZMF0IQ95Z-x7MgZ91egqOLfTBK1qlEJsCpS30TGPPeI7-Db_T5u0ZoFzgH2D8aap8GBO3zyf7KfJhXGB0mp-Q_ge3UU7VBWVTMoNNgLOr0GoLEWwELnAJQdpuyXYxI0BvI0u83s6eElvEOHvpsZQCAmtVoT3Mhb74WL4g6Z303hB2wV7UbjYS_gHRnPy9mz4TwPxOcIWKJkgWY6ldgDVC7n0G6soa9x" />
-          </div>
-          <div class="p-10">
-            <div class="flex items-center gap-4 mb-6">
-              <span class="text-[10px] font-black text-primary/40 uppercase tracking-widest">Wellness</span>
-              <span class="text-[10px] font-bold text-slate-300">|</span>
-              <span class="text-[10px] font-bold text-slate-400">4 MIN READ</span>
-            </div>
-            <h4 class="text-xl font-extrabold mb-4 leading-snug">The Science of Brushing</h4>
-            <p class="text-on-surface-variant text-sm mb-8 font-medium leading-relaxed opacity-80">Understanding the biomechanics of oral hygiene and precision enamel protection.</p>
-            <span class="text-primary font-black text-xs tracking-widest cursor-pointer group-hover:underline">READ INSIGHT</span>
-          </div>
-        </div>
-        <!-- Blog 2 -->
-        <div class="reveal group bg-white rounded-[2.5rem] overflow-hidden border border-black/5 hover:shadow-2xl transition-all duration-500">
-          <div class="h-64 overflow-hidden">
-            <img alt="Article 2" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBtfxPjfHM1jErOVRVpqDFT6dCyFwihwrE31UJ1aPqbmJW645mKc2Nnz0LNF06lz8C-8utSDlRx6sqR3lzE_HYP6_3GxSqKfRuRYnZuEOph1eUxv4gdl_5gD3djugeZii_aMcE1_K3b_PU2CRuioFIKu_G9Yd1YVxS7_EMg_u9fQQnZVgsupI7ncBX-LijSPhAQkxd8qTGoDaFRyoUJuqqXAoYl91xSGV3Cglxo6WlTB-aguXTsRZBswb8D7eIW0un7xWWlDZaHdh1" />
-          </div>
-          <div class="p-10">
-            <div class="flex items-center gap-4 mb-6">
-              <span class="text-[10px] font-black text-primary/40 uppercase tracking-widest">Technology</span>
-              <span class="text-[10px] font-bold text-slate-300">|</span>
-              <span class="text-[10px] font-bold text-slate-400">6 MIN READ</span>
-            </div>
-            <h4 class="text-xl font-extrabold mb-4 leading-snug">3D Guided Workflow</h4>
-            <p class="text-on-surface-variant text-sm mb-8 font-medium leading-relaxed opacity-80">Why the shift to digital dentistry is revolutionizing precision outcomes.</p>
-            <span class="text-primary font-black text-xs tracking-widest cursor-pointer group-hover:underline">READ INSIGHT</span>
-          </div>
-        </div>
-        <!-- Blog 3 -->
-        <div class="reveal group bg-white rounded-[2.5rem] overflow-hidden border border-black/5 hover:shadow-2xl transition-all duration-500">
-          <div class="h-64 overflow-hidden">
-            <img alt="Article 3" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLguifTr63bdqqR7MIZmaOgu5jJL8PgSbcC4apclU6li1SQ7ESD0QLt2wVPgS9ZLsPKdEJ60INmPJGYuuWHhdhQqZuxe0Es_FEFeZeIdutuvThxh2bHItpOBYCKA3sbXhOfEBnN3TCG5cdZmh-V3JM4akl206HU9r_5G6D7iMdr076myydxB4kPEMFGEL1-hteruc9JxIQ2G5sJKHAZtYbKAqzRZIQEY3rHyJjWEPjwOdi_Dk6L8M0NXxd_jU45pSNshQOt-t6MVLV" />
-          </div>
-          <div class="p-10">
-            <div class="flex items-center gap-4 mb-6">
-              <span class="text-[10px] font-black text-primary/40 uppercase tracking-widest">Aesthetics</span>
-              <span class="text-[10px] font-bold text-slate-300">|</span>
-              <span class="text-[10px] font-bold text-slate-400">5 MIN READ</span>
-            </div>
-            <h4 class="text-xl font-extrabold mb-4 leading-snug">Modern Aligners</h4>
-            <p class="text-on-surface-variant text-sm mb-8 font-medium leading-relaxed opacity-80">A guide to choosing the right path between clear aligners and ceramic braces.</p>
-            <span class="text-primary font-black text-xs tracking-widest cursor-pointer group-hover:underline">READ INSIGHT</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Concierge Booking Form -->
+  <!-- Appointment Booking Request Form -->
   <section class="py-32 px-6 lg:px-12 max-w-4xl mx-auto" id="book">
     <div class="bg-white rounded-[3.5rem] p-12 lg:p-20 shadow-[0_60px_120px_-30px_rgba(0,0,0,0.1)] border border-slate-100 reveal">
       <div class="text-center mb-16">
-        <h2 class="font-headline text-4xl font-extrabold text-on-background mb-4">Concierge Booking</h2>
-        <p class="text-on-surface-variant font-medium opacity-80">Secure your priority appointment.</p>
+        <h2 class="font-headline text-4xl font-extrabold text-on-background mb-4 text-gradient">Secure Your Visit</h2>
+        <p class="text-on-surface-variant font-medium opacity-80">Experience clinical excellence at your convenience.</p>
       </div>
-      <form class="grid md:grid-cols-2 gap-10">
-        <div class="space-y-3">
-          <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Full Name</label>
-          <input class="w-full bg-slate-50 border-none rounded-2xl p-5 focus:ring-2 focus:ring-primary/20 focus:bg-white transition-all outline-none font-medium" placeholder="E.g. Alexander Knight" required type="text" />
+      <form class="space-y-10">
+        <div class="grid md:grid-cols-2 gap-10">
+          <div class="space-y-3">
+            <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Patient Name</label>
+            <input class="w-full bg-slate-50 border-none rounded-2xl p-5 focus:ring-2 focus:ring-primary/20 focus:bg-white transition-all outline-none font-medium" placeholder="Full Name" required type="text" />
+          </div>
+          <div class="space-y-3">
+            <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Contact Number</label>
+            <input class="w-full bg-slate-50 border-none rounded-2xl p-5 focus:ring-2 focus:ring-primary/20 focus:bg-white transition-all outline-none font-medium" placeholder="+91 00000 00000" required type="tel" />
+          </div>
         </div>
+
         <div class="space-y-3">
-          <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Phone Number</label>
-          <input class="w-full bg-slate-50 border-none rounded-2xl p-5 focus:ring-2 focus:ring-primary/20 focus:bg-white transition-all outline-none font-medium" placeholder="+91 00000 00000" required type="tel" />
-        </div>
-        <div class="space-y-3">
-          <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Preferred Branch</label>
+          <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Clinical Concern</label>
           <select class="w-full bg-slate-50 border-none rounded-2xl p-5 focus:ring-2 focus:ring-primary/20 focus:bg-white transition-all outline-none font-medium appearance-none">
-            <option>Hegganahalli Branch</option>
-            <option>Srigandha Nagar Branch</option>
+            <option>General Consultation</option>
+            <option>Dental Implants</option>
+            <option>Root Canal Therapy</option>
+            <option>Cosmetic Smile Design</option>
+            <option>Orthodontics</option>
           </select>
         </div>
-        <div class="space-y-3">
-          <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Consultation Date</label>
-          <input class="w-full bg-slate-50 border-none rounded-2xl p-5 focus:ring-2 focus:ring-primary/20 focus:bg-white transition-all outline-none font-medium" required type="date" />
+
+        <div class="space-y-4">
+          <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Clinic Branch</label>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <label class="relative flex items-center gap-3 bg-slate-50 p-4 rounded-2xl cursor-pointer hover:bg-slate-100 transition-colors">
+              <input type="radio" name="branch" value="JP Nagar" class="text-primary focus:ring-primary" required />
+              <span class="text-sm font-bold">JP Nagar</span>
+            </label>
+            <label class="relative flex items-center gap-3 bg-slate-50 p-4 rounded-2xl cursor-pointer hover:bg-slate-100 transition-colors">
+              <input type="radio" name="branch" value="Chandra Layout" class="text-primary focus:ring-primary" />
+              <span class="text-sm font-bold">Chandra Layout</span>
+            </label>
+            <label class="relative flex items-center gap-3 bg-slate-50 p-4 rounded-2xl cursor-pointer hover:bg-slate-100 transition-colors">
+              <input type="radio" name="branch" value="RR Nagar" class="text-primary focus:ring-primary" />
+              <span class="text-sm font-bold">RR Nagar</span>
+            </label>
+          </div>
         </div>
-        <div class="md:col-span-2 pt-6">
-          <button class="btn-haptic w-full bg-primary text-white py-6 rounded-2xl font-black text-lg shadow-2xl shadow-primary/30 hover:shadow-primary/40" type="submit">
-            SECURE APPOINTMENT
-          </button>
-          <p class="text-center text-[10px] font-bold text-slate-300 mt-6 tracking-widest">ENCRYPTED & HIPAA COMPLIANT DATA TRANSFER</p>
-        </div>
+
+        <button class="btn-haptic w-full bg-primary text-white py-6 rounded-2xl font-black text-lg shadow-2xl shadow-primary/30 hover:shadow-primary/40 flex items-center justify-center gap-3" type="submit">
+          REQUEST APPOINTMENT
+          <i class="fa-solid fa-paper-plane"></i>
+        </button>
       </form>
     </div>
   </section>
 </main>
 
 <!-- Footer -->
-<footer class="bg-slate-950 text-white pt-32 pb-16">
+<footer class="bg-slate-950 text-white pt-32 pb-16" id="contact">
   <div class="grid grid-cols-1 md:grid-cols-4 gap-20 px-6 lg:px-12 max-w-7xl mx-auto mb-24">
     <div class="space-y-8">
       <div class="flex items-center gap-4">
-        <img alt="Logo" class="h-10 w-10 brightness-0 invert" src="https://lh3.googleusercontent.com/aida/ADBb0ujQfj_FONKdqVU8QDKZurlaSU6KI3icr_FVmUSgFw3Zo38I8K9gdM442gvnsZiir8Jgva6ict2wT0hlAI0-V4CBOuR2_h6y6a4B7-Ou-UhmmODKdbfJaeR9u6RNhi0RtBS-7RGGEZQD_kVhOz6w1dPHEzblR41-YCvljfWDB2rOKAo53F1OuStLRVA5_pKf9fQOPIw8_osQEbzMmS_SW5g_EgZ3ymqiM1aVlKBQtjT_WQhG6dK9tzEvTC0wbTME4Q5I2Yqp4hb5dJI" />
+        <img alt="Logo" class="h-10 w-10 brightness-0 invert" src="assets/WhatsApp Image 2026-03-20 at 1.09.53 AM.jpeg" />
         <span class="text-2xl font-black font-headline tracking-tighter">NAGU DENTAL</span>
       </div>
       <p class="text-slate-500 text-sm leading-relaxed font-medium">Precision care. Architectural tranquility. Redefining Bengaluru's dental landscape.</p>
       <div class="flex gap-4">
-        <div class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-white hover:text-primary transition-all cursor-pointer">
-          <span class="material-symbols-outlined text-sm">public</span>
-        </div>
-        <div class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-white hover:text-primary transition-all cursor-pointer">
-          <span class="material-symbols-outlined text-sm">chat</span>
-        </div>
-        <div class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-white hover:text-primary transition-all cursor-pointer">
-          <span class="material-symbols-outlined text-sm">alternate_email</span>
-        </div>
+        <a href="#" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-white hover:text-primary transition-all">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="#" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-white hover:text-primary transition-all">
+          <i class="fa-brands fa-facebook-f"></i>
+        </a>
+        <a href="#" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-white hover:text-primary transition-all">
+          <i class="fa-solid fa-envelope"></i>
+        </a>
       </div>
     </div>
     <div>
-      <h6 class="text-[10px] font-black text-primary uppercase tracking-[0.3em] mb-10">HEGGANAHALLI</h6>
+      <h6 class="text-[10px] font-black text-primary uppercase tracking-[0.3em] mb-10">JP NAGAR</h6>
       <address class="not-italic text-slate-500 text-sm space-y-4 font-medium leading-relaxed">
-        <p>Opp. Suresh Hospital,<br />Hegganahalli Main Rd,<br />Bengaluru, Karnataka</p>
-        <p class="font-black text-white">+91 99000 00000</p>
+        <p>15th Cross, 2nd Phase,<br />JP Nagar,<br />Bengaluru, Karnataka</p>
+        <p class="font-black text-white">+91 88619 32535</p>
       </address>
     </div>
     <div>
-      <h6 class="text-[10px] font-black text-primary uppercase tracking-[0.3em] mb-10">SRIGANDHA NAGAR</h6>
+      <h6 class="text-[10px] font-black text-primary uppercase tracking-[0.3em] mb-10">CHANDRA LAYOUT</h6>
       <address class="not-italic text-slate-500 text-sm space-y-4 font-medium leading-relaxed">
-        <p>Near KTG College,<br />Srigandha Nagar,<br />Bengaluru, Karnataka</p>
-        <p class="font-black text-white">+91 99000 11111</p>
+        <p>80 Feet Road,<br />Chandra Layout,<br />Bengaluru, Karnataka</p>
+        <p class="font-black text-white">+91 88619 32535</p>
       </address>
     </div>
     <div>
-      <h6 class="text-[10px] font-black text-primary uppercase tracking-[0.3em] mb-10">LEGAL MATRIX</h6>
-      <ul class="space-y-4 text-sm font-medium text-slate-500">
-        <li><a class="hover:text-white transition-colors" href="#">ISO Certified 2024</a></li>
-        <li><a class="hover:text-white transition-colors" href="#">HIPAA Compliance</a></li>
-        <li><a class="hover:text-white transition-colors" href="#">Privacy Protocol</a></li>
-        <li><a class="text-primary hover:underline" href="#">Terms of Mastery</a></li>
-      </ul>
+      <h6 class="text-[10px] font-black text-primary uppercase tracking-[0.3em] mb-10">RR NAGAR</h6>
+      <address class="not-italic text-slate-500 text-sm space-y-4 font-medium leading-relaxed">
+        <p>Jawaharlal Nehru Road,<br />RR Nagar,<br />Bengaluru, Karnataka</p>
+        <p class="font-black text-white">+91 88619 32535</p>
+      </address>
     </div>
   </div>
   <div class="border-t border-white/5 pt-16 px-6 text-center text-slate-600 text-[10px] font-black tracking-[0.3em] uppercase">
@@ -522,35 +257,16 @@
 <div class="floating-cta">
   <!-- WhatsApp Button -->
   <button class="floating-cta-button whatsapp btn-haptic" onclick="window.open('https://wa.me/+918861932535?text=Hi%2C%20I%27d%20like%20to%20book%20a%20consultation', '_blank')">
-    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M19.077 4.928C17.191 3.041 14.683 2 12.006 2 6.798 2 2.548 6.193 2.54 11.393c-.003 1.747.456 3.457 1.328 4.985L2.25 21.75l5.422-1.56c1.473.86 3.144 1.316 4.87 1.319h.004c5.199 0 9.455-4.195 9.463-9.396.004-2.512-.972-4.876-2.858-6.764M12.014 20.04h-.003c-1.497 0-2.965-.403-4.24-1.16l-.304-.18-3.22.926.99-3.135-.178-.315c-.823-1.39-1.257-2.98-1.254-4.615.007-4.314 3.516-7.823 7.84-7.823 2.096 0 4.063.818 5.543 2.3s2.294 3.46 2.29 5.56c-.007 4.312-3.516 7.82-7.828 7.82m4.305-5.866c-.235-.118-1.39-.686-1.605-.765-.215-.078-.37-.118-.525.118-.156.235-.6.765-.735.922-.136.157-.27.176-.506.058-.894-.413-1.522-.96-2.122-1.57-.16-.16-.305-.337-.443-.523.142-.127.266-.27.374-.426.156-.234.208-.392.312-.653.105-.26.052-.48-.026-.667-.078-.186-.517-1.247-.71-1.708-.186-.44-.376-.38-.517-.387-.133-.006-.286-.008-.44-.008-.153 0-.402.058-.613.293-.21.235-.803.785-.803 1.913 0 1.13.822 2.222.937 2.376.116.154 1.587 2.465 3.838 3.36 2.25.894 2.25.598 2.656.56.406-.038 1.31-.535 1.494-1.052.185-.518.185-.962.13-1.055-.055-.094-.203-.152-.438-.27"/>
-    </svg>
+    <i class="fa-brands fa-whatsapp text-3xl"></i>
   </button>
   
   <!-- Call Button -->
   <button class="floating-cta-button call btn-haptic pulse-effect" onclick="window.location.href='tel:+918861932535'">
-    <span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">call</span>
+    <i class="fa-solid fa-phone text-2xl"></i>
   </button>
 </div>
 
-<script>
-  // GSAP Scroll Animations
-  gsap.registerPlugin(ScrollTrigger);
-
-  document.querySelectorAll('.reveal').forEach((el) => {
-    gsap.to(el, {
-      scrollTrigger: {
-        trigger: el,
-        start: "top 85%",
-        toggleActions: "play none none none"
-      },
-      opacity: 1,
-      y: 0,
-      duration: 1,
-      ease: "power4.out"
-    });
-  });
-</script>
+<script src="assets/js/script.js"></script>
 
 </body>
 </html>
