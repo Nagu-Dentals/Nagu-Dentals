@@ -46,9 +46,10 @@ test('verify Nagu Dental overhaul', async ({ page }) => {
 
   // Check Specialty Matrix
   const specialties = page.locator('#specialties');
-  await expect(specialties).toContainText('Dental Implants');
-  await expect(specialties).toContainText('Root Canal Therapy');
-  await expect(specialties).toContainText('Cosmetic Smile Design');
+  await expect(specialties).toContainText('Digital Treatment Units');
+  await expect(specialties).toContainText('Intraoral Precision');
+  await expect(specialties).toContainText('Smart Ergonomics');
+  await expect(specialties).toContainText('Advanced Sterilization');
 
   // Check Booking Form
   const form = page.locator('#book form');
