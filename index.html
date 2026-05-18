@@ -33,23 +33,28 @@
 <body class="bg-background text-primary font-sans antialiased">
 
     <!-- Header -->
-    <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 glass-header">
+    <header class="fixed top-0 left-0 right-0 z-50 glass-header">
         <nav class="container mx-auto px-6 py-4 flex items-center justify-between">
             <a href="#" class="flex items-center gap-3">
                 <img src="assets/images/logo.png" alt="NAGU Logo" class="h-10 w-auto">
                 <span class="font-display text-2xl font-bold tracking-tight">NAGU <span class="text-accent">ನಗು</span></span>
             </a>
 
-            <div class="hidden md:flex items-center gap-8 font-medium">
-                <a href="#home" class="hover:text-accent transition">Home</a>
+            <div class="hidden md:flex items-center gap-6 font-medium">
                 <a href="#services" class="hover:text-accent transition">Services</a>
                 <a href="#about" class="hover:text-accent transition">About</a>
-                <a href="#contact" class="px-6 py-2 bg-primary text-white rounded-full hover:bg-opacity-90 transition">Book Now</a>
+                <a href="#contact" class="px-6 py-2 bg-accent text-white rounded-full tap-target shadow-md hover:shadow-lg transition">Book Appointment</a>
+                <button id="menu-toggle" class="size-10 rounded-full border border-primary/10 flex items-center justify-center hover:bg-accent/10 transition">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
             </div>
 
-            <button id="menu-toggle" class="md:hidden size-10 rounded-full border border-primary/10 flex items-center justify-center hover:bg-accent/10 transition">
-                <i class="fa-solid fa-bars"></i>
-            </button>
+            <div class="flex md:hidden items-center gap-3">
+                <a href="#contact" class="px-4 py-2 bg-accent text-white text-sm rounded-full tap-target font-bold">Book Appointment</a>
+                <button id="menu-toggle-mobile" class="size-10 rounded-full border border-primary/10 flex items-center justify-center">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
         </nav>
     </header>
 
@@ -58,241 +63,589 @@
         <button id="menu-close" class="absolute top-6 right-6 size-12 flex items-center justify-center text-3xl">
             <i class="fa-solid fa-xmark"></i>
         </button>
-        <a href="#home" class="mobile-nav-link text-2xl font-display">Home</a>
-        <a href="#services" class="mobile-nav-link text-2xl font-display">Services</a>
-        <a href="#about" class="mobile-nav-link text-2xl font-display">About</a>
-        <a href="#contact" class="mobile-nav-link px-8 py-3 bg-accent text-white rounded-full font-bold">Book Now</a>
+        <a href="#" class="text-2xl font-display">Home</a>
+        <a href="#services" class="text-2xl font-display">Services</a>
+        <a href="#infrastructure" class="text-2xl font-display">Infrastructure</a>
+        <a href="#gallery" class="text-2xl font-display">Smile Gallery</a>
+        <a href="#contact" class="px-8 py-3 bg-accent text-white rounded-full font-bold">Book Now</a>
     </div>
 
     <main>
         <!-- Hero Section -->
-        <section id="home" class="relative pt-32 pb-20 px-6 overflow-hidden">
+        <section id="hero" class="relative pt-32 pb-20 px-6 overflow-hidden">
             <div class="container mx-auto text-center">
-                <!-- Trust Indicator -->
-                <div class="inline-flex items-center gap-2 px-4 py-2 bg-white/80 rounded-full shadow-sm border border-accent/20 mb-8 animate-fade-in">
-                    <i class="fa-solid fa-star text-accent"></i>
-                    <span class="text-sm font-medium">5.0 Rating — 108 Verified Reviews</span>
+                <!-- Trust Indicator Pill -->
+                <div class="inline-flex items-center gap-2 px-4 py-2 bg-white/80 rounded-full shadow-sm border border-accent/20 mb-8">
+                    <span class="text-accent">⭐</span>
+                    <span class="text-sm font-semibold">5.0 Rating — 108 Verified Reviews</span>
                 </div>
 
                 <h1 class="text-5xl md:text-7xl font-display font-bold leading-tight mb-6">
                     NAGU Dental<br>
-                    <span class="text-gradient">Multi-speciality Clinic</span>
+                    <span class="text-accent">Multi-speciality Clinic</span>
                 </h1>
 
                 <p class="max-w-2xl mx-auto text-lg md:text-xl text-primary/70 mb-10 leading-relaxed">
-                    World-class dental treatments with personalized care and advanced technology. Experience dentistry like never before in a luxury clinical environment.
+                    Experience world-class dental excellence with our personalized care and advanced technology. Your perfect smile begins here.
                 </p>
 
-                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                    <a href="#contact" class="w-full sm:w-auto px-10 py-4 bg-gradient-orange text-white rounded-full font-bold shadow-lg hover:shadow-accent/30 transition-all flex items-center justify-center gap-2">
-                        <i class="fa-solid fa-calendar-check"></i>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+                    <a href="#contact" class="w-full sm:w-auto px-10 py-4 bg-accent text-white rounded-full font-bold shadow-lg tap-target flex items-center justify-center gap-2 hover:bg-opacity-90">
+                        <i class="fa-solid fa-calendar-alt"></i>
                         Book Your Visit
                     </a>
-                    <a href="tel:+918861932535" class="w-full sm:w-auto px-10 py-4 border-2 border-accent text-accent rounded-full font-bold hover:bg-accent/5 transition-all flex items-center justify-center gap-2">
+                    <a href="tel:+918861932535" class="w-full sm:w-auto px-10 py-4 border-2 border-accent text-accent rounded-full font-bold tap-target flex items-center justify-center gap-2 hover:bg-accent/5">
                         <i class="fa-solid fa-phone"></i>
                         Talk to Specialist
                     </a>
                 </div>
-            </div>
 
-            <!-- Hero Image Background Placeholder / Abstract Elements -->
-            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 w-[120%] h-[120%] bg-[radial-gradient(circle_at_center,rgba(239,168,92,0.05)_0%,transparent_70%)]"></div>
-        </section>
+                <!-- Hero Image with Shining Aura -->
+                <div class="max-w-5xl mx-auto mb-20">
+                    <div class="shining-border-container overflow-hidden">
+                        <img src="assets/images/hero.png" alt="Clinical Excellence" class="w-full h-auto rounded-[1.8rem] block">
+                    </div>
+                </div>
 
-        <!-- Stats Section -->
-        <section class="py-16 bg-white/50 border-y border-primary/5">
-            <div class="container mx-auto px-6">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
-                    <div class="stat-item">
-                        <div class="text-4xl md:text-5xl font-display font-bold text-accent mb-2" data-target="15">0+</div>
-                        <p class="text-primary/60 font-medium uppercase tracking-widest text-sm">Years of Clinical Excellence</p>
+                <!-- Metrics Row -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-4xl mx-auto border-t border-primary/5 pt-16">
+                    <div class="metric-item">
+                        <div class="text-4xl md:text-5xl font-display font-bold text-accent mb-2 counter-value" data-target="15" data-suffix="+">0+</div>
+                        <p class="text-primary/60 font-medium uppercase tracking-widest text-xs">Years of Clinical Excellence</p>
                     </div>
-                    <div class="stat-item">
-                        <div class="text-4xl md:text-5xl font-display font-bold text-accent mb-2" data-target="25000" data-suffix="K+">0K+</div>
-                        <p class="text-primary/60 font-medium uppercase tracking-widest text-sm">Happy Patients Treated</p>
+                    <div class="metric-item">
+                        <div class="text-4xl md:text-5xl font-display font-bold text-accent mb-2 counter-value" data-target="5000" data-suffix="+">0K+</div>
+                        <p class="text-primary/60 font-medium uppercase tracking-widest text-xs">Happy Patients Treated</p>
                     </div>
-                    <div class="stat-item">
-                        <div class="text-4xl md:text-5xl font-display font-bold text-accent mb-2" data-target="98">0%</div>
-                        <p class="text-primary/60 font-medium uppercase tracking-widest text-sm">Treatment Success Rate</p>
+                    <div class="metric-item">
+                        <div class="text-4xl md:text-5xl font-display font-bold text-accent mb-2 counter-value" data-target="99" data-suffix="%">0%</div>
+                        <p class="text-primary/60 font-medium uppercase tracking-widest text-xs">Treatment Success Rate</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Services Section -->
-        <section id="services" class="py-24 px-6">
-            <div class="container mx-auto">
-                <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-5xl font-display font-bold mb-4">Our Elite Services</h2>
-                    <p class="text-primary/60 max-w-xl mx-auto">Precision dental care using world-class technology and materials.</p>
+        <!-- Services Horizontal Carousel Section -->
+        <section id="services" class="py-24 overflow-hidden bg-white/30">
+            <div class="container mx-auto px-6 mb-12">
+                <div class="text-center">
+                    <h2 class="text-3xl md:text-5xl font-display font-bold mb-4">Our Specialized Services</h2>
+                    <p class="text-primary/60 max-w-xl mx-auto">Luxury dental treatments tailored to your unique clinical needs.</p>
                 </div>
+            </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="carousel-container relative">
+                <div class="carousel-track">
+                    <!-- Pediatric Dentistry -->
+                    <div class="w-80 p-8 bg-white rounded-3xl border border-primary/5 shadow-soft flex-shrink-0 group hover:shadow-xl transition-all">
+                        <div class="size-16 bg-accent/10 rounded-2xl flex items-center justify-center text-accent mb-6 group-hover:bg-accent group-hover:text-white transition-colors">
+                            <i class="fa-solid fa-child-reaching text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Pediatric Dentistry</h3>
+                        <p class="text-sm text-primary/70 leading-relaxed mb-4">Gentle clinical care designed specifically for children's dental health and comfort.</p>
+                        <div class="flex items-center gap-2 text-accent font-bold text-xs uppercase tracking-widest">
+                            <span>Learn More</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </div>
+                    </div>
+                    <!-- Maxillofacial Surgery -->
+                    <div class="w-80 p-8 bg-white rounded-3xl border border-primary/5 shadow-soft flex-shrink-0 group hover:shadow-xl transition-all">
+                        <div class="size-16 bg-accent/10 rounded-2xl flex items-center justify-center text-accent mb-6 group-hover:bg-accent group-hover:text-white transition-colors">
+                            <i class="fa-solid fa-face-smile text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Maxillofacial Surgery</h3>
+                        <p class="text-sm text-primary/70 leading-relaxed mb-4">Advanced surgical corrections for complex jaw, face, and oral structural issues.</p>
+                        <div class="flex items-center gap-2 text-accent font-bold text-xs uppercase tracking-widest">
+                            <span>Learn More</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </div>
+                    </div>
                     <!-- Dental Implants -->
-                    <div class="service-card p-8 bg-white rounded-3xl border border-primary/5 shadow-soft hover:shadow-xl transition-all group">
+                    <div class="w-80 p-8 bg-white rounded-3xl border border-primary/5 shadow-soft flex-shrink-0 group hover:shadow-xl transition-all">
                         <div class="size-16 bg-accent/10 rounded-2xl flex items-center justify-center text-accent mb-6 group-hover:bg-accent group-hover:text-white transition-colors">
                             <i class="fa-solid fa-tooth text-2xl"></i>
                         </div>
                         <h3 class="text-xl font-bold mb-3">Dental Implants</h3>
-                        <ul class="space-y-2 text-primary/70 text-sm">
-                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-accent text-[10px]"></i> Complete tooth replacement</li>
-                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-accent text-[10px]"></i> Same-day procedure</li>
-                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-accent text-[10px]"></i> Natural look & feel</li>
-                        </ul>
-                    </div>
-
-                    <!-- Root Canal -->
-                    <div class="service-card p-8 bg-white rounded-3xl border border-primary/5 shadow-soft hover:shadow-xl transition-all group">
-                        <div class="size-16 bg-accent/10 rounded-2xl flex items-center justify-center text-accent mb-6 group-hover:bg-accent group-hover:text-white transition-colors">
-                            <i class="fa-solid fa-microscope text-2xl"></i>
+                        <p class="text-sm text-primary/70 leading-relaxed mb-4">Permanent, natural-looking tooth replacement using premium titanium technology.</p>
+                        <div class="flex items-center gap-2 text-accent font-bold text-xs uppercase tracking-widest">
+                            <span>Learn More</span>
+                            <i class="fa-solid fa-arrow-right"></i>
                         </div>
-                        <h3 class="text-xl font-bold mb-3">Root Canal Treatment</h3>
-                        <ul class="space-y-2 text-primary/70 text-sm">
-                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-accent text-[10px]"></i> Pain-free Preservation</li>
-                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-accent text-[10px]"></i> Rotary systems</li>
-                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-accent text-[10px]"></i> Single sitting</li>
-                        </ul>
                     </div>
-
-                    <!-- Crowns & Bridges -->
-                    <div class="service-card p-8 bg-white rounded-3xl border border-primary/5 shadow-soft hover:shadow-xl transition-all group">
+                    <!-- Teeth Whitening -->
+                    <div class="w-80 p-8 bg-white rounded-3xl border border-primary/5 shadow-soft flex-shrink-0 group hover:shadow-xl transition-all">
                         <div class="size-16 bg-accent/10 rounded-2xl flex items-center justify-center text-accent mb-6 group-hover:bg-accent group-hover:text-white transition-colors">
-                            <i class="fa-solid fa-crown text-2xl"></i>
+                            <i class="fa-solid fa-wand-magic-sparkles text-2xl"></i>
                         </div>
-                        <h3 class="text-xl font-bold mb-3">Crowns & Bridges</h3>
-                        <ul class="space-y-2 text-primary/70 text-sm">
-                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-accent text-[10px]"></i> Premium ceramic & zirconia</li>
-                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-accent text-[10px]"></i> Metal-free options</li>
-                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-accent text-[10px]"></i> 10-year warranty</li>
-                        </ul>
+                        <h3 class="text-xl font-bold mb-3">Teeth Whitening</h3>
+                        <p class="text-sm text-primary/70 leading-relaxed mb-4">Professional laser whitening for a brighter, more confident smile in one visit.</p>
+                        <div class="flex items-center gap-2 text-accent font-bold text-xs uppercase tracking-widest">
+                            <span>Learn More</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </div>
                     </div>
-                </div>
-
-                <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div class="p-6 bg-primary/5 rounded-2xl flex items-center gap-4">
-                        <i class="fa-solid fa-wand-magic-sparkles text-accent"></i>
-                        <span class="font-medium">Laser Teeth Whitening</span>
+                    <!-- Duplicate for Infinite Effect -->
+                    <div class="w-80 p-8 bg-white rounded-3xl border border-primary/5 shadow-soft flex-shrink-0 group hover:shadow-xl transition-all">
+                        <div class="size-16 bg-accent/10 rounded-2xl flex items-center justify-center text-accent mb-6 group-hover:bg-accent group-hover:text-white transition-colors">
+                            <i class="fa-solid fa-child-reaching text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Pediatric Dentistry</h3>
+                        <p class="text-sm text-primary/70 leading-relaxed mb-4">Gentle clinical care designed specifically for children's dental health and comfort.</p>
                     </div>
-                    <div class="p-6 bg-primary/5 rounded-2xl flex items-center gap-4">
-                        <i class="fa-solid fa-kit-medical text-accent"></i>
-                        <span class="font-medium">Wisdom Tooth Extractions</span>
+                    <div class="w-80 p-8 bg-white rounded-3xl border border-primary/5 shadow-soft flex-shrink-0 group hover:shadow-xl transition-all">
+                        <div class="size-16 bg-accent/10 rounded-2xl flex items-center justify-center text-accent mb-6 group-hover:bg-accent group-hover:text-white transition-colors">
+                            <i class="fa-solid fa-face-smile text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Maxillofacial Surgery</h3>
+                        <p class="text-sm text-primary/70 leading-relaxed mb-4">Advanced surgical corrections for complex jaw, face, and oral structural issues.</p>
                     </div>
-                    <div class="p-6 bg-primary/5 rounded-2xl flex items-center gap-4">
-                        <i class="fa-solid fa-hand-holding-droplet text-accent"></i>
-                        <span class="font-medium">Advanced Scaling & Cleaning</span>
+                    <div class="w-80 p-8 bg-white rounded-3xl border border-primary/5 shadow-soft flex-shrink-0 group hover:shadow-xl transition-all">
+                        <div class="size-16 bg-accent/10 rounded-2xl flex items-center justify-center text-accent mb-6 group-hover:bg-accent group-hover:text-white transition-colors">
+                            <i class="fa-solid fa-tooth text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Dental Implants</h3>
+                        <p class="text-sm text-primary/70 leading-relaxed mb-4">Permanent, natural-looking tooth replacement using premium titanium technology.</p>
+                    </div>
+                    <div class="w-80 p-8 bg-white rounded-3xl border border-primary/5 shadow-soft flex-shrink-0 group hover:shadow-xl transition-all">
+                        <div class="size-16 bg-accent/10 rounded-2xl flex items-center justify-center text-accent mb-6 group-hover:bg-accent group-hover:text-white transition-colors">
+                            <i class="fa-solid fa-wand-magic-sparkles text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Teeth Whitening</h3>
+                        <p class="text-sm text-primary/70 leading-relaxed mb-4">Professional laser whitening for a brighter, more confident smile in one visit.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Intake Form Section -->
+        <!-- Precision Infrastructure Grid -->
+        <section id="infrastructure" class="py-24 px-6">
+            <div class="container mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-5xl font-display font-bold mb-4">Precision Infrastructure</h2>
+                    <p class="text-primary/60 max-w-xl mx-auto">Advanced diagnostics and ergonomic treatment facilities for superior results.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                    <!-- Digital Treatment Units -->
+                    <div class="flex flex-col gap-4">
+                        <div class="shining-border-container overflow-hidden">
+                            <img src="assets/images/adv-spec-1.png" alt="Digital Treatment Units" class="w-full aspect-[4/3] object-cover rounded-[1.8rem]">
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-accent">Digital Treatment Units</h3>
+                            <p class="text-primary/70 text-sm">Ergonomic chairs with integrated diagnostic screens for patient comfort.</p>
+                        </div>
+                    </div>
+                    <!-- Intraoral Precision -->
+                    <div class="flex flex-col gap-4">
+                        <div class="shining-border-container overflow-hidden">
+                            <img src="assets/images/adv-spec-2.png" alt="Intraoral Precision" class="w-full aspect-[4/3] object-cover rounded-[1.8rem]">
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-accent">Intraoral Precision</h3>
+                            <p class="text-primary/70 text-sm">High-definition 3D imaging for microscopic accuracy in every procedure.</p>
+                        </div>
+                    </div>
+                    <!-- Smart Ergonomics -->
+                    <div class="flex flex-col gap-4">
+                        <div class="shining-border-container overflow-hidden">
+                            <img src="assets/images/adv-spec-3.png" alt="Smart Ergonomics" class="w-full aspect-[4/3] object-cover rounded-[1.8rem]">
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-accent">Smart Ergonomics</h3>
+                            <p class="text-primary/70 text-sm">Efficient, patient-centric clinical environment for a seamless visit.</p>
+                        </div>
+                    </div>
+                    <!-- Advanced Sterilization -->
+                    <div class="flex flex-col gap-4">
+                        <div class="shining-border-container overflow-hidden">
+                            <img src="assets/images/adv-spec-4.png" alt="Advanced Sterilization" class="w-full aspect-[4/3] object-cover rounded-[1.8rem]">
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-accent">Advanced Sterilization</h3>
+                            <p class="text-primary/70 text-sm">Automated multi-stage clinical hygiene protocols for your safety.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose Us Framework -->
+        <section class="py-24 px-6 bg-white/50">
+            <div class="container mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-5xl font-display font-bold mb-4">Why Choose Us</h2>
+                    <p class="text-primary/60 max-w-xl mx-auto">Experience the Nagu difference through our core clinical values.</p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+                    <!-- Advanced Technology -->
+                    <div class="p-8 bg-white rounded-3xl border border-primary/5 flex flex-col gap-4 items-center text-center shadow-soft tap-target">
+                        <div class="size-14 rounded-2xl bg-accent/10 flex items-center justify-center text-accent text-2xl">
+                            <i class="fa-solid fa-microchip"></i>
+                        </div>
+                        <h3 class="font-bold">Advanced Technology</h3>
+                        <p class="text-sm text-primary/70">Equipped with the latest dental innovations for precise treatments.</p>
+                    </div>
+                    <!-- Experienced Doctors -->
+                    <div class="p-8 bg-white rounded-3xl border border-primary/5 flex flex-col gap-4 items-center text-center shadow-soft tap-target">
+                        <div class="size-14 rounded-2xl bg-accent/10 flex items-center justify-center text-accent text-2xl">
+                            <i class="fa-solid fa-user-doctor"></i>
+                        </div>
+                        <h3 class="font-bold">Experienced Doctors</h3>
+                        <p class="text-sm text-primary/70">Our specialist team brings over 15 years of clinical excellence.</p>
+                    </div>
+                    <!-- Pain-Free Treatment -->
+                    <div class="p-8 bg-white rounded-3xl border border-primary/5 flex flex-col gap-4 items-center text-center shadow-soft tap-target">
+                        <div class="size-14 rounded-2xl bg-accent/10 flex items-center justify-center text-accent text-2xl">
+                            <i class="fa-solid fa-hand-holding-heart"></i>
+                        </div>
+                        <h3 class="font-bold">Pain-Free Treatment</h3>
+                        <p class="text-sm text-primary/70">Utilizing advanced techniques for a comfortable, stress-free experience.</p>
+                    </div>
+                    <!-- Affordable Pricing -->
+                    <div class="p-8 bg-white rounded-3xl border border-primary/5 flex flex-col gap-4 items-center text-center shadow-soft tap-target">
+                        <div class="size-14 rounded-2xl bg-accent/10 flex items-center justify-center text-accent text-2xl">
+                            <i class="fa-solid fa-indian-rupee-sign"></i>
+                        </div>
+                        <h3 class="font-bold">Affordable Pricing</h3>
+                        <p class="text-sm text-primary/70">Premium dental care made accessible with transparent, fair pricing.</p>
+                    </div>
+                    <!-- Emergency Support -->
+                    <div class="p-8 bg-white rounded-3xl border border-primary/5 flex flex-col gap-4 items-center text-center shadow-soft tap-target">
+                        <div class="size-14 rounded-2xl bg-accent/10 flex items-center justify-center text-accent text-2xl">
+                            <i class="fa-solid fa-truck-medical"></i>
+                        </div>
+                        <h3 class="font-bold">Emergency Support</h3>
+                        <p class="text-sm text-primary/70">Immediate clinical assistance for urgent dental trauma and pain.</p>
+                    </div>
+                    <!-- Hygienic Environment -->
+                    <div class="p-8 bg-white rounded-3xl border border-primary/5 flex flex-col gap-4 items-center text-center shadow-soft tap-target">
+                        <div class="size-14 rounded-2xl bg-accent/10 flex items-center justify-center text-accent text-2xl">
+                            <i class="fa-solid fa-sparkles"></i>
+                        </div>
+                        <h3 class="font-bold">Hygienic Environment</h3>
+                        <p class="text-sm text-primary/70">Stringent multi-stage sterilization protocols for maximum safety.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Smile Gallery Section -->
+        <section id="gallery" class="py-24 px-6 bg-white/30">
+            <div class="container mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-5xl font-display font-bold mb-4">Smile Gallery</h2>
+                    <p class="text-primary/60 max-w-xl mx-auto">Witness the transformations of our genuine patient stories.</p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+                    <!-- Transformation 1 -->
+                    <div class="rounded-3xl overflow-hidden shadow-soft group">
+                        <img src="assets/images/clinical-1.png" alt="Dental Correction" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="p-6 bg-white">
+                            <h3 class="font-bold text-accent">Orthodontic Correction</h3>
+                            <p class="text-xs text-primary/60 uppercase tracking-widest mt-1">Braces Treatment</p>
+                        </div>
+                    </div>
+                    <!-- Transformation 2 -->
+                    <div class="rounded-3xl overflow-hidden shadow-soft group">
+                        <img src="assets/images/clinical-2.png" alt="Smile Restoration" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="p-6 bg-white">
+                            <h3 class="font-bold text-accent">Full Mouth Rehab</h3>
+                            <p class="text-xs text-primary/60 uppercase tracking-widest mt-1">Aesthetic Restoration</p>
+                        </div>
+                    </div>
+                    <!-- Transformation 3 -->
+                    <div class="rounded-3xl overflow-hidden shadow-soft group">
+                        <img src="assets/images/clinical-3.png" alt="Dental Alignment" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="p-6 bg-white">
+                            <h3 class="font-bold text-accent">Clear Aligners</h3>
+                            <p class="text-xs text-primary/60 uppercase tracking-widest mt-1">Invisible Braces</p>
+                        </div>
+                    </div>
+                    <!-- Transformation 4 -->
+                    <div class="rounded-3xl overflow-hidden shadow-soft group">
+                        <img src="assets/images/clinical-4.png" alt="Dental Correction" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="p-6 bg-white">
+                            <h3 class="font-bold text-accent">Orthodontic Correction</h3>
+                            <p class="text-xs text-primary/60 uppercase tracking-widest mt-1">Braces Treatment</p>
+                        </div>
+                    </div>
+                    <!-- Transformation 5 -->
+                    <div class="rounded-3xl overflow-hidden shadow-soft group">
+                        <img src="assets/images/clinical-5.png" alt="Smile Restoration" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="p-6 bg-white">
+                            <h3 class="font-bold text-accent">Full Mouth Rehab</h3>
+                            <p class="text-xs text-primary/60 uppercase tracking-widest mt-1">Aesthetic Restoration</p>
+                        </div>
+                    </div>
+                    <!-- Transformation 6 (Re-using clinical-1 for grid completion) -->
+                    <div class="rounded-3xl overflow-hidden shadow-soft group">
+                        <img src="assets/images/clinical-1.png" alt="Dental Alignment" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="p-6 bg-white">
+                            <h3 class="font-bold text-accent">Clear Aligners</h3>
+                            <p class="text-xs text-primary/60 uppercase tracking-widest mt-1">Invisible Braces</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Patient Stories Slider Section -->
+        <section class="py-24 px-6 bg-primary text-white overflow-hidden">
+            <div class="container mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-5xl font-display font-bold mb-4">Real Smiles, Real Stories</h2>
+                    <p class="text-white/60 max-w-xl mx-auto">Verified patient testimonials from our clinical community.</p>
+                </div>
+
+                <div class="max-w-4xl mx-auto">
+                    <div class="bg-white/10 p-10 md:p-16 rounded-[3rem] backdrop-blur-lg border border-white/10 relative">
+                        <div class="absolute -top-6 left-10 text-accent text-6xl opacity-50"><i class="fa-solid fa-quote-left"></i></div>
+
+                        <div class="testimonial-content">
+                            <div class="flex items-center gap-1 mb-6">
+                                <i class="fa-solid fa-star text-accent"></i>
+                                <i class="fa-solid fa-star text-accent"></i>
+                                <i class="fa-solid fa-star text-accent"></i>
+                                <i class="fa-solid fa-star text-accent"></i>
+                                <i class="fa-solid fa-star text-accent"></i>
+                                <span class="ml-2 text-sm font-bold">5.0 / 5.0</span>
+                            </div>
+                            <blockquote class="text-xl md:text-2xl leading-relaxed mb-8 italic">
+                                "The doctors here are absolutely fantastic! I was nervous about my root canal, but the experience was completely pain-free and professional. The technology they use is unlike anything I've seen in other clinics. Highly recommended!"
+                            </blockquote>
+                            <div class="flex items-center gap-4">
+                                <div class="size-14 rounded-full bg-accent/20 flex items-center justify-center text-accent text-xl font-bold">RA</div>
+                                <div>
+                                    <p class="font-bold">Rebel Akbar</p>
+                                    <p class="text-sm text-white/50">Verified Patient</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Accordion Section -->
+        <section id="faq" class="py-24 px-6 bg-white/50">
+            <div class="container mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-5xl font-display font-bold mb-4">Common Questions</h2>
+                    <p class="text-primary/60 max-w-xl mx-auto">Everything you need to know about your luxury dental experience.</p>
+                </div>
+
+                <div class="max-w-3xl mx-auto space-y-4">
+                    <!-- FAQ Item 1 -->
+                    <div class="faq-item bg-white rounded-2xl border border-primary/5 overflow-hidden active">
+                        <button class="faq-question w-full px-8 py-6 text-left flex items-center justify-between font-bold text-lg">
+                            <span>How do I book an appointment?</span>
+                            <i class="fa-solid fa-plus faq-icon text-accent"></i>
+                        </button>
+                        <div class="faq-answer px-8">
+                            <p class="pb-6 text-primary/70 leading-relaxed">
+                                You can book an appointment directly through our website by clicking any "Book Now" button, or by calling us at +91 88619 32535. We also accept walk-ins at our JP Nagar, Chandra Layout, and RR Nagar branches.
+                            </p>
+                        </div>
+                    </div>
+                    <!-- FAQ Item 2 -->
+                    <div class="faq-item bg-white rounded-2xl border border-primary/5 overflow-hidden">
+                        <button class="faq-question w-full px-8 py-6 text-left flex items-center justify-between font-bold text-lg">
+                            <span>Is the treatment really pain-free?</span>
+                            <i class="fa-solid fa-plus faq-icon text-accent"></i>
+                        </button>
+                        <div class="faq-answer px-8">
+                            <p class="pb-6 text-primary/70 leading-relaxed">
+                                Yes, we utilize advanced localized anesthesia and minimally invasive techniques to ensure your comfort. Our "Pain-Free" protocols are designed for even the most sensitive patients.
+                            </p>
+                        </div>
+                    </div>
+                    <!-- FAQ Item 3 -->
+                    <div class="faq-item bg-white rounded-2xl border border-primary/5 overflow-hidden">
+                        <button class="faq-question w-full px-8 py-6 text-left flex items-center justify-between font-bold text-lg">
+                            <span>Do you offer emergency services?</span>
+                            <i class="fa-solid fa-plus faq-icon text-accent"></i>
+                        </button>
+                        <div class="faq-answer px-8">
+                            <p class="pb-6 text-primary/70 leading-relaxed">
+                                Absolutely. We provide immediate clinical support for dental trauma, acute pain, and other emergencies during our operational hours across all Bengaluru branches.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Appointment Intake Form Section -->
         <section id="contact" class="py-24 px-6 bg-primary text-white">
             <div class="container mx-auto">
-                <div class="max-w-4xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16">
+                <div class="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                     <div>
-                        <h2 class="text-4xl font-display font-bold mb-6">Schedule Your Premium Appointment</h2>
-                        <p class="text-white/70 mb-8 leading-relaxed">
-                            Fill out the form to request a luxury dental experience. Our specialist team will reach out to confirm your timing.
+                        <h2 class="text-4xl md:text-6xl font-display font-bold mb-6">Schedule Your<br><span class="text-accent">Visit Today</span></h2>
+                        <p class="text-white/60 mb-10 leading-relaxed text-lg">
+                            Take the first step towards your perfect smile. Fill out the form and our specialist team will confirm your slot within 30 minutes.
                         </p>
 
                         <div class="space-y-6">
-                            <div class="flex items-start gap-4">
-                                <div class="size-12 rounded-xl bg-white/10 flex items-center justify-center text-accent">
-                                    <i class="fa-solid fa-clock"></i>
+                            <div class="flex items-center gap-4 p-4 bg-white/5 rounded-2xl border border-white/10">
+                                <div class="size-12 rounded-xl bg-accent/20 flex items-center justify-center text-accent text-xl">
+                                    <i class="fa-solid fa-phone"></i>
                                 </div>
                                 <div>
-                                    <p class="font-bold">Clinic Hours</p>
-                                    <p class="text-white/60 text-sm">Mon-Sat: 9:00 AM - 8:00 PM</p>
-                                    <p class="text-white/60 text-sm">Sun: 10:00 AM - 6:00 PM</p>
+                                    <p class="text-xs uppercase tracking-widest text-white/40">Call Us Directly</p>
+                                    <p class="font-bold">+91 88619 32535</p>
                                 </div>
                             </div>
-                            <div class="flex items-start gap-4">
-                                <div class="size-12 rounded-xl bg-white/10 flex items-center justify-center text-accent">
-                                    <i class="fa-solid fa-location-dot"></i>
+                            <div class="flex items-center gap-4 p-4 bg-white/5 rounded-2xl border border-white/10">
+                                <div class="size-12 rounded-xl bg-accent/20 flex items-center justify-center text-accent text-xl">
+                                    <i class="fa-solid fa-envelope"></i>
                                 </div>
                                 <div>
-                                    <p class="font-bold">Our Locations</p>
-                                    <p class="text-white/60 text-sm">JP Nagar, Chandra Layout, RR Nagar</p>
+                                    <p class="text-xs uppercase tracking-widest text-white/40">Email Us</p>
+                                    <p class="font-bold">nagunadental@gmail.com</p>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <form class="bg-white p-8 rounded-3xl text-primary space-y-4 shadow-2xl">
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            <div class="space-y-2">
-                                <label class="text-xs font-bold uppercase tracking-wider opacity-50">Full Name</label>
-                                <input type="text" placeholder="John Doe" class="w-full px-4 py-3 bg-background border border-primary/5 rounded-xl focus:outline-none focus:border-accent transition">
+                    <div class="bg-white p-8 md:p-10 rounded-[3rem] text-primary shadow-2xl">
+                        <form id="appointment-form" class="space-y-4">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div class="space-y-1">
+                                    <label class="text-[10px] font-bold uppercase tracking-widest opacity-40">Full Name</label>
+                                    <input type="text" placeholder="Jane Doe" required class="w-full px-5 py-4 bg-background border border-primary/5 rounded-2xl focus:outline-none focus:border-accent transition">
+                                </div>
+                                <div class="space-y-1">
+                                    <label class="text-[10px] font-bold uppercase tracking-widest opacity-40">Phone Number</label>
+                                    <input type="tel" placeholder="+91 98765 43210" required class="w-full px-5 py-4 bg-background border border-primary/5 rounded-2xl focus:outline-none focus:border-accent transition">
+                                </div>
                             </div>
-                            <div class="space-y-2">
-                                <label class="text-xs font-bold uppercase tracking-wider opacity-50">Contact Number</label>
-                                <input type="tel" placeholder="+91 88619 32535" class="w-full px-4 py-3 bg-background border border-primary/5 rounded-xl focus:outline-none focus:border-accent transition">
+                            <div class="space-y-1">
+                                <label class="text-[10px] font-bold uppercase tracking-widest opacity-40">Email Address</label>
+                                <input type="email" placeholder="you@example.com" required class="w-full px-5 py-4 bg-background border border-primary/5 rounded-2xl focus:outline-none focus:border-accent transition">
                             </div>
-                        </div>
-                        <div class="space-y-2">
-                            <label class="text-xs font-bold uppercase tracking-wider opacity-50">Email Address</label>
-                            <input type="email" placeholder="john@example.com" class="w-full px-4 py-3 bg-background border border-primary/5 rounded-xl focus:outline-none focus:border-accent transition">
-                        </div>
-                        <div class="space-y-2">
-                            <label class="text-xs font-bold uppercase tracking-wider opacity-50">Clinical Concern</label>
-                            <select class="w-full px-4 py-3 bg-background border border-primary/5 rounded-xl focus:outline-none focus:border-accent transition">
-                                <option>Dental Implants</option>
-                                <option>Root Canal Treatment</option>
-                                <option>Crowns & Bridges</option>
-                                <option>Teeth Whitening</option>
-                                <option>Wisdom Tooth</option>
-                                <option>Cleaning/Scaling</option>
-                            </select>
-                        </div>
-                        <div class="space-y-3">
-                            <label class="text-xs font-bold uppercase tracking-wider opacity-50">Clinic Branch</label>
-                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                                <label class="flex items-center gap-2 p-3 bg-background rounded-xl cursor-pointer hover:bg-accent/5 transition">
-                                    <input type="radio" name="branch" value="JP Nagar" class="accent-accent" checked>
-                                    <span class="text-sm">JP Nagar</span>
-                                </label>
-                                <label class="flex items-center gap-2 p-3 bg-background rounded-xl cursor-pointer hover:bg-accent/5 transition">
-                                    <input type="radio" name="branch" value="Chandra Layout" class="accent-accent">
-                                    <span class="text-sm">Chandra Layout</span>
-                                </label>
-                                <label class="flex items-center gap-2 p-3 bg-background rounded-xl cursor-pointer hover:bg-accent/5 transition">
-                                    <input type="radio" name="branch" value="RR Nagar" class="accent-accent">
-                                    <span class="text-sm">RR Nagar</span>
-                                </label>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div class="space-y-1">
+                                    <label class="text-[10px] font-bold uppercase tracking-widest opacity-40">Service Type</label>
+                                    <select class="w-full px-5 py-4 bg-background border border-primary/5 rounded-2xl focus:outline-none focus:border-accent transition appearance-none">
+                                        <option>Select Service</option>
+                                        <option>Orthodontics</option>
+                                        <option>Dental Implants</option>
+                                        <option>Root Canal</option>
+                                        <option>Whitening</option>
+                                    </select>
+                                </div>
+                                <div class="space-y-1">
+                                    <label class="text-[10px] font-bold uppercase tracking-widest opacity-40">Preferred Date</label>
+                                    <input type="date" class="w-full px-5 py-4 bg-background border border-primary/5 rounded-2xl focus:outline-none focus:border-accent transition">
+                                </div>
                             </div>
-                        </div>
-                        <div class="space-y-2">
-                            <label class="text-xs font-bold uppercase tracking-wider opacity-50">Additional Message</label>
-                            <textarea rows="3" placeholder="Tell us more about your visit..." class="w-full px-4 py-3 bg-background border border-primary/5 rounded-xl focus:outline-none focus:border-accent transition resize-none"></textarea>
-                        </div>
-                        <button type="submit" class="w-full py-4 bg-gradient-orange text-white rounded-xl font-bold shadow-lg hover:shadow-accent/30 transition-all">Confirm Appointment</button>
-                    </form>
+                            <div class="space-y-1">
+                                <label class="text-[10px] font-bold uppercase tracking-widest opacity-40">Additional Message</label>
+                                <textarea rows="3" placeholder="Tell us about your concern..." class="w-full px-5 py-4 bg-background border border-primary/5 rounded-2xl focus:outline-none focus:border-accent transition resize-none"></textarea>
+                            </div>
+                            <button type="submit" class="w-full py-5 bg-accent text-white rounded-2xl font-bold shadow-lg tap-target hover:bg-opacity-90 transition-all flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-check-circle"></i>
+                                Confirm Appointment
+                            </button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Footer -->
-        <footer class="py-12 bg-background border-t border-primary/5">
-            <div class="container mx-auto px-6 text-center">
-                <div class="flex flex-col items-center gap-6">
-                    <div class="flex items-center gap-3">
-                        <img src="assets/images/logo.png" alt="NAGU Logo" class="h-8 w-auto">
-                        <span class="font-display font-bold text-xl">NAGU <span class="text-accent">ನಗು</span></span>
+        <!-- Connect Section (Branches & Map) -->
+        <section class="py-24 px-6">
+            <div class="container mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-16">
+                    <!-- Branch 1 -->
+                    <div class="p-8 bg-white rounded-3xl border border-primary/5 shadow-soft">
+                        <div class="size-12 bg-accent/10 rounded-xl flex items-center justify-center text-accent mb-6">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+                        <h3 class="font-bold mb-2">Hegganahalli Branch</h3>
+                        <p class="text-sm text-primary/60 leading-relaxed mb-4">Mohan Theatre, 10/2, 1st floor, Chikkathimme Gowdru complex, 1st Main Rd, Bengaluru - 560091</p>
+                        <a href="#" class="text-accent text-xs font-bold uppercase tracking-widest flex items-center gap-2">Get Directions <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                     </div>
-                    <p class="text-primary/50 text-sm max-w-md">Expert dental care in Bengaluru — delivered with warmth, precision and the latest technology.</p>
-                    <div class="flex gap-4 text-primary/40">
-                        <a href="#" class="hover:text-accent transition"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="#" class="hover:text-accent transition"><i class="fa-brands fa-facebook"></i></a>
-                        <a href="#" class="hover:text-accent transition"><i class="fa-brands fa-twitter"></i></a>
+                    <!-- Operational Hours -->
+                    <div class="p-8 bg-white rounded-3xl border border-primary/5 shadow-soft">
+                        <div class="size-12 bg-accent/10 rounded-xl flex items-center justify-center text-accent mb-6">
+                            <i class="fa-solid fa-clock"></i>
+                        </div>
+                        <h3 class="font-bold mb-2">Operational Hours</h3>
+                        <div class="space-y-1 text-sm text-primary/60">
+                            <p class="flex justify-between"><span>Mon - Sat</span> <span>09:00 AM - 09:00 PM</span></p>
+                            <p class="flex justify-between"><span>Sunday</span> <span>10:00 AM - 06:00 PM</span></p>
+                        </div>
                     </div>
-                    <p class="text-[10px] uppercase tracking-widest text-primary/30 mt-4">© 2026 Nagu Multi-speciality Clinic. All Rights Reserved.</p>
+                    <!-- Global Connect -->
+                    <div class="p-8 bg-white rounded-3xl border border-primary/5 shadow-soft">
+                        <div class="size-12 bg-accent/10 rounded-xl flex items-center justify-center text-accent mb-6">
+                            <i class="fa-solid fa-phone-volume"></i>
+                        </div>
+                        <h3 class="font-bold mb-2">Connect Now</h3>
+                        <p class="text-sm text-primary/60 mb-2">+91 88619 32535</p>
+                        <p class="text-sm text-primary/60">nagunadental@gmail.com</p>
+                    </div>
+                </div>
+
+                <!-- Interactive Map Frame -->
+                <div class="max-w-6xl mx-auto rounded-[3rem] overflow-hidden h-[400px] border border-primary/5 grayscale shadow-2xl">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.265691060416!2d77.5144131!3d13.0187063!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae3d8f85555555%3A0x8888888888888888!2sNAGU%20Dental%20Clinic!5e0!3m2!1sen!2sin!4v1710920000000!5m2!1sen!2sin" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer Section -->
+        <footer class="py-16 px-6 bg-background border-t border-primary/5">
+            <div class="container mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+                    <div class="md:col-span-2">
+                        <a href="#" class="flex items-center gap-3 mb-6">
+                            <img src="assets/images/logo.png" alt="NAGU Logo" class="h-10 w-auto">
+                            <span class="font-display text-2xl font-bold tracking-tight">NAGU <span class="text-accent">ನಗು</span></span>
+                        </a>
+                        <p class="text-primary/60 max-w-sm leading-relaxed mb-8">
+                            Empowering Bengaluru with world-class dental solutions. We combine advanced technology with compassionate care to deliver excellence in every smile.
+                        </p>
+                        <div class="flex gap-4">
+                            <a href="#" class="size-10 rounded-full bg-white border border-primary/5 flex items-center justify-center text-primary/40 hover:text-accent hover:border-accent transition-all"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="#" class="size-10 rounded-full bg-white border border-primary/5 flex items-center justify-center text-primary/40 hover:text-accent hover:border-accent transition-all"><i class="fa-brands fa-facebook-f"></i></a>
+                            <a href="#" class="size-10 rounded-full bg-white border border-primary/5 flex items-center justify-center text-primary/40 hover:text-accent hover:border-accent transition-all"><i class="fa-brands fa-twitter"></i></a>
+                            <a href="#" class="size-10 rounded-full bg-white border border-primary/5 flex items-center justify-center text-primary/40 hover:text-accent hover:border-accent transition-all"><i class="fa-brands fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-bold mb-6 uppercase tracking-widest text-xs">Quick Links</h4>
+                        <ul class="space-y-4 text-sm text-primary/60 font-medium">
+                            <li><a href="#services" class="hover:text-accent transition">Our Services</a></li>
+                            <li><a href="#infrastructure" class="hover:text-accent transition">Infrastructure</a></li>
+                            <li><a href="#gallery" class="hover:text-accent transition">Smile Gallery</a></li>
+                            <li><a href="#contact" class="hover:text-accent transition">Book Appointment</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold mb-6 uppercase tracking-widest text-xs">Legal</h4>
+                        <ul class="space-y-4 text-sm text-primary/60 font-medium">
+                            <li><a href="#" class="hover:text-accent transition">Privacy Policy</a></li>
+                            <li><a href="#" class="hover:text-accent transition">Terms of Service</a></li>
+                            <li><a href="#" class="hover:text-accent transition">Cookie Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="pt-8 border-t border-primary/5 text-center">
+                    <p class="text-[10px] uppercase tracking-[0.2em] text-primary/30 font-bold">
+                        © 2026 NAGU Multi-speciality Dental Clinic. Engineered for Excellence.
+                    </p>
                 </div>
             </div>
         </footer>
     </main>
 
-    <!-- WhatsApp Widget -->
-    <a href="https://wa.me/918861932535" target="_blank" class="fixed bottom-6 right-6 z-50 size-14 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform pulse-widget">
+    <!-- Floating WhatsApp Pulse Widget -->
+    <a href="https://wa.me/918861932535" target="_blank" class="fixed bottom-8 right-8 z-50 size-16 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform pulse-widget">
         <i class="fa-brands fa-whatsapp text-3xl"></i>
     </a>
 
