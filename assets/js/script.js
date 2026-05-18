@@ -1,110 +1,103 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Header Scroll Effect
-    const header = document.querySelector('header');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            header.classList.add('py-2', 'shadow-md');
-            header.classList.remove('py-4');
-        } else {
-            header.classList.add('py-4');
-            header.classList.remove('py-2', 'shadow-md');
-        }
-    });
-
-    // 2. Interactive Stats Counter
-    const stats = document.querySelectorAll('[data-target]');
-    const countUp = (el) => {
+    // 1. Counter Animation with Intersection Observer
+    const counters = document.querySelectorAll('.counter-value');
+    const animateCounter = (el) => {
         const target = parseInt(el.getAttribute('data-target'));
-        const suffix = el.getAttribute('data-suffix') || (el.innerText.includes('%') ? '%' : '+');
-        const duration = 2000; // 2 seconds
-        let current = 0;
+        const duration = 2000;
+        const startTime = performance.now();
+        const suffix = el.getAttribute('data-suffix') || '';
 
-        const timer = setInterval(() => {
-            current += Math.ceil(target / 50);
-            if (current >= target) {
-                let displayVal = target;
-                if (suffix === 'K+') {
-                    displayVal = (target / 1000) + 'K+';
-                } else {
-                    displayVal = target + suffix;
-                }
-                el.innerText = displayVal;
-                clearInterval(timer);
+        const update = (now) => {
+            const elapsed = now - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const value = Math.floor(progress * target);
+
+            if (target > 1000) {
+                el.innerText = (value / 1000).toFixed(0) + 'K' + suffix;
             } else {
-                let displayVal = current;
-                if (suffix === 'K+') {
-                    displayVal = Math.floor(current / 1000) + 'K+';
-                } else {
-                    displayVal = current + suffix;
-                }
-                el.innerText = displayVal;
+                el.innerText = value + suffix;
             }
-        }, 30);
+
+            if (progress < 1) {
+                requestAnimationFrame(update);
+            } else {
+                 if (target > 1000) {
+                    el.innerText = (target / 1000).toFixed(0) + 'K' + suffix;
+                } else {
+                    el.innerText = target + suffix;
+                }
+            }
+        };
+        requestAnimationFrame(update);
     };
 
-    const statsObserver = new IntersectionObserver((entries) => {
+    const counterObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                countUp(entry.target);
-                statsObserver.unobserve(entry.target);
+                animateCounter(entry.target);
+                counterObserver.unobserve(entry.target);
             }
         });
     }, { threshold: 0.5 });
 
-    stats.forEach(stat => statsObserver.observe(stat));
+    counters.forEach(counter => counterObserver.observe(counter));
 
-    // 3. Smooth Scroll (Native behavior is already enabled in CSS, but this ensures JS-based triggers also work)
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth'
-                });
+    // 2. FAQ Accordion Logic
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        question.addEventListener('click', () => {
+            const isActive = item.classList.contains('active');
+
+            // Close all items
+            faqItems.forEach(i => i.classList.remove('active'));
+
+            // Toggle clicked item
+            if (!isActive) {
+                item.classList.add('active');
             }
         });
     });
 
-    // 4. Mobile Menu Toggle
-    const menuToggle = document.getElementById('menu-toggle');
-    const menuClose = document.getElementById('menu-close');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+    // 3. Mobile Menu Toggle
+    const menuBtns = document.querySelectorAll('#menu-toggle, #menu-toggle-mobile');
+    const menuOverlay = document.getElementById('mobile-menu');
+    const closeBtn = document.getElementById('menu-close');
 
-    const toggleMenu = (show) => {
-        if (show) {
-            mobileMenu.classList.remove('opacity-0', 'pointer-events-none');
-            document.body.style.overflow = 'hidden';
-        } else {
-            mobileMenu.classList.add('opacity-0', 'pointer-events-none');
+    if (menuBtns.length > 0 && menuOverlay && closeBtn) {
+        menuBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                menuOverlay.classList.remove('opacity-0', 'pointer-events-none');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        closeBtn.addEventListener('click', () => {
+            menuOverlay.classList.add('opacity-0', 'pointer-events-none');
             document.body.style.overflow = '';
-        }
-    };
+        });
 
-    if (menuToggle) menuToggle.addEventListener('click', () => toggleMenu(true));
-    if (menuClose) menuClose.addEventListener('click', () => toggleMenu(false));
-    mobileLinks.forEach(link => {
-        link.addEventListener('click', () => toggleMenu(false));
-    });
-
-    // 5. Form Submission Mock
-    const form = document.querySelector('form');
-    if (form) {
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const btn = form.querySelector('button');
-            const originalText = btn.innerText;
-
-            btn.innerText = 'Booking...';
-            btn.disabled = true;
-
-            setTimeout(() => {
-                alert('Thank you! Our specialist will contact you shortly.');
-                btn.innerText = originalText;
-                btn.disabled = false;
-                form.reset();
-            }, 1500);
+        menuOverlay.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuOverlay.classList.add('opacity-0', 'pointer-events-none');
+                document.body.style.overflow = '';
+            });
         });
     }
+
+    // 4. Smooth Scroll for Anchor Links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            const target = document.querySelector(targetId);
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
 });
