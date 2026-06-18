@@ -411,22 +411,22 @@
     }
 
     .card-a {
-      left: -18px;
-      top: 78px;
+      left: -28px;
+      top: 50px;
       width: 220px;
       animation: floatCard 5s ease-in-out infinite;
     }
 
     .card-b {
-      right: -10px;
-      top: 210px;
+      right: -24px;
+      top: 180px;
       width: 210px;
       animation: floatCard 5.7s ease-in-out infinite reverse;
     }
 
     .card-c {
-      left: 54px;
-      bottom: 56px;
+      left: 64px;
+      bottom: 30px;
       width: 238px;
       animation: floatCard 6.2s ease-in-out infinite;
     }
@@ -1697,99 +1697,30 @@
     const group = new THREE.Group();
     scene.add(group);
 
-    const enamelMaterial = new THREE.MeshPhysicalMaterial({
-      color: 0xffffff,
-      roughness: 0.1,
-      metalness: 0.1,
-      clearcoat: 1.0,
-      clearcoatRoughness: 0.05,
-      transmission: 0.3,
-      ior: 1.45,
-      thickness: 1.0,
-      sheen: 0.5,
-      sheenRoughness: 0.2,
-      sheenColor: 0x42e8c8,
-      specularIntensity: 1.0,
-      specularColor: 0xffffff
-    });
+    const textureLoader = new THREE.TextureLoader();
+    const toothTexture = textureLoader.load('assets/images/hero-tooth.png');
 
-    const rootMaterial = new THREE.MeshPhysicalMaterial({
-      color: 0xf2f2f2,
-      roughness: 0.4,
-      metalness: 0.05,
-      clearcoat: 0.3,
-      sheen: 0.2,
-      sheenColor: 0x5ea8ff
-    });
-
-    const glowMaterial = new THREE.MeshBasicMaterial({
-      color: 0x42e8c8,
+    const toothMaterial = new THREE.MeshBasicMaterial({
+      map: toothTexture,
       transparent: true,
-      opacity: 0.1,
-      wireframe: true
+      side: THREE.DoubleSide
     });
 
-    // Create a molar tooth group
-    const tooth = new THREE.Group();
-    group.add(tooth);
-
-    // Crown: Rounded box with cusps
-    const crownBody = new THREE.Mesh(
-      new THREE.BoxGeometry(1.6, 1.2, 1.6, 8, 8, 8),
-      enamelMaterial
-    );
-
-    // Deform box to look like a tooth crown
-    const pos = crownBody.geometry.attributes.position;
-    for (let i = 0; i < pos.count; i++) {
-      let x = pos.getX(i);
-      let y = pos.getY(i);
-      let z = pos.getZ(i);
-
-      // Narrow the bottom (neck)
-      if (y < 0) {
-        let scale = 1 + (y * 0.4);
-        pos.setX(i, x * scale);
-        pos.setZ(i, z * scale);
-      }
-
-      // Add cusps on top
-      if (y > 0.4) {
-        let cusp = Math.sin(x * 3) * Math.cos(z * 3) * 0.15;
-        pos.setY(i, y + cusp);
-      }
-
-      // Bulge the sides slightly
-      let bulge = 1 + Math.cos(y * 2) * 0.1;
-      pos.setX(i, x * bulge);
-      pos.setZ(i, z * bulge);
-    }
-    crownBody.geometry.computeVertexNormals();
-    crownBody.position.y = 0.6;
-    tooth.add(crownBody);
-
-    // Roots
-    const rootGeom = new THREE.ConeGeometry(0.3, 1.6, 32);
-    const rootPositions = [
-      [0.4, -0.4, 0.4, -0.2, 0.2],
-      [-0.4, -0.4, 0.4, 0.2, 0.2],
-      [0, -0.4, -0.4, 0, -0.2]
-    ];
-
-    rootPositions.forEach(p => {
-      const root = new THREE.Mesh(rootGeom, rootMaterial);
-      root.position.set(p[0], p[1], p[2]);
-      root.rotation.z = p[3];
-      root.rotation.x = p[4];
-      tooth.add(root);
-    });
+    const planeGeom = new THREE.PlaneGeometry(4.2, 4.2);
+    const toothPlane = new THREE.Mesh(planeGeom, toothMaterial);
+    group.add(toothPlane);
 
     // Holographic shell (matches tooth shape)
-    const shell = tooth.clone();
-    shell.traverse(child => {
-      if (child.isMesh) child.material = glowMaterial;
+    const shellMaterial = new THREE.MeshBasicMaterial({
+      map: toothTexture,
+      transparent: true,
+      opacity: 0.35,
+      color: 0x42e8c8,
+      blending: THREE.AdditiveBlending,
+      side: THREE.DoubleSide
     });
-    shell.scale.set(1.1, 1.1, 1.1);
+    const shell = new THREE.Mesh(planeGeom, shellMaterial);
+    shell.position.z = 0.05;
     group.add(shell);
 
     const ring1 = new THREE.Mesh(
@@ -1847,15 +1778,20 @@
       if (!prefersReducedMotion) {
         const time = Date.now() * 0.001;
 
-        group.rotation.y = mouseX * 0.35 + time * 0.34;
-        group.rotation.x = -mouseY * 0.18 + Math.sin(time * 0.8) * 0.05;
-        group.position.y = Math.sin(time * 0.9) * 0.08;
+        // Group rotation follows mouse and has a gentle auto-sway
+        group.rotation.y = mouseX * 0.4 + Math.sin(time * 0.5) * 0.2;
+        group.rotation.x = -mouseY * 0.2 + Math.cos(time * 0.5) * 0.1;
+        group.position.y = Math.sin(time * 0.8) * 0.15;
 
         ring1.rotation.z = time * 0.42;
         ring2.rotation.z = -time * 0.32;
         ring3.rotation.z = time * 0.28;
 
-        shell.rotation.y = time * 0.11; // Slow holographic drift
+        // Pulse the holographic shell
+        if (shell.material) {
+          shell.material.opacity = 0.2 + Math.sin(time * 2) * 0.15;
+          shell.scale.setScalar(1 + Math.sin(time * 2) * 0.02);
+        }
       }
 
       renderer.render(scene, camera);
