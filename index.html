@@ -1,1837 +1,1324 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nagu Dental | Premium Dental Care</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
-      --bg: #06111f;
-      --bg-2: #091b2e;
-      --text: #f7fbff;
-      --muted: #9eb4c8;
-      --primary: #42e8c8;
-      --primary-2: #5ea8ff;
-      --accent: #ffcf6b;
-      --pink: #ff6b9a;
-      --glass: rgba(255, 255, 255, 0.08);
-      --glass-2: rgba(255, 255, 255, 0.13);
-      --border: rgba(255, 255, 255, 0.16);
-      --shadow: 0 30px 90px rgba(0, 0, 0, 0.45);
-      --radius: 28px;
-      --max: 1180px;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: "Plus Jakarta Sans", system-ui, sans-serif;
-      background:
-        radial-gradient(circle at 12% 12%, rgba(66, 232, 200, 0.18), transparent 34%),
-        radial-gradient(circle at 88% 18%, rgba(94, 168, 255, 0.18), transparent 32%),
-        radial-gradient(circle at 50% 80%, rgba(255, 107, 154, 0.12), transparent 34%),
-        linear-gradient(180deg, var(--bg), #04101b 55%, #030812);
-      color: var(--text);
-      overflow-x: hidden;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
-      background-size: 56px 56px;
-      mask-image: radial-gradient(circle at center, black, transparent 75%);
-      z-index: -2;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    button,
-    input,
-    textarea {
-      font: inherit;
-    }
-
-    .noise {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      opacity: 0.08;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='.75'/%3E%3C/svg%3E");
-      z-index: 999;
-      mix-blend-mode: overlay;
-    }
-
-    .cursor-glow {
-      width: 360px;
-      height: 360px;
-      border-radius: 50%;
-      position: fixed;
-      pointer-events: none;
-      background: radial-gradient(circle, rgba(66, 232, 200, 0.18), transparent 65%);
-      transform: translate(-50%, -50%);
-      z-index: 0;
-      filter: blur(8px);
-      opacity: 0.9;
-      display: none;
-    }
-
-    .container {
-      width: min(var(--max), calc(100% - 40px));
-      margin: 0 auto;
-      position: relative;
-      z-index: 1;
-    }
-
-    .nav {
-      position: fixed;
-      top: 18px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: min(1180px, calc(100% - 32px));
-      z-index: 50;
-      border: 1px solid rgba(255,255,255,0.14);
-      background: rgba(5, 17, 31, 0.58);
-      backdrop-filter: blur(22px);
-      border-radius: 999px;
-      padding: 10px 12px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.28);
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: 900;
-      letter-spacing: -0.04em;
-    }
-
-    .brand-mark {
-      width: 42px;
-      height: 42px;
-      border-radius: 16px;
-      display: grid;
-      place-items: center;
-      background:
-        radial-gradient(circle at 30% 20%, #fff, transparent 22%),
-        linear-gradient(135deg, var(--primary), var(--primary-2));
-      box-shadow: 0 12px 32px rgba(66,232,200,0.32);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .brand-mark::after {
-      content: "";
-      width: 18px;
-      height: 18px;
-      background: #06111f;
-      clip-path: polygon(50% 0, 62% 35%, 100% 35%, 70% 55%, 82% 95%, 50% 72%, 18% 95%, 30% 55%, 0 35%, 38% 35%);
-    }
-
-    .brand span:last-child {
-      font-size: 1.08rem;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      color: var(--muted);
-      font-weight: 700;
-      font-size: 0.92rem;
-    }
-
-    .nav-links a {
-      padding: 12px 14px;
-      border-radius: 999px;
-      transition: 0.25s ease;
-    }
-
-    .nav-links a:hover {
-      color: var(--text);
-      background: rgba(255,255,255,0.08);
-    }
-
-    .nav-actions {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .btn {
-      border: 0;
-      cursor: pointer;
-      border-radius: 999px;
-      padding: 14px 20px;
-      color: #06111f;
-      background: linear-gradient(135deg, var(--primary), var(--primary-2));
-      font-weight: 900;
-      box-shadow: 0 16px 36px rgba(66,232,200,0.22);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      transition: 0.35s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .btn::before {
-      content: "";
-      position: absolute;
-      inset: -40%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.65), transparent);
-      transform: translateX(-120%) rotate(15deg);
-      transition: 0.7s ease;
-    }
-
-    .btn:hover {
-      transform: translateY(-3px) scale(1.02);
-      box-shadow: 0 24px 52px rgba(66,232,200,0.32);
-    }
-
-    .btn:hover::before {
-      transform: translateX(120%) rotate(15deg);
-    }
-
-    .btn.secondary {
-      color: var(--text);
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.16);
-      box-shadow: none;
-    }
-
-    .btn.secondary:hover {
-      background: rgba(255,255,255,0.14);
-      box-shadow: 0 20px 46px rgba(0,0,0,0.22);
-    }
-
-    .mobile-toggle {
-      display: none;
-      width: 44px;
-      height: 44px;
-      border-radius: 14px;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,0.08);
-      color: var(--text);
-      font-size: 1.4rem;
-    }
-
-    .hero {
-      min-height: 100vh;
-      padding: 150px 0 90px;
-      display: grid;
-      align-items: center;
-      position: relative;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.03fr 0.97fr;
-      gap: 48px;
-      align-items: center;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      color: #cffff6;
-      border: 1px solid rgba(66,232,200,0.26);
-      background: rgba(66,232,200,0.08);
-      padding: 10px 14px;
-      border-radius: 999px;
-      font-weight: 800;
-      font-size: 0.86rem;
-      margin-bottom: 22px;
-      box-shadow: inset 0 0 22px rgba(66,232,200,0.06);
-    }
-
-    .pulse {
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      background: var(--primary);
-      box-shadow: 0 0 0 0 rgba(66,232,200,0.7);
-      animation: pulse 1.8s infinite;
-    }
-
-    @keyframes pulse {
-      70% { box-shadow: 0 0 0 14px rgba(66,232,200,0); }
-      100% { box-shadow: 0 0 0 0 rgba(66,232,200,0); }
-    }
-
-    h1 {
-      font-size: clamp(3.2rem, 8vw, 6.8rem);
-      line-height: 0.92;
-      letter-spacing: -0.08em;
-      margin-bottom: 24px;
-    }
-
-    .gradient-text {
-      background: linear-gradient(135deg, #ffffff 10%, #b8fff2 38%, #8fc0ff 72%, #fff);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      text-shadow: 0 20px 60px rgba(66,232,200,0.12);
-    }
-
-    .hero-copy {
-      color: var(--muted);
-      font-size: clamp(1.04rem, 2vw, 1.22rem);
-      line-height: 1.75;
-      max-width: 640px;
-      margin-bottom: 32px;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      margin-bottom: 34px;
-    }
-
-    .trust-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      align-items: center;
-      color: var(--muted);
-      font-weight: 700;
-    }
-
-    .avatar-stack {
-      display: flex;
-      align-items: center;
-    }
-
-    .avatar {
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      border: 2px solid #06111f;
-      margin-left: -10px;
-      background: linear-gradient(135deg, var(--primary), var(--pink));
-      display: grid;
-      place-items: center;
-      color: #06111f;
-      font-weight: 900;
-      font-size: 0.8rem;
-    }
-
-    .avatar:first-child {
-      margin-left: 0;
-    }
-
-    .hero-visual {
-      min-height: 620px;
-      position: relative;
-      perspective: 1200px;
-    }
-
-    .orbital {
-      position: absolute;
-      inset: 20px;
-      border-radius: 42px;
-      background:
-        radial-gradient(circle at 50% 40%, rgba(66,232,200,0.22), transparent 28%),
-        linear-gradient(145deg, rgba(255,255,255,0.12), rgba(255,255,255,0.035));
-      border: 1px solid rgba(255,255,255,0.14);
-      box-shadow: var(--shadow);
-      overflow: hidden;
-      transform: rotateX(7deg) rotateY(-10deg);
-      animation: floatPanel 6s ease-in-out infinite;
-    }
-
-    .orbital::before {
-      content: "";
-      position: absolute;
-      inset: -40%;
-      background: conic-gradient(from 180deg, transparent, rgba(66,232,200,0.22), transparent, rgba(94,168,255,0.2), transparent);
-      animation: spin 12s linear infinite;
-    }
-
-    .orbital::after {
-      content: "";
-      position: absolute;
-      inset: 1px;
-      background: linear-gradient(180deg, rgba(6,17,31,0.2), rgba(6,17,31,0.72));
-      border-radius: 42px;
-    }
-
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-
-    @keyframes floatPanel {
-      0%, 100% { transform: translateY(0) rotateX(7deg) rotateY(-10deg); }
-      50% { transform: translateY(-18px) rotateX(9deg) rotateY(-7deg); }
-    }
-
-    #toothCanvas {
-      position: absolute;
-      inset: 0;
-      z-index: 2;
-      filter: drop-shadow(0 40px 70px rgba(66,232,200,0.18));
-    }
-
-    .floating-card {
-      position: absolute;
-      z-index: 4;
-      border-radius: 24px;
-      border: 1px solid rgba(255,255,255,0.16);
-      background: rgba(255,255,255,0.1);
-      backdrop-filter: blur(20px);
-      box-shadow: 0 24px 60px rgba(0,0,0,0.28);
-      padding: 18px;
-      transform-style: preserve-3d;
-    }
-
-    .card-a {
-      left: -18px;
-      top: 78px;
-      width: 220px;
-      animation: floatCard 5s ease-in-out infinite;
-    }
-
-    .card-b {
-      right: -10px;
-      top: 210px;
-      width: 210px;
-      animation: floatCard 5.7s ease-in-out infinite reverse;
-    }
-
-    .card-c {
-      left: 54px;
-      bottom: 56px;
-      width: 238px;
-      animation: floatCard 6.2s ease-in-out infinite;
-    }
-
-    @keyframes floatCard {
-      0%, 100% { transform: translateY(0) rotateX(0) rotateY(0); }
-      50% { transform: translateY(-18px) rotateX(3deg) rotateY(-4deg); }
-    }
-
-    .float-icon {
-      width: 46px;
-      height: 46px;
-      border-radius: 16px;
-      display: grid;
-      place-items: center;
-      margin-bottom: 12px;
-      background: linear-gradient(135deg, rgba(66,232,200,0.24), rgba(94,168,255,0.18));
-      border: 1px solid rgba(255,255,255,0.15);
-      font-size: 1.35rem;
-    }
-
-    .floating-card strong {
-      display: block;
-      margin-bottom: 5px;
-      font-size: 1rem;
-    }
-
-    .floating-card span {
-      color: var(--muted);
-      font-size: 0.86rem;
-      line-height: 1.5;
-    }
-
-    .score-ring {
-      width: 92px;
-      height: 92px;
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      background:
-        conic-gradient(var(--primary) 0 92%, rgba(255,255,255,0.12) 92% 100%);
-      position: relative;
-      margin: 0 auto 10px;
-    }
-
-    .score-ring::after {
-      content: "";
-      position: absolute;
-      inset: 10px;
-      border-radius: 50%;
-      background: #071525;
-      border: 1px solid rgba(255,255,255,0.12);
-    }
-
-    .score-ring b {
-      position: relative;
-      z-index: 1;
-      font-size: 1.2rem;
-    }
-
-    .marquee {
-      margin-top: 70px;
-      border-block: 1px solid rgba(255,255,255,0.1);
-      background: rgba(255,255,255,0.035);
-      overflow: hidden;
-      padding: 18px 0;
-    }
-
-    .marquee-track {
-      display: flex;
-      width: max-content;
-      gap: 30px;
-      animation: marquee 28s linear infinite;
-      color: rgba(255,255,255,0.72);
-      font-weight: 900;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      white-space: nowrap;
-    }
-
-    .marquee-track span {
-      color: var(--primary);
-    }
-
-    @keyframes marquee {
-      to { transform: translateX(-50%); }
-    }
-
-    section {
-      padding: 105px 0;
-      position: relative;
-    }
-
-    .section-head {
-      display: flex;
-      justify-content: space-between;
-      gap: 32px;
-      align-items: end;
-      margin-bottom: 42px;
-    }
-
-    .section-kicker {
-      color: var(--primary);
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      font-size: 0.78rem;
-      margin-bottom: 12px;
-    }
-
-    h2 {
-      font-size: clamp(2.2rem, 5vw, 4.3rem);
-      line-height: 1;
-      letter-spacing: -0.06em;
-      max-width: 760px;
-    }
-
-    .section-head p {
-      color: var(--muted);
-      line-height: 1.7;
-      max-width: 420px;
-    }
-
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
-      margin-top: 42px;
-    }
-
-    .stat-card {
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,0.06);
-      border-radius: var(--radius);
-      padding: 26px;
-      position: relative;
-      overflow: hidden;
-      transform-style: preserve-3d;
-    }
-
-    .stat-card::before {
-      content: "";
-      position: absolute;
-      inset: -40%;
-      background: radial-gradient(circle at 50% 20%, rgba(66,232,200,0.2), transparent 45%);
-      opacity: 0;
-      transition: 0.35s ease;
-    }
-
-    .stat-card:hover::before {
-      opacity: 1;
-    }
-
-    .stat-card h3 {
-      font-size: 2.4rem;
-      letter-spacing: -0.05em;
-      margin-bottom: 8px;
-    }
-
-    .stat-card p {
-      color: var(--muted);
-      line-height: 1.5;
-    }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-
-    .service-card {
-      min-height: 330px;
-      border-radius: 32px;
-      padding: 28px;
-      border: 1px solid var(--border);
-      background:
-        radial-gradient(circle at top right, rgba(66,232,200,0.16), transparent 34%),
-        rgba(255,255,255,0.065);
-      backdrop-filter: blur(18px);
-      position: relative;
-      overflow: hidden;
-      transform-style: preserve-3d;
-      transition: 0.35s ease;
-    }
-
-    .service-card:hover {
-      transform: translateY(-8px);
-      border-color: rgba(66,232,200,0.32);
-      box-shadow: 0 30px 80px rgba(0,0,0,0.28);
-    }
-
-    .service-visual {
-      height: 145px;
-      border-radius: 24px;
-      background:
-        radial-gradient(circle at 50% 45%, rgba(255,255,255,0.3), transparent 18%),
-        linear-gradient(135deg, rgba(66,232,200,0.22), rgba(94,168,255,0.14));
-      border: 1px solid rgba(255,255,255,0.12);
-      margin-bottom: 24px;
-      display: grid;
-      place-items: center;
-      font-size: 3rem;
-      transform: translateZ(35px);
-    }
-
-    .service-card h3 {
-      font-size: 1.45rem;
-      margin-bottom: 12px;
-      letter-spacing: -0.03em;
-    }
-
-    .service-card p {
-      color: var(--muted);
-      line-height: 1.65;
-      margin-bottom: 22px;
-    }
-
-    .service-card ul {
-      list-style: none;
-      color: #d8e7f5;
-      display: grid;
-      gap: 10px;
-      font-weight: 700;
-      font-size: 0.92rem;
-    }
-
-    .service-card li::before {
-      content: "✓";
-      color: var(--primary);
-      margin-right: 8px;
-    }
-
-    .experience {
-      display: grid;
-      grid-template-columns: 0.9fr 1.1fr;
-      gap: 42px;
-      align-items: center;
-    }
-
-    .experience-panel {
-      border-radius: 40px;
-      min-height: 620px;
-      border: 1px solid var(--border);
-      background:
-        radial-gradient(circle at 40% 10%, rgba(66,232,200,0.18), transparent 30%),
-        rgba(255,255,255,0.06);
-      box-shadow: var(--shadow);
-      position: relative;
-      overflow: hidden;
-      padding: 34px;
-      transform-style: preserve-3d;
-    }
-
-    .experience-panel::before {
-      content: "";
-      position: absolute;
-      width: 420px;
-      height: 420px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(66,232,200,0.22), transparent 65%);
-      right: -120px;
-      top: 80px;
-      animation: breathe 4s ease-in-out infinite;
-    }
-
-    @keyframes breathe {
-      50% { transform: scale(1.15); opacity: 0.75; }
-    }
-
-    .scanner {
-      width: min(420px, 100%);
-      aspect-ratio: 1;
-      margin: 55px auto 0;
-      border-radius: 50%;
-      border: 1px solid rgba(255,255,255,0.16);
-      position: relative;
-      background:
-        radial-gradient(circle, rgba(66,232,200,0.18), transparent 34%),
-        repeating-radial-gradient(circle, rgba(255,255,255,0.08) 0 1px, transparent 1px 18px);
-      box-shadow: inset 0 0 80px rgba(66,232,200,0.1);
-    }
-
-    .scanner::before,
-    .scanner::after {
-      content: "";
-      position: absolute;
-      inset: 12%;
-      border: 1px dashed rgba(255,255,255,0.22);
-      border-radius: 50%;
-      animation: spin 16s linear infinite;
-    }
-
-    .scanner::after {
-      inset: 28%;
-      animation-direction: reverse;
-      animation-duration: 11s;
-    }
-
-    .tooth-icon {
-      position: absolute;
-      inset: 0;
-      display: grid;
-      place-items: center;
-      font-size: 7rem;
-      filter: drop-shadow(0 20px 35px rgba(66,232,200,0.25));
-      animation: floatCard 4s ease-in-out infinite;
-    }
-
-    .timeline {
-      display: grid;
-      gap: 18px;
-    }
-
-    .timeline-item {
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 18px;
-      align-items: start;
-      padding: 24px;
-      border: 1px solid var(--border);
-      border-radius: 28px;
-      background: rgba(255,255,255,0.06);
-      backdrop-filter: blur(16px);
-      transition: 0.3s ease;
-    }
-
-    .timeline-item:hover {
-      transform: translateX(10px);
-      background: rgba(255,255,255,0.09);
-    }
-
-    .step {
-      width: 54px;
-      height: 54px;
-      border-radius: 18px;
-      display: grid;
-      place-items: center;
-      background: linear-gradient(135deg, var(--primary), var(--primary-2));
-      color: #06111f;
-      font-weight: 900;
-      box-shadow: 0 16px 34px rgba(66,232,200,0.22);
-    }
-
-    .timeline-item h3 {
-      margin-bottom: 8px;
-      font-size: 1.18rem;
-    }
-
-    .timeline-item p {
-      color: var(--muted);
-      line-height: 1.65;
-    }
-
-    .before-after {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 22px;
-      align-items: stretch;
-    }
-
-    .smile-card {
-      border-radius: 36px;
-      min-height: 520px;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,0.06);
-      padding: 26px;
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .smile-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at 50% 36%, rgba(66,232,200,0.18), transparent 24%),
-        radial-gradient(circle at 50% 62%, rgba(94,168,255,0.14), transparent 28%);
-      pointer-events: none;
-    }
-
-    .smile-face {
-      position: relative;
-      height: 330px;
-      border-radius: 28px;
-      background:
-        radial-gradient(circle at 50% 58%, #fff 0 12%, transparent 13%),
-        radial-gradient(circle at 39% 42%, #0d1826 0 5%, transparent 6%),
-        radial-gradient(circle at 61% 42%, #0d1826 0 5%, transparent 6%),
-        linear-gradient(135deg, rgba(66,232,200,0.22), rgba(94,168,255,0.12));
-      border: 1px solid rgba(255,255,255,0.12);
-      overflow: hidden;
-    }
-
-    .smile-card.after .smile-face {
-      background:
-        radial-gradient(circle at 50% 58%, #ffffff 0 14%, transparent 15%),
-        radial-gradient(circle at 39% 42%, #0d1826 0 5%, transparent 6%),
-        radial-gradient(circle at 61% 42%, #0d1826 0 5%, transparent 6%),
-        radial-gradient(circle at 50% 64%, rgba(66,232,200,0.26), transparent 28%),
-        linear-gradient(135deg, rgba(66,232,200,0.28), rgba(255,207,107,0.16));
-    }
-
-    .smile-card h3 {
-      font-size: 2rem;
-      letter-spacing: -0.05em;
-      margin-bottom: 10px;
-    }
-
-    .smile-card p {
-      color: var(--muted);
-      line-height: 1.65;
-      position: relative;
-    }
-
-    .reviews {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 28px;
-      align-items: stretch;
-    }
-
-    .review-main,
-    .review-side {
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,0.06);
-      border-radius: 36px;
-      padding: 30px;
-      backdrop-filter: blur(18px);
-    }
-
-    .stars {
-      color: var(--accent);
-      letter-spacing: 0.12em;
-      margin-bottom: 18px;
-    }
-
-    .review-main blockquote {
-      font-size: clamp(1.45rem, 3vw, 2.35rem);
-      line-height: 1.25;
-      letter-spacing: -0.04em;
-      margin-bottom: 24px;
-    }
-
-    .person {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      color: var(--muted);
-      font-weight: 800;
-    }
-
-    .person-avatar {
-      width: 52px;
-      height: 52px;
-      border-radius: 18px;
-      background: linear-gradient(135deg, var(--primary), var(--pink));
-      color: #06111f;
-      display: grid;
-      place-items: center;
-      font-weight: 900;
-    }
-
-    .review-side {
-      display: grid;
-      gap: 16px;
-    }
-
-    .mini-review {
-      border-radius: 24px;
-      padding: 20px;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.1);
-    }
-
-    .mini-review p {
-      color: var(--muted);
-      line-height: 1.6;
-      margin-top: 10px;
-    }
-
-    .booking {
-      padding-bottom: 130px;
-    }
-
-    .booking-card {
-      display: grid;
-      grid-template-columns: 0.95fr 1.05fr;
-      gap: 32px;
-      border-radius: 42px;
-      border: 1px solid var(--border);
-      background:
-        radial-gradient(circle at 15% 15%, rgba(66,232,200,0.18), transparent 32%),
-        radial-gradient(circle at 90% 20%, rgba(94,168,255,0.16), transparent 30%),
-        rgba(255,255,255,0.07);
-      box-shadow: var(--shadow);
-      padding: 36px;
-      overflow: hidden;
-      position: relative;
-    }
-
-    .booking-card::before {
-      content: "";
-      position: absolute;
-      inset: auto -20% -45% 25%;
-      height: 360px;
-      background: radial-gradient(circle, rgba(66,232,200,0.22), transparent 65%);
-      pointer-events: none;
-    }
-
-    .booking-copy h2 {
-      margin-bottom: 18px;
-    }
-
-    .booking-copy p {
-      color: var(--muted);
-      line-height: 1.7;
-      margin-bottom: 24px;
-    }
-
-    .contact-list {
-      display: grid;
-      gap: 14px;
-      margin-top: 28px;
-    }
-
-    .contact-list div {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      color: #dcecf8;
-      font-weight: 800;
-    }
-
-    .contact-list span {
-      width: 42px;
-      height: 42px;
-      border-radius: 14px;
-      background: rgba(255,255,255,0.09);
-      display: grid;
-      place-items: center;
-    }
-
-    form {
-      display: grid;
-      gap: 14px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .field {
-      display: grid;
-      gap: 8px;
-    }
-
-    label {
-      color: #dcecf8;
-      font-weight: 800;
-      font-size: 0.92rem;
-    }
-
-    input,
-    textarea,
-    select {
-      width: 100%;
-      border: 1px solid rgba(255,255,255,0.14);
-      background: rgba(4, 14, 25, 0.58);
-      color: var(--text);
-      border-radius: 18px;
-      padding: 16px 18px;
-      outline: none;
-      transition: 0.25s ease;
-    }
-
-    textarea {
-      min-height: 120px;
-      resize: vertical;
-    }
-
-    input:focus,
-    textarea:focus,
-    select:focus {
-      border-color: rgba(66,232,200,0.72);
-      box-shadow: 0 0 0 4px rgba(66,232,200,0.1);
-    }
-
-    select option {
-      background: #06111f;
-      color: var(--text);
-    }
-
-    .footer {
-      padding: 42px 0;
-      border-top: 1px solid rgba(255,255,255,0.1);
-      color: var(--muted);
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(34px);
-      transition: 0.85s cubic-bezier(.2,.8,.2,1);
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .tilt {
-      transform-style: preserve-3d;
-    }
-
-    .tilt-inner {
-      transform: translateZ(28px);
-    }
-
-    .particles {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 0;
-      overflow: hidden;
-    }
-
-    .particle {
-      position: absolute;
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: rgba(66,232,200,0.45);
-      box-shadow: 0 0 24px rgba(66,232,200,0.45);
-      animation: drift var(--time) ease-in-out infinite;
-      opacity: var(--opacity);
-      left: var(--left);
-      top: var(--top);
-    }
-
-    @keyframes drift {
-      0%, 100% { transform: translate3d(0,0,0) scale(1); }
-      50% { transform: translate3d(var(--x), var(--y), 0) scale(1.4); }
-    }
-
-    @media (max-width: 980px) {
-      .nav-links,
-      .nav-actions .btn.secondary {
-        display: none;
-      }
-
-      .mobile-toggle {
-        display: grid;
-        place-items: center;
-      }
-
-      .nav.open .nav-links {
-        display: grid;
-        position: absolute;
-        top: 64px;
-        left: 12px;
-        right: 12px;
-        background: rgba(5,17,31,0.96);
-        border: 1px solid var(--border);
-        border-radius: 24px;
-        padding: 12px;
-        backdrop-filter: blur(20px);
-      }
-
-      .hero-grid,
-      .experience,
-      .booking-card,
-      .reviews {
-        grid-template-columns: 1fr;
-      }
-
-      .hero {
-        padding-top: 130px;
-      }
-
-      .hero-visual {
-        min-height: 520px;
-      }
-
-      .stats-grid,
-      .services-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .section-head {
-        display: block;
-      }
-
-      .section-head p {
-        margin-top: 18px;
-      }
-    }
-
-    @media (max-width: 640px) {
-      .container {
-        width: min(100% - 28px, var(--max));
-      }
-
-      .brand span:last-child {
-        display: none;
-      }
-
-      .hero {
-        padding-bottom: 50px;
-      }
-
-      h1 {
-        font-size: clamp(2.8rem, 16vw, 4.5rem);
-      }
-
-      .hero-actions {
-        display: grid;
-      }
-
-      .btn {
-        width: 100%;
-      }
-
-      .hero-visual {
-        min-height: 470px;
-      }
-
-      .floating-card {
-        padding: 14px;
-      }
-
-      .card-a {
-        left: 10px;
-        top: 34px;
-        width: 180px;
-      }
-
-      .card-b {
-        right: 8px;
-        top: 160px;
-        width: 175px;
-      }
-
-      .card-c {
-        left: 24px;
-        bottom: 30px;
-        width: 190px;
-      }
-
-      .stats-grid,
-      .services-grid,
-      .before-after {
-        grid-template-columns: 1fr;
-      }
-
-      .experience-panel {
-        min-height: 480px;
-        padding: 22px;
-      }
-
-      .booking-card {
-        padding: 22px;
-        border-radius: 30px;
-      }
-
-      .cursor-glow {
-        display: none !important;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *,
-      *::before,
-      *::after {
-        animation-duration: 0.001ms !important;
-        animation-iteration-count: 1 !important;
-        scroll-behavior: auto !important;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nagu Dental | Redefining Modern Dentistry</title>
+
+    <!-- Fonts: Syne for Headings, Inter for Body -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+
+    <!-- Core Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/lenis@1.0.28/dist/lenis.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script>
+
+    <style>
+        :root {
+            --primary-navy: #0A192F;
+            --pure-white: #FFFFFF;
+            --luxury-gold: #D4AF37;
+            --soft-cyan: #7DF9FF;
+            --bg-gradient: linear-gradient(135deg, #0A192F 0%, #112240 100%);
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.1);
+
+            --font-heading: 'Syne', sans-serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        html.lenis {
+            height: auto;
+        }
+
+        .lenis.lenis-smooth {
+            scroll-behavior: auto !important;
+        }
+
+        .lenis.lenis-smooth [data-lenis-prevent] {
+            overscroll-behavior: contain;
+        }
+
+        .lenis.lenis-stopped {
+            overflow: hidden;
+        }
+
+        body {
+            background-color: var(--primary-navy);
+            color: var(--pure-white);
+            font-family: var(--font-body);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Luxury Loading Sequence */
+        #loader {
+            position: fixed;
+            inset: 0;
+            background: var(--primary-navy);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .loader-logo {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            letter-spacing: 0.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            opacity: 0;
+        }
+
+        .loader-bar {
+            width: 200px;
+            height: 1px;
+            background: rgba(255,255,255,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .loader-progress {
+            position: absolute;
+            height: 100%;
+            width: 0;
+            background: var(--luxury-gold);
+            left: 0;
+            top: 0;
+        }
+
+        /* Glassmorphism Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 30px 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: transparent;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        header.scrolled {
+            padding: 20px 10%;
+            background: rgba(10, 25, 47, 0.7);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--pure-white);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-mark {
+            width: 30px;
+            height: 30px;
+            background: var(--luxury-gold);
+            border-radius: 6px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+
+        nav ul li a {
+            color: var(--pure-white);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            letter-spacing: 0.05rem;
+            transition: opacity 0.3s;
+            opacity: 0.7;
+        }
+
+        nav ul li a:hover {
+            opacity: 1;
+        }
+
+        .cta-btn {
+            background: var(--luxury-gold);
+            color: var(--primary-navy);
+            padding: 12px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 10%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            width: 55%;
+            z-index: 10;
+        }
+
+        .hero-headline {
+            font-family: var(--font-heading);
+            font-size: clamp(2.5rem, 5vw, 3.8rem);
+            line-height: 1.0;
+            margin-bottom: 30px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: -0.04em;
+        }
+
+        .hero-headline span {
+            display: block;
+            background: linear-gradient(90deg, var(--pure-white), var(--soft-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subheadline {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            opacity: 0.7;
+            max-width: 550px;
+            font-weight: 300;
+            letter-spacing: 0.02em;
+        }
+
+        .hero-visual {
+            position: absolute;
+            right: -5%;
+            top: 0;
+            width: 65%;
+            height: 100%;
+            z-index: 5;
+        }
+
+        #hero-canvas {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Glass Cards */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 40px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-10px);
+        }
+
+        /* Neumorphism Accent */
+        .neu-inset {
+            background: var(--primary-navy);
+            box-shadow: inset 5px 5px 10px #060f1c,
+                        inset -5px -5px 10px #0e2342;
+            border-radius: 20px;
+            padding: 30px;
+        }
+
+        /* Noise & Gradient Backgrounds */
+        .noise {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://grainy-gradients.vercel.app/noise.svg');
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 10000;
+        }
+
+        .glow-sphere {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(125, 249, 255, 0.05) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Section Styling */
+        section {
+            padding: 180px 10%;
+            position: relative;
+        }
+
+        .section-tag {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--luxury-gold);
+            text-transform: uppercase;
+            letter-spacing: 0.3rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: clamp(2.5rem, 6vw, 3.5rem);
+            margin-bottom: 30px;
+            font-weight: 800;
+            max-width: 800px;
+            line-height: 1.2;
+        }
+
+        .section-desc {
+            font-size: 1.1rem;
+            opacity: 0.6;
+            max-width: 600px;
+            margin-bottom: 80px;
+        }
+
+        /* Grid Layouts */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        /* Ambient Motion */
+        .ambient-light {
+            position: fixed;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(125, 249, 255, 0.03) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .secondary-btn {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--glass-border);
+            color: var(--pure-white);
+        }
+
+        .secondary-btn:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        @keyframes ai-pulse {
+            0%, 100% { transform: scale(1); opacity: 0.2; }
+            50% { transform: scale(1.5); opacity: 0.4; }
+        }
+
+        .tour-slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+        }
+
+        .tour-slide.active {
+            opacity: 1;
+        }
+
+        /* Footer */
+        footer {
+            padding: 100px 10% 50px;
+            background: #050d18;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 80px;
+        }
+
+        .footer-logo {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .footer-links h4 {
+            font-family: var(--font-heading);
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+            color: var(--luxury-gold);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 15px;
+        }
+
+        .footer-links ul li a {
+            color: var(--pure-white);
+            text-decoration: none;
+            opacity: 0.6;
+            transition: opacity 0.3s;
+        }
+
+        .footer-links ul li a:hover {
+            opacity: 1;
+        }
+
+        .footer-bottom {
+            padding-top: 40px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            justify-content: space-between;
+            opacity: 0.4;
+            font-size: 0.8rem;
+        }
+
+        /* Utility classes */
+        .magnetic-wrap {
+            display: inline-block;
+        }
+
+        /* Responsive Refinements */
+        @media (max-width: 1200px) {
+            .hero-headline { font-size: 4rem; }
+            .grid-3 { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 20px 5%; }
+            nav { display: none; }
+            .hero { flex-direction: column; padding-top: 120px; text-align: center; height: auto; min-height: 100vh; }
+            .hero-content { width: 100%; margin-bottom: 50px; }
+            .hero-visual { position: relative; width: 100%; height: 400px; right: 0; }
+            .grid-3 { grid-template-columns: 1fr; }
+            #ai-diagnostics > div { flex-direction: column; gap: 40px; }
+            #ai-diagnostics > div > div { width: 100% !important; }
+            footer .footer-grid { grid-template-columns: 1fr 1fr; }
+            #appointment-form { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 480px) {
+            footer .footer-grid { grid-template-columns: 1fr; }
+        }
+
+    </style>
 </head>
-
 <body>
-  <div class="noise"></div>
-  <div class="cursor-glow" id="cursorGlow"></div>
 
-  <div class="particles" aria-hidden="true"></div>
-
-  <nav class="nav" id="nav">
-    <a class="brand" href="#top" aria-label="Nagu Dental Home">
-      <div class="brand-mark"></div>
-      <span>Nagu Dental</span>
-    </a>
-
-    <div class="nav-links">
-      <a href="#services">Services</a>
-      <a href="#experience">Experience</a>
-      <a href="#smiles">Smiles</a>
-      <a href="#reviews">Reviews</a>
+    <div id="loader">
+        <div class="loader-logo">NAGU DENTAL</div>
+        <div class="loader-bar">
+            <div class="loader-progress"></div>
+        </div>
     </div>
 
-    <div class="nav-actions">
-      <a class="btn secondary" href="tel:+1234567890">Call Now</a>
-      <a class="btn" href="#booking">Book Visit</a>
-      <button class="mobile-toggle" id="mobileToggle" aria-label="Open menu">☰</button>
+    <!-- Premium Booking Modal -->
+    <div id="booking-modal" style="position: fixed; inset: 0; background: rgba(10, 25, 47, 0.9); backdrop-filter: blur(20px); z-index: 10000; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: all 0.5s ease;">
+        <div class="glass-card" style="width: 90%; max-width: 600px; position: relative; transform: translateY(50px); transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);">
+            <button onclick="closeBookingModal()" style="position: absolute; top: 20px; right: 20px; background: none; border: none; color: white; font-size: 2rem; cursor: pointer; opacity: 0.5; transition: opacity 0.3s;">&times;</button>
+            <span class="section-tag">Reservation</span>
+            <h2 style="font-family: var(--font-heading); margin-bottom: 30px;">Request a Priority Consultation</h2>
+            <form id="modal-booking-form" style="display: grid; gap: 20px;">
+                <input type="text" placeholder="Full Name" required style="background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); padding: 15px; border-radius: 10px; color: white;">
+                <input type="tel" placeholder="Phone Number" required style="background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); padding: 15px; border-radius: 10px; color: white;">
+                <select style="background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); padding: 15px; border-radius: 10px; color: white;">
+                    <option>Select Treatment</option>
+                    <option>Digital Smile Design</option>
+                    <option>Robotic Implants</option>
+                    <option>Laser Dentistry</option>
+                    <option>General Excellence</option>
+                </select>
+                <button type="submit" class="cta-btn" style="width: 100%; padding: 15px;">SECURE APPOINTMENT</button>
+            </form>
+            <p style="font-size: 0.7rem; opacity: 0.4; margin-top: 20px; text-align: center;">Our concierge will contact you within 2 business hours.</p>
+        </div>
     </div>
-  </nav>
 
-  <main id="top">
-    <header class="hero">
-      <div class="container hero-grid">
-        <div class="hero-copy-wrap reveal">
-          <div class="eyebrow">
-            <span class="pulse"></span>
-            Premium dental care, now in 3D
-          </div>
+    <div class="noise"></div>
+    <div class="ambient-light" id="ambient-1" style="top: -200px; left: -200px;"></div>
+    <div class="ambient-light" id="ambient-2" style="bottom: -200px; right: -200px;"></div>
 
-          <h1>
-            Your smile,
-            <span class="gradient-text">reimagined.</span>
-          </h1>
-
-          <p class="hero-copy">
-            Nagu Dental blends advanced dentistry, calm luxury, and digital precision
-            to create healthier smiles with a beautiful, futuristic patient experience.
-          </p>
-
-          <div class="hero-actions">
-            <a class="btn" href="#booking">
-              Book Your Smile Consultation
-              <span>→</span>
-            </a>
-            <a class="btn secondary" href="#services">Explore Treatments</a>
-          </div>
-
-          <div class="trust-row">
-            <div class="avatar-stack">
-              <div class="avatar">A</div>
-              <div class="avatar">M</div>
-              <div class="avatar">K</div>
-              <div class="avatar">+</div>
-            </div>
-            <span>Trusted by 12,000+ happy smiles</span>
-          </div>
+    <header id="main-header">
+        <a href="#" class="logo">
+            <div class="logo-mark"></div>
+            NAGU DENTAL
+        </a>
+        <nav>
+            <ul>
+                <li><a href="#services">Treatments</a></li>
+                <li><a href="#about">The Experience</a></li>
+                <li><a href="#results">Gallery</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="magnetic-wrap">
+            <button onclick="openBookingModal()" class="cta-btn">Book Appointment</button>
         </div>
-
-        <div class="hero-visual reveal">
-          <div class="orbital"></div>
-          <canvas id="toothCanvas"></canvas>
-
-          <div class="floating-card card-a tilt">
-            <div class="float-icon">🦷</div>
-            <strong>3D Smile Scan</strong>
-            <span>Digital imaging for precise, comfortable treatment planning.</span>
-          </div>
-
-          <div class="floating-card card-b tilt">
-            <div class="score-ring">
-              <b>98%</b>
-            </div>
-            <strong>Patient comfort score</strong>
-            <span>Calm, modern, and anxiety-free dental visits.</span>
-          </div>
-
-          <div class="floating-card card-c tilt">
-            <div class="float-icon">✨</div>
-            <strong>Same-day whitening</strong>
-            <span>Visible brightness in one premium session.</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="marquee" aria-hidden="true">
-        <div class="marquee-track">
-          <span>Implants</span> Invisalign <span>Whitening</span> Root Canal <span>Emergency Care</span> Kids Dentistry <span>3D Scanning</span>
-          <span>Implants</span> Invisalign <span>Whitening</span> Root Canal <span>Emergency Care</span> Kids Dentistry <span>3D Scanning</span>
-        </div>
-      </div>
     </header>
 
-    <section class="stats">
-      <div class="container">
-        <div class="stats-grid">
-          <div class="stat-card tilt reveal">
-            <div class="tilt-inner">
-              <h3>12k+</h3>
-              <p>Smiles transformed with trusted care.</p>
+    <main>
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <h1 class="hero-headline">
+                    <span>Redefining</span>
+                    <span>Modern</span>
+                    <span>Dentistry</span>
+                </h1>
+                <p class="hero-subheadline">
+                    Where precision technology meets luxury care. Experience the future of dental excellence at Nagu Dental.
+                </p>
+                <div class="magnetic-wrap">
+                    <button onclick="openBookingModal()" class="cta-btn" style="padding: 18px 40px; font-size: 1rem;">Experience Excellence</button>
+                </div>
             </div>
-          </div>
-          <div class="stat-card tilt reveal">
-            <div class="tilt-inner">
-              <h3>4.9/5</h3>
-              <p>Average patient rating across platforms.</p>
+            <div class="hero-visual">
+                <canvas id="hero-canvas"></canvas>
             </div>
-          </div>
-          <div class="stat-card tilt reveal">
-            <div class="tilt-inner">
-              <h3>24h</h3>
-              <p>Fast appointment support and emergency response.</p>
+        </section>
+
+        <section id="stats" style="padding: 80px 10%; background: rgba(255,255,255,0.02); border-bottom: 1px solid var(--glass-border);">
+            <div class="grid-3" style="text-align: center;">
+                <div class="stat-item reveal">
+                    <div class="stat-number" style="font-family: var(--font-heading); font-size: 4rem; color: var(--luxury-gold); font-weight: 800;">15+</div>
+                    <div class="stat-label" style="opacity: 0.6; text-transform: uppercase; letter-spacing: 0.2rem; font-size: 0.8rem;">Years of Clinical Excellence</div>
+                </div>
+                <div class="stat-item reveal">
+                    <div class="stat-number" style="font-family: var(--font-heading); font-size: 4rem; color: var(--soft-cyan); font-weight: 800;">5K+</div>
+                    <div class="stat-label" style="opacity: 0.6; text-transform: uppercase; letter-spacing: 0.2rem; font-size: 0.8rem;">Happy Patients</div>
+                </div>
+                <div class="stat-item reveal">
+                    <div class="stat-number" style="font-family: var(--font-heading); font-size: 4rem; color: var(--luxury-gold); font-weight: 800;">99%</div>
+                    <div class="stat-label" style="opacity: 0.6; text-transform: uppercase; letter-spacing: 0.2rem; font-size: 0.8rem;">Happy Patient Rate</div>
+                </div>
             </div>
-          </div>
-          <div class="stat-card tilt reveal">
-            <div class="tilt-inner">
-              <h3>15+</h3>
-              <p>Years of advanced clinical experience.</p>
+        </section>
+
+        <section id="services">
+            <span class="section-tag">Elite Services</span>
+            <h2 class="section-title">World-Class Dental Precision</h2>
+            <p class="section-desc">Our clinic combines Swiss-grade engineering with artistic dentistry to deliver results that are as durable as they are beautiful.</p>
+
+            <div class="grid-3">
+                <div class="glass-card">
+                    <div class="neu-inset" style="margin-bottom: 30px; padding: 20px; display: inline-block;">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color: var(--soft-cyan)">
+                            <path d="M12 2L12 22M2 12L22 12" />
+                        </svg>
+                    </div>
+                    <h3>Digital Smile Design</h3>
+                    <p style="opacity: 0.6; margin-top: 15px;">Visualize your transformation before we even begin. Precision mapping for perfect aesthetics.</p>
+                </div>
+                <div class="glass-card">
+                    <div class="neu-inset" style="margin-bottom: 30px; padding: 20px; display: inline-block;">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color: var(--luxury-gold)">
+                            <path d="M12 2L12 22M2 12L22 12" />
+                        </svg>
+                    </div>
+                    <h3>Robotic Implants</h3>
+                    <p style="opacity: 0.6; margin-top: 15px;">AI-guided placement ensuring 99.9% accuracy and significantly faster healing times.</p>
+                </div>
+                <div class="glass-card">
+                    <div class="neu-inset" style="margin-bottom: 30px; padding: 20px; display: inline-block;">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color: var(--soft-cyan)">
+                            <path d="M12 2L12 22M2 12L22 12" />
+                        </svg>
+                    </div>
+                    <h3>Laser Dentistry</h3>
+                    <p style="opacity: 0.6; margin-top: 15px;">Painless, bloodless, and stitch-free procedures using state-of-the-art BIOLASE technology.</p>
+                </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
+        </section>
 
-    <section id="services">
-      <div class="container">
-        <div class="section-head reveal">
-          <div>
-            <div class="section-kicker">Services</div>
-            <h2>Everything your smile needs, in one premium clinic.</h2>
-          </div>
-          <p>
-            From preventive care to full smile makeovers, Nagu Dental uses
-            modern technology and gentle treatment design.
-          </p>
-        </div>
+        <section id="transformation">
+            <span class="section-tag">Digital Smile Design</span>
+            <h2 class="section-title">Visualize Your New Smile</h2>
+            <p class="section-desc">Experience the future of cosmetic dentistry with our 3D transformation engine. We design your smile with mathematical precision.</p>
 
-        <div class="services-grid">
-          <article class="service-card tilt reveal">
-            <div class="service-visual tilt-inner">🦷</div>
-            <h3>Preventive Dentistry</h3>
-            <p>Keep your smile healthy with cleanings, exams, fluoride care, and early cavity detection.</p>
-            <ul>
-              <li>Digital checkups</li>
-              <li>Professional cleaning</li>
-              <li>Gum health plans</li>
-            </ul>
-          </article>
-
-          <article class="service-card tilt reveal">
-            <div class="service-visual tilt-inner">✨</div>
-            <h3>Cosmetic Smile Design</h3>
-            <p>Whitening, veneers, bonding, and smile makeovers designed around your face.</p>
-            <ul>
-              <li>3D smile preview</li>
-              <li>Porcelain veneers</li>
-              <li>Whitening treatments</li>
-            </ul>
-          </article>
-
-          <article class="service-card tilt reveal">
-            <div class="service-visual tilt-inner">⚙️</div>
-            <h3>Implants & Orthodontics</h3>
-            <p>Restore missing teeth or align your smile with advanced digital planning.</p>
-            <ul>
-              <li>Dental implants</li>
-              <li>Invisible aligners</li>
-              <li>Full mouth rehab</li>
-            </ul>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="experience">
-      <div class="container experience">
-        <div class="experience-panel tilt reveal">
-          <div class="section-kicker">Digital Experience</div>
-          <h2>Designed to feel calm, clear, and futuristic.</h2>
-          <div class="scanner">
-            <div class="tooth-icon">🦷</div>
-          </div>
-        </div>
-
-        <div>
-          <div class="section-kicker reveal">How it works</div>
-          <h2 class="reveal">A smarter visit from first click to final smile.</h2>
-
-          <div class="timeline" style="margin-top: 28px;">
-            <div class="timeline-item reveal">
-              <div class="step">01</div>
-              <div>
-                <h3>Book online in seconds</h3>
-                <p>Choose your service, preferred time, and dentist. No phone tag.</p>
-              </div>
+            <div class="three-container" id="smile-container" style="height: 600px; cursor: ew-resize; position: relative;">
+                <!-- 3D Smile Comparison will be rendered here -->
+                <div style="position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); display: flex; gap: 20px; z-index: 10;">
+                    <div style="background: rgba(212, 175, 55, 0.2); padding: 10px 20px; border-radius: 50px; border: 1px solid var(--luxury-gold); font-size: 0.8rem; font-weight: 700;">DRAG TO TRANSFORM</div>
+                </div>
             </div>
+        </section>
 
-            <div class="timeline-item reveal">
-              <div class="step">02</div>
-              <div>
-                <h3>Get a 3D smile scan</h3>
-                <p>We map your teeth digitally for accurate diagnosis and beautiful planning.</p>
-              </div>
+        <section id="timeline">
+            <span class="section-tag">The Journey</span>
+            <h2 class="section-title">Your Path to Perfection</h2>
+            <div class="timeline-container" style="position: relative; padding-top: 50px;">
+                <div class="timeline-line" style="position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background: rgba(255,255,255,0.1); transform: translateX(-50%);"></div>
+                <div class="timeline-progress" style="position: absolute; left: 50%; top: 0; width: 2px; background: var(--luxury-gold); transform: translateX(-50%); height: 0;"></div>
+
+                <div class="timeline-item reveal" style="display: flex; justify-content: flex-end; width: 50%; padding-right: 50px; margin-bottom: 100px; position: relative;">
+                    <div class="glass-card" style="max-width: 400px; text-align: right;">
+                        <div style="color: var(--luxury-gold); font-weight: 800; font-size: 0.8rem; margin-bottom: 10px;">STEP 01</div>
+                        <h3>Digital Consultation</h3>
+                        <p style="opacity: 0.6; margin-top: 15px;">Advanced 3D scanning and AI diagnostics to map your unique anatomy.</p>
+                    </div>
+                    <div style="position: absolute; right: -9px; top: 20px; width: 18px; height: 18px; background: var(--luxury-gold); border-radius: 50%; border: 4px solid var(--primary-navy);"></div>
+                </div>
+
+                <div class="timeline-item reveal" style="display: flex; justify-content: flex-start; width: 50%; margin-left: 50%; padding-left: 50px; margin-bottom: 100px; position: relative;">
+                    <div class="glass-card" style="max-width: 400px;">
+                        <div style="color: var(--soft-cyan); font-weight: 800; font-size: 0.8rem; margin-bottom: 10px;">STEP 02</div>
+                        <h3>Creative Design</h3>
+                        <p style="opacity: 0.6; margin-top: 15px;">Collaborate with our master clinicians to architect your perfect smile.</p>
+                    </div>
+                    <div style="position: absolute; left: -9px; top: 20px; width: 18px; height: 18px; background: var(--soft-cyan); border-radius: 50%; border: 4px solid var(--primary-navy);"></div>
+                </div>
+
+                <div class="timeline-item reveal" style="display: flex; justify-content: flex-end; width: 50%; padding-right: 50px; margin-bottom: 100px; position: relative;">
+                    <div class="glass-card" style="max-width: 400px; text-align: right;">
+                        <div style="color: var(--luxury-gold); font-weight: 800; font-size: 0.8rem; margin-bottom: 10px;">STEP 03</div>
+                        <h3>Precision Procedure</h3>
+                        <p style="opacity: 0.6; margin-top: 15px;">Robotic-guided and laser-assisted execution with uncompromising accuracy.</p>
+                    </div>
+                    <div style="position: absolute; right: -9px; top: 20px; width: 18px; height: 18px; background: var(--luxury-gold); border-radius: 50%; border: 4px solid var(--primary-navy);"></div>
+                </div>
+
+                <div class="timeline-item reveal" style="display: flex; justify-content: flex-start; width: 50%; margin-left: 50%; padding-left: 50px; position: relative;">
+                    <div class="glass-card" style="max-width: 400px;">
+                        <div style="color: var(--soft-cyan); font-weight: 800; font-size: 0.8rem; margin-bottom: 10px;">STEP 04</div>
+                        <h3>The Reveal</h3>
+                        <p style="opacity: 0.6; margin-top: 15px;">Walk out with immediate confidence and a life-changing transformation.</p>
+                    </div>
+                    <div style="position: absolute; left: -9px; top: 20px; width: 18px; height: 18px; background: var(--soft-cyan); border-radius: 50%; border: 4px solid var(--primary-navy);"></div>
+                </div>
             </div>
+        </section>
 
-            <div class="timeline-item reveal">
-              <div class="step">03</div>
-              <div>
-                <h3>Receive your custom plan</h3>
-                <p>See treatment options, timeline, cost, and expected results before you begin.</p>
-              </div>
+        <section id="ai-diagnostics" style="background: radial-gradient(circle at 100% 50%, rgba(125, 249, 255, 0.05) 0%, transparent 50%);">
+            <div style="display: flex; gap: 80px; align-items: center;">
+                <div style="width: 50%;">
+                    <span class="section-tag">AI Treatment Guide</span>
+                    <h2 class="section-title">Smart Diagnosis System</h2>
+                    <p class="section-desc">Interact with our visual AI to understand your dental needs. A data-driven approach to your personalized treatment plan.</p>
+
+                    <div id="ai-widget" class="glass-card" style="padding: 30px;">
+                        <div id="ai-content">
+                            <h4 style="margin-bottom: 20px;">What is your primary goal?</h4>
+                            <div style="display: grid; gap: 15px;">
+                                <button class="cta-btn secondary-btn" onclick="nextAiStep('whitening')">Brightness & Aesthetics</button>
+                                <button class="cta-btn secondary-btn" onclick="nextAiStep('alignment')">Alignment & Function</button>
+                                <button class="cta-btn secondary-btn" onclick="nextAiStep('restoration')">Restoration & Health</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="width: 50%; height: 500px; position: relative;">
+                    <div class="neu-inset" style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                        <div id="ai-visual-brain" style="width: 200px; height: 200px; border-radius: 50%; background: var(--soft-cyan); filter: blur(80px); opacity: 0.2; animation: ai-pulse 4s infinite;"></div>
+                        <div style="position: absolute; font-family: var(--font-heading); font-size: 0.8rem; letter-spacing: 0.2rem; opacity: 0.5;">ANALYZING DATA...</div>
+                    </div>
+                </div>
             </div>
+        </section>
 
-            <div class="timeline-item reveal">
-              <div class="step">04</div>
-              <div>
-                <h3>Enjoy a comfortable treatment</h3>
-                <p>Modern techniques, gentle care, and a premium clinic environment.</p>
-              </div>
+        <section id="virtual-tour">
+            <span class="section-tag">Inside Nagu Dental</span>
+            <h2 class="section-title">A Sanctuary of Science</h2>
+            <div id="tour-gallery" style="height: 600px; position: relative; overflow: hidden; border-radius: 40px;">
+                <div class="tour-slide active" style="background: url('https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80&w=2000') center/cover;"></div>
+                <div class="tour-slide" style="background: url('https://images.unsplash.com/photo-1598256989800-fe5f95da9787?auto=format&fit=crop&q=80&w=2000') center/cover;"></div>
+                <div class="tour-slide" style="background: url('https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&q=80&w=2000') center/cover;"></div>
+
+                <div style="position: absolute; inset: 0; background: linear-gradient(0deg, rgba(10,25,47,0.8) 0%, transparent 40%);"></div>
+                <div style="position: absolute; bottom: 40px; left: 40px;">
+                    <h3 id="tour-caption">Advanced Operatory Suite 01</h3>
+                    <p style="opacity: 0.7;">Equipped with Carl Zeiss microscopy and 3D imaging.</p>
+                </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
+        </section>
 
-    <section id="smiles">
-      <div class="container">
-        <div class="section-head reveal">
-          <div>
-            <div class="section-kicker">Smile Gallery</div>
-            <h2>Confidence you can see instantly.</h2>
-          </div>
-          <p>
-            Visualize your future smile before treatment begins with digital preview technology.
-          </p>
-        </div>
+        <section id="doctors">
+            <span class="section-tag">Master Clinicians</span>
+            <h2 class="section-title">Led by Industry Visionaries</h2>
+            <div class="grid-3">
+                <div class="glass-card doctor-card reveal">
+                    <div class="neu-inset" style="height: 350px; margin-bottom: 30px; background: url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&q=80&w=800') center/cover; border-radius: 20px;"></div>
+                    <h3>Dr. Nagu B.</h3>
+                    <p style="color: var(--luxury-gold); font-weight: 700; font-size: 0.9rem; margin-bottom: 10px;">Founder & Chief Surgeon</p>
+                    <p style="opacity: 0.6; font-size: 0.9rem;">Specialist in Robotic Implants and Advanced Maxillofacial Surgery.</p>
+                </div>
+                <div class="glass-card doctor-card reveal">
+                    <div class="neu-inset" style="height: 350px; margin-bottom: 30px; background: url('https://images.unsplash.com/photo-1559839734-2b71f1536783?auto=format&fit=crop&q=80&w=800') center/cover; border-radius: 20px;"></div>
+                    <h3>Dr. Sarah Chen</h3>
+                    <p style="color: var(--luxury-gold); font-weight: 700; font-size: 0.9rem; margin-bottom: 10px;">Cosmetic Director</p>
+                    <p style="opacity: 0.6; font-size: 0.9rem;">Expert in Digital Smile Design and high-end aesthetic restorations.</p>
+                </div>
+                <div class="glass-card doctor-card reveal">
+                    <div class="neu-inset" style="height: 350px; margin-bottom: 30px; background: url('https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&q=80&w=800') center/cover; border-radius: 20px;"></div>
+                    <h3>Dr. Marcus Thorne</h3>
+                    <p style="color: var(--luxury-gold); font-weight: 700; font-size: 0.9rem; margin-bottom: 10px;">Orthodontic Specialist</p>
+                    <p style="opacity: 0.6; font-size: 0.9rem;">Pioneer in AI-driven invisible alignment and functional bite correction.</p>
+                </div>
+            </div>
+        </section>
 
-        <div class="before-after">
-          <div class="smile-card reveal">
+        <section id="testimonials">
+            <span class="section-tag">Patient Success</span>
+            <h2 class="section-title">Voices of Excellence</h2>
+            <div id="testimonial-carousel" style="display: flex; gap: 30px; overflow-x: auto; padding-bottom: 40px; scrollbar-width: none;">
+                <div class="glass-card" style="min-width: 400px;">
+                    <p style="font-size: 1.2rem; margin-bottom: 30px; font-style: italic;">"Nagu Dental feels like the future. The AI-guided surgery was completely painless and the results are perfection."</p>
+                    <div style="display: flex; align-items: center; gap: 15px;">
+                        <div style="width: 50px; height: 50px; border-radius: 50%; background: var(--luxury-gold);"></div>
+                        <div>
+                            <strong>Aditya Sharma</strong>
+                            <div style="opacity: 0.5; font-size: 0.8rem;">Tech Entrepreneur</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="glass-card" style="min-width: 400px;">
+                    <p style="font-size: 1.2rem; margin-bottom: 30px; font-style: italic;">"Finally, a clinic that matches the luxury standards of global hospitality. The 3D smile design was a revelation."</p>
+                    <div style="display: flex; align-items: center; gap: 15px;">
+                        <div style="width: 50px; height: 50px; border-radius: 50%; background: var(--soft-cyan);"></div>
+                        <div>
+                            <strong>Priya Reddy</strong>
+                            <div style="opacity: 0.5; font-size: 0.8rem;">Fashion Designer</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="glass-card" style="min-width: 400px;">
+                    <p style="font-size: 1.2rem; margin-bottom: 30px; font-style: italic;">"The level of precision and technology at Nagu Dental is comparable to what I've seen in Switzerland."</p>
+                    <div style="display: flex; align-items: center; gap: 15px;">
+                        <div style="width: 50px; height: 50px; border-radius: 50%; background: var(--luxury-gold);"></div>
+                        <div>
+                            <strong>Vikram Malhotra</strong>
+                            <div style="opacity: 0.5; font-size: 0.8rem;">International Architect</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="faq">
+            <span class="section-tag">Concierge Knowledge</span>
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div style="max-width: 800px; margin: 0 auto;">
+                <div class="faq-item glass-card reveal" style="margin-bottom: 20px; padding: 0; overflow: hidden;">
+                    <div class="faq-question" style="padding: 30px; cursor: pointer; display: flex; justify-content: space-between; align-items: center;" onclick="toggleFaq(this)">
+                        <h4 style="margin: 0;">Is the AI diagnosis completely accurate?</h4>
+                        <span class="faq-toggle" style="font-size: 1.5rem; color: var(--luxury-gold);">+</span>
+                    </div>
+                    <div class="faq-answer" style="max-height: 0; overflow: hidden; transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); background: rgba(255,255,255,0.02);">
+                        <p style="padding: 30px; opacity: 0.7;">Our AI diagnostic suite acts as a hyper-precise assistant to our master surgeons, identifying micro-pathologies that are invisible to the human eye, ensuring 100% diagnostic confidence.</p>
+                    </div>
+                </div>
+                <div class="faq-item glass-card reveal" style="margin-bottom: 20px; padding: 0; overflow: hidden;">
+                    <div class="faq-question" style="padding: 30px; cursor: pointer; display: flex; justify-content: space-between; align-items: center;" onclick="toggleFaq(this)">
+                        <h4 style="margin: 0;">How long does a Digital Smile Design take?</h4>
+                        <span class="faq-toggle" style="font-size: 1.5rem; color: var(--luxury-gold);">+</span>
+                    </div>
+                    <div class="faq-answer" style="max-height: 0; overflow: hidden; transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); background: rgba(255,255,255,0.02);">
+                        <p style="padding: 30px; opacity: 0.7;">The initial 3D mapping takes approximately 30 minutes. You will be able to visualize and walk through your virtual transformation during your very first consultation.</p>
+                    </div>
+                </div>
+                <div class="faq-item glass-card reveal" style="margin-bottom: 20px; padding: 0; overflow: hidden;">
+                    <div class="faq-question" style="padding: 30px; cursor: pointer; display: flex; justify-content: space-between; align-items: center;" onclick="toggleFaq(this)">
+                        <h4 style="margin: 0;">What makes Nagu Dental "World-Class"?</h4>
+                        <span class="faq-toggle" style="font-size: 1.5rem; color: var(--luxury-gold);">+</span>
+                    </div>
+                    <div class="faq-answer" style="max-height: 0; overflow: hidden; transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); background: rgba(255,255,255,0.02);">
+                        <p style="padding: 30px; opacity: 0.7;">We combine Swiss-grade medical engineering, Apple-inspired patient experience, and a team of master clinicians trained in global centers of excellence.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="booking" style="background: var(--bg-gradient)">
+            <div class="glass-card" style="padding: 80px; text-align: center; max-width: 1000px; margin: 0 auto;">
+                <span class="section-tag">Reservation</span>
+                <h2 class="section-title" style="margin: 0 auto 30px;">Begin Your Journey</h2>
+                <p class="section-desc" style="margin: 0 auto 50px;">Secure your consultation with our master clinicians today.</p>
+                <form id="appointment-form" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; text-align: left;">
+                    <input type="text" placeholder="Full Name" style="background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); padding: 15px; border-radius: 10px; color: white;">
+                    <input type="email" placeholder="Email Address" style="background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); padding: 15px; border-radius: 10px; color: white;">
+                    <select style="background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); padding: 15px; border-radius: 10px; color: white;">
+                        <option>Select Treatment</option>
+                        <option>Smile Design</option>
+                        <option>Robotic Implants</option>
+                        <option>Luxury Whitening</option>
+                    </select>
+                    <button type="submit" class="cta-btn" style="width: 100%;">REQUEST CALLBACK</button>
+                </form>
+            </div>
+        </section>
+
+        <section id="locations" style="background: rgba(0,0,0,0.2)">
+            <span class="section-tag">Our Network</span>
+            <h2 class="section-title">Excellence Across Bengaluru</h2>
+            <div id="map-visual" class="glass-card" style="height: 400px; margin-bottom: 50px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
+                <div style="position: absolute; width: 150%; height: 150%; background: radial-gradient(circle at 50% 50%, rgba(125, 249, 255, 0.05) 0%, transparent 60%); animation: ai-pulse 8s infinite;"></div>
+                <div style="z-index: 2; text-align: center;">
+                    <div style="font-family: var(--font-heading); font-size: 1.2rem; letter-spacing: 0.5rem; opacity: 0.3; margin-bottom: 20px;">INTERACTIVE NETWORK MAP</div>
+                    <div style="display: flex; gap: 40px; justify-content: center;">
+                        <div class="map-dot" style="width: 12px; height: 12px; background: var(--luxury-gold); border-radius: 50%; box-shadow: 0 0 20px var(--luxury-gold); position: relative;">
+                            <span style="position: absolute; top: 20px; left: 50%; transform: translateX(-50%); font-size: 0.6rem; white-space: nowrap; opacity: 0.6;">HEGGANAHALLI</span>
+                        </div>
+                        <div class="map-dot" style="width: 12px; height: 12px; background: var(--soft-cyan); border-radius: 50%; box-shadow: 0 0 20px var(--soft-cyan); position: relative;">
+                            <span style="position: absolute; top: 20px; left: 50%; transform: translateX(-50%); font-size: 0.6rem; white-space: nowrap; opacity: 0.6;">CHANDRA LAYOUT</span>
+                        </div>
+                        <div class="map-dot" style="width: 12px; height: 12px; background: var(--luxury-gold); border-radius: 50%; box-shadow: 0 0 20px var(--luxury-gold); position: relative;">
+                            <span style="position: absolute; top: 20px; left: 50%; transform: translateX(-50%); font-size: 0.6rem; white-space: nowrap; opacity: 0.6;">JP NAGAR</span>
+                        </div>
+                        <div class="map-dot" style="width: 12px; height: 12px; background: var(--soft-cyan); border-radius: 50%; box-shadow: 0 0 20px var(--soft-cyan); position: relative;">
+                            <span style="position: absolute; top: 20px; left: 50%; transform: translateX(-50%); font-size: 0.6rem; white-space: nowrap; opacity: 0.6;">RR NAGAR</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-3" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+                <div class="glass-card reveal">
+                    <h4>Hegganahalli Cross (Main)</h4>
+                    <p style="opacity: 0.6; font-size: 0.9rem; margin: 15px 0;">Mohan Theatre, 10/2, 1st floor, Chikkathimme Gowdru complex, 1st Main Rd, Bengaluru - 560091</p>
+                    <a href="#" style="color: var(--luxury-gold); font-size: 0.8rem; text-decoration: none; font-weight: 700;">VIEW ON MAP →</a>
+                </div>
+                <div class="glass-card reveal">
+                    <h4>Chandra Layout</h4>
+                    <p style="opacity: 0.6; font-size: 0.9rem; margin: 15px 0;">Premium Hub - 80 Feet Main Rd, Near Attiguppe Metro Station, Bengaluru</p>
+                    <a href="#" style="color: var(--luxury-gold); font-size: 0.8rem; text-decoration: none; font-weight: 700;">VIEW ON MAP →</a>
+                </div>
+                <div class="glass-card reveal">
+                    <h4>JP Nagar</h4>
+                    <p style="opacity: 0.6; font-size: 0.9rem; margin: 15px 0;">Premium Branch - Phase 7, Near Brigade Millennium, Bengaluru</p>
+                    <a href="#" style="color: var(--luxury-gold); font-size: 0.8rem; text-decoration: none; font-weight: 700;">VIEW ON MAP →</a>
+                </div>
+                <div class="glass-card reveal">
+                    <h4>RR Nagar</h4>
+                    <p style="opacity: 0.6; font-size: 0.9rem; margin: 15px 0;">Innovation Hub - Ideal Homes Township, Rajarajeshwari Nagar, Bengaluru</p>
+                    <a href="#" style="color: var(--luxury-gold); font-size: 0.8rem; text-decoration: none; font-weight: 700;">VIEW ON MAP →</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-grid">
             <div>
-              <h3>Before</h3>
-              <p>Uneven color, small chips, and low confidence.</p>
+                <div class="footer-logo">NAGU DENTAL</div>
+                <p style="opacity: 0.5; max-width: 300px;">Setting the gold standard in modern dentistry through innovation, precision, and luxury care.</p>
             </div>
-            <div class="smile-face"></div>
-          </div>
-
-          <div class="smile-card after reveal">
-            <div>
-              <h3>After</h3>
-              <p>Bright, balanced, natural-looking confidence.</p>
+            <div class="footer-links">
+                <h4>Experience</h4>
+                <ul>
+                    <li><a href="#">Treatments</a></li>
+                    <li><a href="#">Technology</a></li>
+                    <li><a href="#">Smile Gallery</a></li>
+                    <li><a href="#">Virtual Tour</a></li>
+                </ul>
             </div>
-            <div class="smile-face"></div>
-          </div>
+            <div class="footer-links">
+                <h4>Clinic</h4>
+                <ul>
+                    <li><a href="#">Our Doctors</a></li>
+                    <li><a href="#">Locations</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Connect</h4>
+                <ul>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">LinkedIn</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">Facebook</a></li>
+                </ul>
+            </div>
         </div>
-      </div>
-    </section>
-
-    <section id="reviews">
-      <div class="container reviews">
-        <div class="review-main reveal">
-          <div class="stars">★★★★★</div>
-          <blockquote>
-            “Nagu Dental feels like the future of dentistry. The 3D scan made everything clear,
-            and I actually looked forward to coming back.”
-          </blockquote>
-          <div class="person">
-            <div class="person-avatar">SJ</div>
-            <div>
-              <strong>Sarah Johnson</strong><br>
-              <span>Smile Makeover Patient</span>
-            </div>
-          </div>
+        <div class="footer-bottom">
+            <p>© <span id="current-year"></span> Nagu Dental. All rights reserved.</p>
+            <p>Designed by Jules | Awwwards SOTD Concept</p>
         </div>
+    </footer>
 
-        <div class="review-side">
-          <div class="mini-review reveal">
-            <div class="stars">★★★★★</div>
-            <p>“The clinic is beautiful, the team is gentle, and booking was effortless.”</p>
-          </div>
-          <div class="mini-review reveal">
-            <div class="stars">★★★★★</div>
-            <p>“I had dental anxiety for years. Nagu Dental made me feel safe.”</p>
-          </div>
-          <div class="mini-review reveal">
-            <div class="stars">★★★★★</div>
-            <p>“My whitening results were amazing. I felt confident the same day.”</p>
-          </div>
-        </div>
-      </div>
-    </section>
+    <script>
+        // Set dynamic year
+        document.getElementById('current-year').textContent = new Date().getFullYear();
 
-    <section class="booking" id="booking">
-      <div class="container">
-        <div class="booking-card reveal">
-          <div class="booking-copy">
-            <div class="section-kicker">Book Visit</div>
-            <h2>Start your premium dental journey today.</h2>
-            <p>
-              Tell us what you need and our care team will confirm your best appointment
-              option quickly.
-            </p>
-
-            <div class="contact-list">
-              <div><span>📍</span> Nagu Dental, Premium Care Center</div>
-              <div><span>📞</span> +1 234 567 890</div>
-              <div><span>✉️</span> hello@nagudental.com</div>
-            </div>
-          </div>
-
-          <form id="bookingForm">
-            <div class="field">
-              <label for="name">Full Name</label>
-              <input id="name" name="name" type="text" placeholder="Your name" required>
-            </div>
-
-            <div class="field">
-              <label for="phone">Phone Number</label>
-              <input id="phone" name="phone" type="tel" placeholder="+1 234 567 890" required>
-            </div>
-
-            <div class="field">
-              <label for="service">Treatment Interest</label>
-              <select id="service" name="service" required>
-                <option value="">Choose a service</option>
-                <option>Checkup & Cleaning</option>
-                <option>Teeth Whitening</option>
-                <option>Invisalign</option>
-                <option>Dental Implants</option>
-                <option>Smile Makeover</option>
-                <option>Emergency Dental</option>
-              </select>
-            </div>
-
-            <div class="field">
-              <label for="message">Message</label>
-              <textarea id="message" name="message" placeholder="Tell us how we can help..."></textarea>
-            </div>
-
-            <button class="btn" type="submit">
-              Request Appointment
-              <span>→</span>
-            </button>
-          </form>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="container footer">
-    <div>© <span id="year"></span> Nagu Dental. All rights reserved.</div>
-    <div>Designed with 3D UI, motion, and patient-first UX.</div>
-  </footer>
-
-  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
-
-  <script>
-    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-    document.getElementById("year").textContent = new Date().getFullYear();
-
-    /* Mobile Nav */
-    const nav = document.getElementById("nav");
-    const mobileToggle = document.getElementById("mobileToggle");
-
-    mobileToggle.addEventListener("click", () => {
-      nav.classList.toggle("open");
-      mobileToggle.textContent = nav.classList.contains("open") ? "×" : "☰";
-    });
-
-    document.querySelectorAll(".nav-links a").forEach(link => {
-      link.addEventListener("click", () => {
-        nav.classList.remove("open");
-        mobileToggle.textContent = "☰";
-      });
-    });
-
-    /* Cursor Glow */
-    const cursorGlow = document.getElementById("cursorGlow");
-
-    window.addEventListener("mousemove", (event) => {
-      if (window.innerWidth < 768) return;
-      cursorGlow.style.display = "block";
-      cursorGlow.style.left = event.clientX + "px";
-      cursorGlow.style.top = event.clientY + "px";
-    });
-
-    /* Particles */
-    const particleLayer = document.querySelector(".particles");
-    const particleCount = 26;
-
-    for (let i = 0; i < particleCount; i++) {
-      const p = document.createElement("i");
-      p.className = "particle";
-      p.style.setProperty("--left", Math.random() * 100 + "%");
-      p.style.setProperty("--top", Math.random() * 100 + "%");
-      p.style.setProperty("--x", (Math.random() * 120 - 60) + "px");
-      p.style.setProperty("--y", (Math.random() * 120 - 60) + "px");
-      p.style.setProperty("--time", (6 + Math.random() * 9) + "s");
-      p.style.setProperty("--opacity", 0.18 + Math.random() * 0.42);
-      particleLayer.appendChild(p);
-    }
-
-    /* Scroll Reveal */
-    const revealItems = document.querySelectorAll(".reveal");
-
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-          revealObserver.unobserve(entry.target);
+        // Lenis Smooth Scroll
+        const lenis = new Lenis()
+        function raf(time) {
+            lenis.raf(time)
+            requestAnimationFrame(raf)
         }
-      });
-    }, { threshold: 0.16 });
+        requestAnimationFrame(raf)
 
-    revealItems.forEach(item => revealObserver.observe(item));
+        // GSAP Setup
+        gsap.registerPlugin(ScrollTrigger);
 
-    /* 3D Tilt Cards */
-    const tiltItems = document.querySelectorAll(".tilt");
+        // Header Scroll Effect
+        ScrollTrigger.create({
+            start: 'top -80',
+            onEnter: () => document.getElementById('main-header').classList.add('scrolled'),
+            onLeaveBack: () => document.getElementById('main-header').classList.remove('scrolled'),
+        });
 
-    tiltItems.forEach(card => {
-      card.addEventListener("mousemove", (event) => {
-        if (prefersReducedMotion || window.innerWidth < 768) return;
+        // Loader Animation
+        window.addEventListener('load', () => {
+            const tl = gsap.timeline();
 
-        const rect = card.getBoundingClientRect();
-        const x = event.clientX - rect.left;
-        const y = event.clientY - rect.top;
-        const px = x / rect.width - 0.5;
-        const py = y / rect.height - 0.5;
+            tl.to('.loader-progress', {
+                width: '100%',
+                duration: 1.5,
+                ease: 'power4.inOut'
+            })
+            .to('.loader-logo', {
+                opacity: 1,
+                y: -10,
+                duration: 0.8,
+                ease: 'power2.out'
+            }, '-=0.5')
+            .to('#loader', {
+                y: '-100%',
+                duration: 1,
+                ease: 'power4.inOut',
+                delay: 0.5,
+                onComplete: () => {
+                    const loader = document.getElementById('loader');
+                    loader.style.display = 'none';
+                    loader.setAttribute('aria-hidden', 'true');
+                    // Add a class for easier testing if needed
+                    loader.classList.add('is-hidden');
+                }
+            })
+            .from('.hero-headline span', {
+                y: 100,
+                opacity: 0,
+                stagger: 0.2,
+                duration: 1,
+                ease: 'power4.out'
+            }, '-=0.5')
+            .from('.hero-subheadline', {
+                opacity: 0,
+                y: 20,
+                duration: 1
+            }, '-=0.5')
+        });
 
-        card.style.transform = `
-          perspective(1000px)
-          rotateY(${px * 12}deg)
-          rotateX(${-py * 12}deg)
-          translateY(-4px)
-        `;
-      });
+        // Magnetic Hover Effect
+        const magneticElements = document.querySelectorAll('.magnetic-wrap');
+        magneticElements.forEach((el) => {
+            el.addEventListener('mousemove', (e) => {
+                const { left, top, width, height } = el.getBoundingClientRect();
+                const x = e.clientX - (left + width / 2);
+                const y = e.clientY - (top + height / 2);
+                gsap.to(el.querySelector('.cta-btn'), {
+                    x: x * 0.3,
+                    y: y * 0.3,
+                    duration: 0.3,
+                    ease: 'power2.out'
+                });
+            });
+            el.addEventListener('mouseleave', () => {
+                gsap.to(el.querySelector('.cta-btn'), {
+                    x: 0,
+                    y: 0,
+                    duration: 0.3,
+                    ease: 'power2.out'
+                });
+            });
+        });
 
-      card.addEventListener("mouseleave", () => {
-        card.style.transform = "";
-      });
-    });
+        // Three.js Hero Visual (Refined Procedural Tooth)
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(45, (window.innerWidth * 0.6) / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({
+            canvas: document.getElementById('hero-canvas'),
+            alpha: true,
+            antialias: true
+        });
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        renderer.setSize(window.innerWidth * 0.6, window.innerHeight);
+        renderer.toneMapping = THREE.ACESFilmicToneMapping;
+        renderer.outputColorSpace = THREE.SRGBColorSpace;
 
-    /* Booking Form */
-    const form = document.getElementById("bookingForm");
+        const group = new THREE.Group();
+        scene.add(group);
 
-    form.addEventListener("submit", (event) => {
-      event.preventDefault();
-      const btn = form.querySelector("button");
-      const original = btn.innerHTML;
+        // Procedural Tooth Construction
+        const toothGeometry = new THREE.IcosahedronGeometry(2, 20);
+        const position = toothGeometry.attributes.position;
+        const vector = new THREE.Vector3();
 
-      btn.innerHTML = "Request Sent ✓";
-      btn.style.pointerEvents = "none";
+        for (let i = 0; i < position.count; i++) {
+            vector.fromBufferAttribute(position, i);
+            // Sculpting the tooth shape
+            const y = vector.y;
+            const stretch = 1 + Math.pow(Math.abs(y), 1.5) * 0.5;
+            vector.x *= 0.8 / stretch;
+            vector.z *= 0.8 / stretch;
 
-      setTimeout(() => {
-        btn.innerHTML = original;
-        btn.style.pointerEvents = "";
-        form.reset();
-        alert("Thank you! Nagu Dental will contact you shortly.");
-      }, 1400);
-    });
+            // Fissures and natural variations
+            if (y > 0.5) {
+                const angle = Math.atan2(vector.z, vector.x);
+                vector.y -= Math.cos(angle * 4) * 0.2;
+            }
 
-    /* Three.js 3D Tooth */
-    const canvas = document.getElementById("toothCanvas");
+            position.setXYZ(i, vector.x, vector.y, vector.z);
+        }
+        toothGeometry.computeVertexNormals();
 
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(40, canvas.clientWidth / canvas.clientHeight, 0.1, 100);
-    camera.position.set(0, 0.15, 7.2);
+        const toothMaterial = new THREE.MeshPhysicalMaterial({
+            color: 0xffffff,
+            roughness: 0.1,
+            metalness: 0,
+            transmission: 0.4,
+            ior: 1.45,
+            thickness: 2,
+            specularIntensity: 1,
+            specularColor: new THREE.Color(0xffffff),
+            clearcoat: 1,
+            clearcoatRoughness: 0.1,
+            sheen: 1,
+            sheenRoughness: 0.5,
+            sheenColor: new THREE.Color(0xd4af37)
+        });
 
-    const renderer = new THREE.WebGLRenderer({
-      canvas,
-      alpha: true,
-      antialias: true
-    });
+        const toothMesh = new THREE.Mesh(toothGeometry, toothMaterial);
+        group.add(toothMesh);
 
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    renderer.setSize(canvas.clientWidth, canvas.clientHeight);
+        // Floating Particles in 3D
+        const particlesGeometry = new THREE.BufferGeometry();
+        const particlesCount = 200;
+        const posArray = new Float32Array(particlesCount * 3);
+        for(let i=0; i < particlesCount * 3; i++) {
+            posArray[i] = (Math.random() - 0.5) * 15;
+        }
+        particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+        const particlesMaterial = new THREE.PointsMaterial({
+            size: 0.02,
+            color: 0x7df9ff,
+            transparent: true,
+            opacity: 0.5
+        });
+        const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+        scene.add(particlesMesh);
 
-    const group = new THREE.Group();
-    scene.add(group);
+        // Lighting
+        const mainLight = new THREE.SpotLight(0xffffff, 50);
+        mainLight.position.set(5, 5, 5);
+        scene.add(mainLight);
 
-    const enamelMaterial = new THREE.MeshPhysicalMaterial({
-      color: 0xf7ffff,
-      roughness: 0.18,
-      metalness: 0.02,
-      clearcoat: 0.9,
-      clearcoatRoughness: 0.08,
-      transmission: 0.18
-    });
+        const accentLight = new THREE.PointLight(0x7df9ff, 20);
+        accentLight.position.set(-5, 2, -2);
+        scene.add(accentLight);
 
-    const rootMaterial = new THREE.MeshPhysicalMaterial({
-      color: 0xdffcff,
-      roughness: 0.28,
-      metalness: 0.01,
-      clearcoat: 0.45
-    });
+        const goldLight = new THREE.PointLight(0xd4af37, 15);
+        goldLight.position.set(0, -5, 2);
+        scene.add(goldLight);
 
-    const glowMaterial = new THREE.MeshBasicMaterial({
-      color: 0x42e8c8,
-      transparent: true,
-      opacity: 0.08,
-      wireframe: true
-    });
+        camera.position.z = 8;
 
-    const crown = new THREE.Mesh(
-      new THREE.SphereGeometry(1.08, 64, 64),
-      enamelMaterial
-    );
-    crown.scale.set(0.92, 1.15, 0.72);
-    crown.position.y = 0.55;
-    group.add(crown);
+        let mouseX = 0;
+        let mouseY = 0;
+        window.addEventListener('mousemove', (e) => {
+            mouseX = (e.clientX / window.innerWidth) - 0.5;
+            mouseY = (e.clientY / window.innerHeight) - 0.5;
+        });
 
-    const neck = new THREE.Mesh(
-      new THREE.SphereGeometry(0.82, 64, 64),
-      enamelMaterial
-    );
-    neck.scale.set(0.78, 0.52, 0.58);
-    neck.position.y = -0.35;
-    group.add(neck);
+        function animate() {
+            requestAnimationFrame(animate);
 
-    const roots = [
-      [-0.34, -1.05, 0.02],
-      [0.34, -1.05, 0.02],
-      [0, -0.96, -0.34]
-    ];
+            const targetRotationY = mouseX * 1.5;
+            const targetRotationX = mouseY * 1.5;
 
-    roots.forEach((pos, index) => {
-      const root = new THREE.Mesh(
-        new THREE.ConeGeometry(0.22 - index * 0.015, 1.25, 48),
-        rootMaterial
-      );
-      root.position.set(...pos);
-      root.rotation.z = index === 0 ? 0.18 : index === 1 ? -0.18 : 0;
-      root.rotation.x = index === 2 ? 0.45 : 0.05;
-      group.add(root);
-    });
+            group.rotation.y += (targetRotationY - group.rotation.y) * 0.05;
+            group.rotation.x += (targetRotationX - group.rotation.x) * 0.05;
 
-    const shell = new THREE.Mesh(
-      new THREE.SphereGeometry(1.42, 64, 64),
-      glowMaterial
-    );
-    shell.scale.set(0.78, 1.38, 0.62);
-    shell.position.y = 0.25;
-    group.add(shell);
+            // Subtle idle motion
+            group.position.y = Math.sin(Date.now() * 0.001) * 0.2;
 
-    const ring1 = new THREE.Mesh(
-      new THREE.TorusGeometry(1.72, 0.012, 12, 160),
-      new THREE.MeshBasicMaterial({
-        color: 0x42e8c8,
-        transparent: true,
-        opacity: 0.34
-      })
-    );
-    ring1.rotation.x = Math.PI / 2;
-    group.add(ring1);
+            particlesMesh.rotation.y += 0.001;
 
-    const ring2 = ring1.clone();
-    ring2.scale.set(0.78, 1.12, 0.78);
-    ring2.rotation.x = Math.PI / 2.8;
-    group.add(ring2);
+            renderer.render(scene, camera);
+        }
+        animate();
 
-    const ring3 = ring1.clone();
-    ring3.scale.set(0.78, 1.12, 0.78);
-    ring3.rotation.x = -Math.PI / 2.8;
-    group.add(ring3);
+        // 3D Smile Transformation Slider (Simplified Procedural Implementation)
+        const smileScene = new THREE.Scene();
+        const smileCamera = new THREE.PerspectiveCamera(45, (window.innerWidth * 0.8) / 600, 0.1, 1000);
+        const smileRenderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        smileRenderer.setSize(document.getElementById('smile-container').clientWidth, 600);
+        document.getElementById('smile-container').appendChild(smileRenderer.domElement);
 
-    const light1 = new THREE.DirectionalLight(0xffffff, 2.4);
-    light1.position.set(3, 4, 5);
-    scene.add(light1);
+        const smileGroup = new THREE.Group();
+        smileScene.add(smileGroup);
 
-    const light2 = new THREE.PointLight(0x42e8c8, 3.2, 10);
-    light2.position.set(-3, 1.4, 3);
-    scene.add(light2);
+        // Procedural Teeth Arc
+        function createTeethArc(isPerfect) {
+            const group = new THREE.Group();
+            const teethCount = 10;
+            const radius = 3;
+            for(let i=0; i<teethCount; i++) {
+                const angle = (i / (teethCount - 1)) * Math.PI * 0.6 - Math.PI * 0.3;
+                const toothGeo = new THREE.CapsuleGeometry(0.25, 0.4, 4, 8);
+                const toothMat = new THREE.MeshPhysicalMaterial({
+                    color: isPerfect ? 0xffffff : 0xddddcc,
+                    roughness: isPerfect ? 0.05 : 0.5,
+                    metalness: 0,
+                    clearcoat: 1
+                });
+                const tooth = new THREE.Mesh(toothGeo, toothMat);
 
-    const light3 = new THREE.PointLight(0x5ea8ff, 2.2, 10);
-    light3.position.set(3, -1, 2.5);
-    scene.add(light3);
+                // Position in arc
+                tooth.position.x = Math.sin(angle) * radius;
+                tooth.position.z = Math.cos(angle) * radius - radius;
 
-    let mouseX = 0;
-    let mouseY = 0;
+                // Add "imperfection" if not perfect
+                if(!isPerfect) {
+                    tooth.rotation.z = (Math.random() - 0.5) * 0.3;
+                    tooth.position.y += (Math.random() - 0.5) * 0.2;
+                } else {
+                    tooth.position.y = 0;
+                }
 
-    window.addEventListener("mousemove", (event) => {
-      mouseX = (event.clientX / window.innerWidth - 0.5) * 2;
-      mouseY = (event.clientY / window.innerHeight - 0.5) * 2;
-    });
+                group.add(tooth);
+            }
+            return group;
+        }
 
-    function resizeTooth() {
-      const rect = canvas.parentElement.getBoundingClientRect();
-      renderer.setSize(rect.width, rect.height);
-      camera.aspect = rect.width / rect.height;
-      camera.updateProjectionMatrix();
-    }
+        const beforeSmile = createTeethArc(false);
+        smileGroup.add(beforeSmile);
 
-    window.addEventListener("resize", resizeTooth);
-    resizeTooth();
+        const afterSmile = createTeethArc(true);
+        smileGroup.add(afterSmile);
 
-    function animateTooth() {
-      if (!prefersReducedMotion) {
-        const time = Date.now() * 0.001;
+        const smileLight = new THREE.PointLight(0xffffff, 100);
+        smileLight.position.set(5, 5, 5);
+        smileScene.add(smileLight);
+        smileScene.add(new THREE.AmbientLight(0xffffff, 0.5));
 
-        group.rotation.y = mouseX * 0.35 + time * 0.34;
-        group.rotation.x = -mouseY * 0.18 + Math.sin(time * 0.8) * 0.05;
-        group.position.y = Math.sin(time * 0.9) * 0.08;
+        smileCamera.position.z = 6;
 
-        ring1.rotation.z = time * 0.42;
-        ring2.rotation.z = -time * 0.32;
-        ring3.rotation.z = time * 0.28;
+        let sliderPos = 0;
+        document.getElementById('smile-container').addEventListener('mousemove', (e) => {
+            const rect = document.getElementById('smile-container').getBoundingClientRect();
+            sliderPos = (e.clientX - rect.left) / rect.width;
+        });
 
-        shell.rotation.y = time * 0.22;
-      }
+        function animateSmile() {
+            requestAnimationFrame(animateSmile);
+            smileGroup.rotation.y = Math.sin(Date.now() * 0.0005) * 0.2;
 
-      renderer.render(scene, camera);
-      requestAnimationFrame(animateTooth);
-    }
+            // Smoother cross-fade logic
+            beforeSmile.children.forEach(child => {
+                child.material.transparent = true;
+                child.material.opacity = 1 - sliderPos;
+            });
+            afterSmile.children.forEach(child => {
+                child.material.transparent = true;
+                child.material.opacity = sliderPos;
+            });
 
-    animateTooth();
-  </script>
+            smileRenderer.render(smileScene, smileCamera);
+        }
+        animateSmile();
+
+        // AI Widget Logic
+        window.nextAiStep = function(choice) {
+            const content = document.getElementById('ai-content');
+            gsap.to(content, { opacity: 0, y: -20, duration: 0.3, onComplete: () => {
+                if(choice === 'whitening') {
+                    content.innerHTML = `
+                        <h4 style="margin-bottom: 20px;">Analysis Complete</h4>
+                        <p style="opacity: 0.7; margin-bottom: 20px;">We recommend Laser Whitening or Porcelain Veneers for maximum impact.</p>
+                        <button class="cta-btn" onclick="location.href='#booking'">View Custom Plan</button>
+                    `;
+                } else {
+                    content.innerHTML = `
+                        <h4 style="margin-bottom: 20px;">Analyzing Choice...</h4>
+                        <p style="opacity: 0.7; margin-bottom: 20px;">Our clinical specialists will contact you with a tailored 3D roadmap.</p>
+                        <button class="cta-btn" onclick="location.href='#booking'">Book Consultation</button>
+                    `;
+                }
+                gsap.to(content, { opacity: 1, y: 0, duration: 0.5 });
+                gsap.to('#ai-visual-brain', { background: 'var(--luxury-gold)', duration: 1 });
+            }});
+        };
+
+        // Tour Gallery Logic
+        const slides = document.querySelectorAll('.tour-slide');
+        const captions = [
+            "Advanced Operatory Suite 01",
+            "Luxury Patient Lounge",
+            "3D Digital Imaging Lab"
+        ];
+        let currentSlide = 0;
+
+        setInterval(() => {
+            if(slides.length === 0) return;
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+            document.getElementById('tour-caption').textContent = captions[currentSlide];
+        }, 5000);
+
+        // Ambient Motion
+        window.addEventListener('mousemove', (e) => {
+            const x = (e.clientX / window.innerWidth) - 0.5;
+            const y = (e.clientY / window.innerHeight) - 0.5;
+
+            gsap.to('#ambient-1', {
+                x: x * 50,
+                y: y * 50,
+                duration: 2,
+                ease: 'power2.out'
+            });
+            gsap.to('#ambient-2', {
+                x: -x * 50,
+                y: -y * 50,
+                duration: 2,
+                ease: 'power2.out'
+            });
+        });
+
+        // Reveal Animations
+        gsap.utils.toArray('.reveal').forEach(el => {
+            gsap.from(el, {
+                scrollTrigger: {
+                    trigger: el,
+                    start: 'top 80%',
+                },
+                y: 50,
+                opacity: 0,
+                duration: 1,
+                ease: 'power3.out'
+            });
+        });
+
+        // Timeline Animation
+        gsap.to('.timeline-progress', {
+            height: '100%',
+            ease: 'none',
+            scrollTrigger: {
+                trigger: '.timeline-container',
+                start: 'top center',
+                end: 'bottom center',
+                scrub: true
+            }
+        });
+
+        window.addEventListener('resize', () => {
+            // Hero Renderer
+            const width = window.innerWidth > 768 ? window.innerWidth * 0.6 : window.innerWidth;
+            const height = window.innerWidth > 768 ? window.innerHeight : 400;
+            camera.aspect = width / height;
+            camera.updateProjectionMatrix();
+            renderer.setSize(width, height);
+
+            // Smile Renderer
+            const sWidth = document.getElementById('smile-container').clientWidth;
+            const sHeight = 600;
+            smileCamera.aspect = sWidth / sHeight;
+            smileCamera.updateProjectionMatrix();
+            smileRenderer.setSize(sWidth, sHeight);
+        });
+
+        // FAQ Toggle Logic
+        window.toggleFaq = (el) => {
+            const answer = el.nextElementSibling;
+            const toggle = el.querySelector('.faq-toggle');
+            const isOpen = answer.style.maxHeight !== '0px' && answer.style.maxHeight !== '';
+
+            // Close all other FAQs
+            document.querySelectorAll('.faq-answer').forEach(item => {
+                item.style.maxHeight = '0px';
+                item.previousElementSibling.querySelector('.faq-toggle').textContent = '+';
+            });
+
+            if (!isOpen) {
+                answer.style.maxHeight = answer.scrollHeight + 'px';
+                toggle.textContent = '×';
+            } else {
+                answer.style.maxHeight = '0px';
+                toggle.textContent = '+';
+            }
+        };
+
+        // Modal Logic
+        const modal = document.getElementById('booking-modal');
+        const modalContent = modal.querySelector('.glass-card');
+
+        window.openBookingModal = () => {
+            modal.style.opacity = '1';
+            modal.style.pointerEvents = 'auto';
+            modalContent.style.transform = 'translateY(0)';
+            lenis.stop();
+        };
+
+        window.closeBookingModal = () => {
+            modal.style.opacity = '0';
+            modal.style.pointerEvents = 'none';
+            modalContent.style.transform = 'translateY(50px)';
+            lenis.start();
+        };
+
+        modal.addEventListener('click', (e) => {
+            if(e.target === modal) closeBookingModal();
+        });
+
+        document.getElementById('modal-booking-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const btn = e.target.querySelector('button');
+            btn.textContent = 'CONFIRMING...';
+            setTimeout(() => {
+                btn.textContent = 'RESERVATION SECURED';
+                btn.style.background = 'var(--soft-cyan)';
+                setTimeout(() => {
+                    closeBookingModal();
+                    // Reset
+                    setTimeout(() => {
+                        btn.textContent = 'SECURE APPOINTMENT';
+                        btn.style.background = 'var(--luxury-gold)';
+                        e.target.reset();
+                    }, 500);
+                }, 1500);
+            }, 1500);
+        });
+
+    </script>
 </body>
 </html>
