@@ -1,79 +1,82 @@
 const { test, expect } = require('@playwright/test');
 
-test.describe('NAGU Dental Website Rebuild Verification', () => {
+test.describe('Nagu Dental Website Rebuild Verification', () => {
     test.beforeEach(async ({ page }) => {
         await page.goto(`file://${process.cwd()}/index.html`);
     });
 
-    test('should have the correct brand name and logo', async ({ page }) => {
-        // Use first() to avoid strict mode violation (header vs footer)
-        await expect(page.locator('header span.font-display', { hasText: 'NAGU' })).toBeVisible();
-        await expect(page.locator('header img[alt="NAGU Logo"]')).toBeVisible();
+    test('should have the correct brand name', async ({ page }) => {
+        const brand = page.locator('.brand');
+        await expect(brand).toContainText('Nagu Dental');
     });
 
-    test('should display the core metrics accurately', async ({ page }) => {
-        // Scroll to the metrics section to trigger Intersection Observer
-        const metricsRow = page.locator('#hero .grid');
-        await metricsRow.scrollIntoViewIfNeeded();
+    test('should display the core metrics in about section', async ({ page }) => {
+        const aboutSection = page.locator('#about');
+        await aboutSection.scrollIntoViewIfNeeded();
 
-        // Wait for the counters to finish animating (2 seconds duration in script.js)
-        await page.waitForTimeout(3000);
+        const statCards = aboutSection.locator('.stat-card h3');
+        const texts = await statCards.allInnerTexts();
 
-        const yearsMetric = page.locator('[data-target="15"]');
-        const patientsMetric = page.locator('[data-target="5000"]');
-        const successMetric = page.locator('[data-target="99"]');
-
-        await expect(yearsMetric).toContainText('15+');
-        await expect(patientsMetric).toContainText('5K+');
-        await expect(successMetric).toContainText('99%');
+        expect(texts).toContain('12k+');
+        expect(texts).toContain('4.9/5');
+        expect(texts).toContain('15+');
     });
 
-    test('should have the shining aura animation class on key images', async ({ page }) => {
-        const heroAura = page.locator('#hero .shining-border-container');
-        await expect(heroAura).toBeVisible();
+    test('should verify the services grid presence', async ({ page }) => {
+        const servicesGrid = page.locator('.services-grid');
+        await expect(servicesGrid).toBeVisible();
 
-        const infraAuras = page.locator('#infrastructure .shining-border-container');
-        const count = await infraAuras.count();
+        const serviceCards = servicesGrid.locator('.service-card');
+        const count = await serviceCards.count();
+        expect(count).toBe(3);
+    });
+
+    test('should verify the specialists section', async ({ page }) => {
+        const specialistsGrid = page.locator('.specialists-grid');
+        await expect(specialistsGrid).toBeVisible();
+
+        const specialistCards = specialistsGrid.locator('.specialist-card');
+        const count = await specialistCards.count();
         expect(count).toBe(4);
     });
 
-    test('should verify the services carousel presence', async ({ page }) => {
-        const carouselTrack = page.locator('.carousel-track');
-        await expect(carouselTrack).toBeVisible();
+    test('should verify the gallery section', async ({ page }) => {
+        const galleryGrid = page.locator('.gallery-grid');
+        await expect(galleryGrid).toBeVisible();
 
-        const serviceCards = carouselTrack.locator('.w-80');
-        const count = await serviceCards.count();
-        expect(count).toBeGreaterThanOrEqual(8);
+        const galleryItems = galleryGrid.locator('.gallery-item');
+        const count = await galleryItems.count();
+        expect(count).toBe(6);
     });
 
-    test('should verify the appointment form fields', async ({ page }) => {
-        await expect(page.locator('input[placeholder="Jane Doe"]')).toBeVisible();
-        await expect(page.locator('input[placeholder="+91 98765 43210"]')).toBeVisible();
-        await expect(page.locator('button:has-text("Confirm Appointment")')).toBeVisible();
+    test('should verify the booking form fields', async ({ page }) => {
+        await expect(page.locator('input[placeholder="Your name"]')).toBeVisible();
+        await expect(page.locator('input[placeholder="+91 88619 32535"]')).toBeVisible();
+        await expect(page.locator('button:has-text("Request Appointment")')).toBeVisible();
     });
 
-    test('should verify the contact details in footer', async ({ page }) => {
-        // Use footer specific locator
-        const footer = page.locator('footer');
-        await expect(page.locator('h3:has-text("Connect Now") + p')).toContainText('+91 88619 32535');
-        await expect(page.locator('h3:has-text("Connect Now") + p + p')).toContainText('nagunadental@gmail.com');
+    test('should verify the contact details in booking section', async ({ page }) => {
+        const contactList = page.locator('.contact-list');
+        await expect(contactList).toContainText('+91 88619 32535');
+        await expect(contactList).toContainText('nagunadental@gmail.com');
     });
 
     test('should open mobile menu when clicking the mobile menu toggle', async ({ page }) => {
-        // Set viewport to mobile
         await page.setViewportSize({ width: 375, height: 812 });
 
-        const menuToggleMobile = page.locator('#menu-toggle-mobile');
-        await expect(menuToggleMobile).toBeVisible();
+        const mobileToggle = page.locator('#mobileToggle');
+        await expect(mobileToggle).toBeVisible();
 
-        const mobileMenu = page.locator('#mobile-menu');
-        await expect(mobileMenu).toHaveClass(/opacity-0/);
+        const nav = page.locator('#nav');
+        // Check that nav-links are hidden initially (in mobile view)
+        const navLinks = page.locator('.nav-links');
+        await expect(navLinks).not.toBeVisible();
 
-        await menuToggleMobile.click();
-        await expect(mobileMenu).not.toHaveClass(/opacity-0/);
+        await mobileToggle.click();
+        await expect(nav).toHaveClass(/open/);
+        await expect(navLinks).toBeVisible();
 
-        const closeBtn = page.locator('#menu-close');
-        await closeBtn.click();
-        await expect(mobileMenu).toHaveClass(/opacity-0/);
+        await mobileToggle.click();
+        await expect(nav).not.toHaveClass(/open/);
     });
 });
