@@ -876,67 +876,93 @@
 
     <script>
         // Set dynamic year
-        document.getElementById('current-year').textContent = new Date().getFullYear();
+        const yearEl = document.getElementById('current-year');
+        if (yearEl) yearEl.textContent = new Date().getFullYear();
 
         // Lenis Smooth Scroll
-        const lenis = new Lenis()
-        function raf(time) {
-            lenis.raf(time)
+        let lenis;
+        if (typeof Lenis !== 'undefined') {
+            lenis = new Lenis();
+            function raf(time) {
+                lenis.raf(time)
+                requestAnimationFrame(raf)
+            }
             requestAnimationFrame(raf)
         }
-        requestAnimationFrame(raf)
 
         // GSAP Setup
-        gsap.registerPlugin(ScrollTrigger);
+        if (typeof gsap !== 'undefined') {
+            gsap.registerPlugin(ScrollTrigger);
+        }
 
         // Header Scroll Effect
-        ScrollTrigger.create({
-            start: 'top -80',
-            onEnter: () => document.getElementById('main-header').classList.add('scrolled'),
-            onLeaveBack: () => document.getElementById('main-header').classList.remove('scrolled'),
-        });
+        if (typeof ScrollTrigger !== 'undefined') {
+            ScrollTrigger.create({
+                start: 'top -80',
+                onEnter: () => document.getElementById('main-header').classList.add('scrolled'),
+                onLeaveBack: () => document.getElementById('main-header').classList.remove('scrolled'),
+            });
+        }
 
         // Loader Animation
-        window.addEventListener('load', () => {
-            const tl = gsap.timeline();
+        const initLoader = () => {
+            if (window.loaderInitialized) return;
+            window.loaderInitialized = true;
 
-            tl.to('.loader-progress', {
-                width: '100%',
-                duration: 1.5,
-                ease: 'power4.inOut'
-            })
-            .to('.loader-logo', {
-                opacity: 1,
-                y: -10,
-                duration: 0.8,
-                ease: 'power2.out'
-            }, '-=0.5')
-            .to('#loader', {
-                y: '-100%',
-                duration: 1,
-                ease: 'power4.inOut',
-                delay: 0.5,
-                onComplete: () => {
-                    const loader = document.getElementById('loader');
-                    loader.style.display = 'none';
-                    loader.setAttribute('aria-hidden', 'true');
-                    // Add a class for easier testing if needed
-                    loader.classList.add('is-hidden');
-                }
-            })
-            .from('.hero-headline span', {
-                y: 100,
-                opacity: 0,
-                stagger: 0.2,
-                duration: 1,
-                ease: 'power4.out'
-            }, '-=0.5')
-            .from('.hero-subheadline', {
-                opacity: 0,
-                y: 20,
-                duration: 1
-            }, '-=0.5')
+            const loader = document.getElementById('loader');
+            if (!loader) return;
+
+            const finalHide = () => {
+                loader.style.display = 'none';
+                loader.setAttribute('aria-hidden', 'true');
+                loader.classList.add('is-hidden');
+            };
+
+            if (typeof gsap !== 'undefined') {
+                const tl = gsap.timeline();
+                tl.to('.loader-progress', {
+                    width: '100%',
+                    duration: 1.5,
+                    ease: 'power4.inOut'
+                })
+                .to('.loader-logo', {
+                    opacity: 1,
+                    y: -10,
+                    duration: 0.8,
+                    ease: 'power2.out'
+                }, '-=0.5')
+                .to('#loader', {
+                    y: '-100%',
+                    duration: 1,
+                    ease: 'power4.inOut',
+                    delay: 0.5,
+                    onStart: () => {
+                        loader.style.pointerEvents = 'none';
+                    },
+                    onComplete: finalHide
+                })
+                .from('.hero-headline span', {
+                    y: 100,
+                    opacity: 0,
+                    stagger: 0.2,
+                    duration: 1,
+                    ease: 'power4.out'
+                }, '-=0.5')
+                .from('.hero-subheadline', {
+                    opacity: 0,
+                    y: 20,
+                    duration: 1
+                }, '-=0.5');
+            } else {
+                finalHide();
+            }
+        };
+
+        window.addEventListener('load', initLoader);
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(initLoader, 2000); // 2s after DOM
         });
+        setTimeout(initLoader, 5000); // 5s absolute failsafe
 
         // Magnetic Hover Effect
         const magneticElements = document.querySelectorAll('.magnetic-wrap');
@@ -1286,14 +1312,14 @@
             modal.style.opacity = '1';
             modal.style.pointerEvents = 'auto';
             modalContent.style.transform = 'translateY(0)';
-            lenis.stop();
+            if (lenis) lenis.stop();
         };
 
         window.closeBookingModal = () => {
             modal.style.opacity = '0';
             modal.style.pointerEvents = 'none';
             modalContent.style.transform = 'translateY(50px)';
-            lenis.start();
+            if (lenis) lenis.start();
         };
 
         modal.addEventListener('click', (e) => {
