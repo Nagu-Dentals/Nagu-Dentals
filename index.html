@@ -1698,71 +1698,102 @@
     scene.add(group);
 
     const enamelMaterial = new THREE.MeshPhysicalMaterial({
-      color: 0xf7ffff,
-      roughness: 0.18,
-      metalness: 0.02,
-      clearcoat: 0.9,
-      clearcoatRoughness: 0.08,
-      transmission: 0.18
+      color: 0xffffff,
+      roughness: 0.1,
+      metalness: 0.1,
+      clearcoat: 1.0,
+      clearcoatRoughness: 0.05,
+      transmission: 0.3,
+      ior: 1.45,
+      thickness: 1.0,
+      sheen: 0.5,
+      sheenRoughness: 0.2,
+      sheenColor: 0x42e8c8,
+      specularIntensity: 1.0,
+      specularColor: 0xffffff
     });
 
     const rootMaterial = new THREE.MeshPhysicalMaterial({
-      color: 0xdffcff,
-      roughness: 0.28,
-      metalness: 0.01,
-      clearcoat: 0.45
+      color: 0xf2f2f2,
+      roughness: 0.4,
+      metalness: 0.05,
+      clearcoat: 0.3,
+      sheen: 0.2,
+      sheenColor: 0x5ea8ff
     });
 
     const glowMaterial = new THREE.MeshBasicMaterial({
       color: 0x42e8c8,
       transparent: true,
-      opacity: 0.08,
+      opacity: 0.1,
       wireframe: true
     });
 
-    const crown = new THREE.Mesh(
-      new THREE.SphereGeometry(1.08, 64, 64),
+    // Create a molar tooth group
+    const tooth = new THREE.Group();
+    group.add(tooth);
+
+    // Crown: Rounded box with cusps
+    const crownBody = new THREE.Mesh(
+      new THREE.BoxGeometry(1.6, 1.2, 1.6, 8, 8, 8),
       enamelMaterial
     );
-    crown.scale.set(0.92, 1.15, 0.72);
-    crown.position.y = 0.55;
-    group.add(crown);
 
-    const neck = new THREE.Mesh(
-      new THREE.SphereGeometry(0.82, 64, 64),
-      enamelMaterial
-    );
-    neck.scale.set(0.78, 0.52, 0.58);
-    neck.position.y = -0.35;
-    group.add(neck);
+    // Deform box to look like a tooth crown
+    const pos = crownBody.geometry.attributes.position;
+    for (let i = 0; i < pos.count; i++) {
+      let x = pos.getX(i);
+      let y = pos.getY(i);
+      let z = pos.getZ(i);
 
-    const roots = [
-      [-0.34, -1.05, 0.02],
-      [0.34, -1.05, 0.02],
-      [0, -0.96, -0.34]
+      // Narrow the bottom (neck)
+      if (y < 0) {
+        let scale = 1 + (y * 0.4);
+        pos.setX(i, x * scale);
+        pos.setZ(i, z * scale);
+      }
+
+      // Add cusps on top
+      if (y > 0.4) {
+        let cusp = Math.sin(x * 3) * Math.cos(z * 3) * 0.15;
+        pos.setY(i, y + cusp);
+      }
+
+      // Bulge the sides slightly
+      let bulge = 1 + Math.cos(y * 2) * 0.1;
+      pos.setX(i, x * bulge);
+      pos.setZ(i, z * bulge);
+    }
+    crownBody.geometry.computeVertexNormals();
+    crownBody.position.y = 0.6;
+    tooth.add(crownBody);
+
+    // Roots
+    const rootGeom = new THREE.ConeGeometry(0.3, 1.6, 32);
+    const rootPositions = [
+      [0.4, -0.4, 0.4, -0.2, 0.2],
+      [-0.4, -0.4, 0.4, 0.2, 0.2],
+      [0, -0.4, -0.4, 0, -0.2]
     ];
 
-    roots.forEach((pos, index) => {
-      const root = new THREE.Mesh(
-        new THREE.ConeGeometry(0.22 - index * 0.015, 1.25, 48),
-        rootMaterial
-      );
-      root.position.set(...pos);
-      root.rotation.z = index === 0 ? 0.18 : index === 1 ? -0.18 : 0;
-      root.rotation.x = index === 2 ? 0.45 : 0.05;
-      group.add(root);
+    rootPositions.forEach(p => {
+      const root = new THREE.Mesh(rootGeom, rootMaterial);
+      root.position.set(p[0], p[1], p[2]);
+      root.rotation.z = p[3];
+      root.rotation.x = p[4];
+      tooth.add(root);
     });
 
-    const shell = new THREE.Mesh(
-      new THREE.SphereGeometry(1.42, 64, 64),
-      glowMaterial
-    );
-    shell.scale.set(0.78, 1.38, 0.62);
-    shell.position.y = 0.25;
+    // Holographic shell (matches tooth shape)
+    const shell = tooth.clone();
+    shell.traverse(child => {
+      if (child.isMesh) child.material = glowMaterial;
+    });
+    shell.scale.set(1.1, 1.1, 1.1);
     group.add(shell);
 
     const ring1 = new THREE.Mesh(
-      new THREE.TorusGeometry(1.72, 0.012, 12, 160),
+      new THREE.TorusGeometry(2.1, 0.012, 12, 160),
       new THREE.MeshBasicMaterial({
         color: 0x42e8c8,
         transparent: true,
@@ -1824,7 +1855,7 @@
         ring2.rotation.z = -time * 0.32;
         ring3.rotation.z = time * 0.28;
 
-        shell.rotation.y = time * 0.22;
+        shell.rotation.y = time * 0.11; // Slow holographic drift
       }
 
       renderer.render(scene, camera);
