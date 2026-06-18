@@ -659,6 +659,91 @@
       margin-right: 8px;
     }
 
+    .specialists-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .specialist-card {
+      border-radius: 32px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.06);
+      transition: 0.4s ease;
+    }
+
+    .specialist-card:hover {
+      transform: translateY(-10px);
+      border-color: var(--primary);
+    }
+
+    .specialist-img {
+      height: 320px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .specialist-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: 0.6s ease;
+    }
+
+    .specialist-card:hover .specialist-img img {
+      transform: scale(1.1);
+    }
+
+    .specialist-info {
+      padding: 24px;
+      text-align: center;
+    }
+
+    .specialist-info h3 {
+      font-size: 1.25rem;
+      margin-bottom: 6px;
+    }
+
+    .specialist-info p {
+      color: var(--primary);
+      font-weight: 800;
+      font-size: 0.86rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .gallery-item {
+      border-radius: 24px;
+      overflow: hidden;
+      aspect-ratio: 4 / 3;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.06);
+      transition: 0.4s ease;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: 0.6s ease;
+    }
+
+    .gallery-item:hover {
+      border-color: var(--primary);
+      transform: translateY(-5px);
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+
     .experience {
       display: grid;
       grid-template-columns: 0.9fr 1.1fr;
@@ -1089,14 +1174,23 @@
       .nav.open .nav-links {
         display: grid;
         position: absolute;
-        top: 64px;
-        left: 12px;
-        right: 12px;
-        background: rgba(5,17,31,0.96);
-        border: 1px solid var(--border);
+        top: 72px;
+        left: 0;
+        right: 0;
+        background: rgba(5,17,31,0.98);
+        border-bottom: 1px solid var(--border);
         border-radius: 24px;
-        padding: 12px;
-        backdrop-filter: blur(20px);
+        padding: 24px;
+        backdrop-filter: blur(32px);
+        box-shadow: 0 40px 100px rgba(0,0,0,0.6);
+        gap: 12px;
+        text-align: center;
+      }
+
+      .nav.open .nav-links a {
+        padding: 18px;
+        font-size: 1.1rem;
+        background: rgba(255,255,255,0.05);
       }
 
       .hero-grid,
@@ -1115,7 +1209,8 @@
       }
 
       .stats-grid,
-      .services-grid {
+      .services-grid,
+      .specialists-grid {
         grid-template-columns: repeat(2, 1fr);
       }
 
@@ -1162,26 +1257,28 @@
       }
 
       .card-a {
-        left: 10px;
-        top: 34px;
-        width: 180px;
+        left: 5px;
+        top: 15px;
+        width: 160px;
       }
 
       .card-b {
-        right: 8px;
-        top: 160px;
-        width: 175px;
+        right: 5px;
+        top: 120px;
+        width: 155px;
       }
 
       .card-c {
-        left: 24px;
-        bottom: 30px;
-        width: 190px;
+        left: 15px;
+        bottom: 20px;
+        width: 170px;
       }
 
       .stats-grid,
       .services-grid,
-      .before-after {
+      .before-after,
+      .specialists-grid,
+      .gallery-grid {
         grid-template-columns: 1fr;
       }
 
@@ -1219,27 +1316,29 @@
   <div class="particles" aria-hidden="true"></div>
 
   <nav class="nav" id="nav">
-    <a class="brand" href="#top" aria-label="Nagu Dental Home">
+    <a class="brand" href="#home" aria-label="Nagu Dental Home">
       <div class="brand-mark"></div>
       <span>Nagu Dental</span>
     </a>
 
     <div class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
       <a href="#services">Services</a>
-      <a href="#experience">Experience</a>
-      <a href="#smiles">Smiles</a>
+      <a href="#specialists">Specialists</a>
+      <a href="#gallery">Gallery</a>
       <a href="#reviews">Reviews</a>
     </div>
 
     <div class="nav-actions">
-      <a class="btn secondary" href="tel:+1234567890">Call Now</a>
+      <a class="btn secondary" href="tel:+918861932535">Call Now</a>
       <a class="btn" href="#booking">Book Visit</a>
       <button class="mobile-toggle" id="mobileToggle" aria-label="Open menu">☰</button>
     </div>
   </nav>
 
-  <main id="top">
-    <header class="hero">
+  <main>
+    <header class="hero" id="home">
       <div class="container hero-grid">
         <div class="hero-copy-wrap reveal">
           <div class="eyebrow">
@@ -1310,8 +1409,19 @@
       </div>
     </header>
 
-    <section class="stats">
+    <section class="stats" id="about">
       <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="section-kicker">About Us</div>
+            <h2>A legacy of clinical excellence and patient trust.</h2>
+          </div>
+          <p>
+            At Nagu Dental, we combine 15+ years of clinical expertise with
+            cutting-edge technology to provide a dental experience that is as
+            comfortable as it is effective.
+          </p>
+        </div>
         <div class="stats-grid">
           <div class="stat-card tilt reveal">
             <div class="tilt-inner">
@@ -1391,6 +1501,63 @@
       </div>
     </section>
 
+    <section id="specialists">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="section-kicker">Our Specialists</div>
+            <h2>Meet the hands behind your healthy smile.</h2>
+          </div>
+          <p>
+            Our team of expert clinicians brings decades of combined experience
+            in restorative, cosmetic, and surgical dentistry.
+          </p>
+        </div>
+
+        <div class="specialists-grid">
+          <div class="specialist-card reveal">
+            <div class="specialist-img">
+              <img src="assets/images/adv-spec-1.png" alt="Dr. Sarah Miller">
+            </div>
+            <div class="specialist-info">
+              <h3>Dr. Sarah Miller</h3>
+              <p>Cosmetic Specialist</p>
+            </div>
+          </div>
+
+          <div class="specialist-card reveal">
+            <div class="specialist-img">
+              <img src="assets/images/adv-spec-2.png" alt="Dr. James Wilson">
+            </div>
+            <div class="specialist-info">
+              <h3>Dr. James Wilson</h3>
+              <p>Implant Surgeon</p>
+            </div>
+          </div>
+
+          <div class="specialist-card reveal">
+            <div class="specialist-img">
+              <img src="assets/images/adv-spec-3.png" alt="Dr. Elena Rodriguez">
+            </div>
+            <div class="specialist-info">
+              <h3>Dr. Elena Rodriguez</h3>
+              <p>Orthodontist</p>
+            </div>
+          </div>
+
+          <div class="specialist-card reveal">
+            <div class="specialist-img">
+              <img src="assets/images/adv-spec-4.png" alt="Dr. Michael Chen">
+            </div>
+            <div class="specialist-info">
+              <h3>Dr. Michael Chen</h3>
+              <p>Pediatric Dentist</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section id="experience">
       <div class="container experience">
         <div class="experience-panel tilt reveal">
@@ -1442,33 +1609,40 @@
       </div>
     </section>
 
-    <section id="smiles">
+    <section id="gallery">
       <div class="container">
         <div class="section-head reveal">
           <div>
-            <div class="section-kicker">Smile Gallery</div>
-            <h2>Confidence you can see instantly.</h2>
+            <div class="section-kicker">Clinical Gallery</div>
+            <h2>Premium results, precision care.</h2>
           </div>
           <p>
-            Visualize your future smile before treatment begins with digital preview technology.
+            A glimpse into our clinical excellence and the modern environment
+            where we craft your perfect smile.
           </p>
         </div>
 
-        <div class="before-after">
-          <div class="smile-card reveal">
-            <div>
-              <h3>Before</h3>
-              <p>Uneven color, small chips, and low confidence.</p>
-            </div>
-            <div class="smile-face"></div>
+        <div class="gallery-grid">
+          <div class="gallery-item reveal">
+            <img src="assets/images/clinical-1.png" alt="Clinical Gallery 1">
           </div>
-
-          <div class="smile-card after reveal">
-            <div>
-              <h3>After</h3>
-              <p>Bright, balanced, natural-looking confidence.</p>
+          <div class="gallery-item reveal">
+            <img src="assets/images/clinical-2.png" alt="Clinical Gallery 2">
+          </div>
+          <div class="gallery-item reveal">
+            <img src="assets/images/clinical-3.png" alt="Clinical Gallery 3">
+          </div>
+          <div class="gallery-item reveal">
+            <img src="assets/images/clinical-4.png" alt="Clinical Gallery 4">
+          </div>
+          <div class="gallery-item reveal">
+            <img src="assets/images/clinical-5.png" alt="Clinical Gallery 5">
+          </div>
+          <div class="gallery-item reveal" style="display: flex; align-items: center; justify-content: center; background: var(--glass); border-style: dashed;">
+            <div style="text-align: center; padding: 20px;">
+              <div style="font-size: 2rem; margin-bottom: 10px;">✨</div>
+              <p style="font-size: 0.9rem; color: var(--muted);">More transformations coming soon</p>
             </div>
-            <div class="smile-face"></div>
           </div>
         </div>
       </div>
@@ -1520,9 +1694,9 @@
             </p>
 
             <div class="contact-list">
-              <div><span>📍</span> Nagu Dental, Premium Care Center</div>
-              <div><span>📞</span> +1 234 567 890</div>
-              <div><span>✉️</span> hello@nagudental.com</div>
+              <div><span>📍</span> Hegganahalli Cross, Bengaluru</div>
+              <div><span>📞</span> +91 88619 32535</div>
+              <div><span>✉️</span> nagunadental@gmail.com</div>
             </div>
           </div>
 
@@ -1534,7 +1708,7 @@
 
             <div class="field">
               <label for="phone">Phone Number</label>
-              <input id="phone" name="phone" type="tel" placeholder="+1 234 567 890" required>
+              <input id="phone" name="phone" type="tel" placeholder="+91 88619 32535" required>
             </div>
 
             <div class="field">
