@@ -28,7 +28,7 @@ test.describe('Nagu Dental Website Rebuild Verification', () => {
 
         const serviceCards = servicesGrid.locator('.service-card');
         const count = await serviceCards.count();
-        expect(count).toBe(3);
+        expect(count).toBe(9);
     });
 
     test('should verify the specialists section', async ({ page }) => {
