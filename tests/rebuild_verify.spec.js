@@ -52,6 +52,7 @@ test.describe('Nagu Dental Website Rebuild Verification', () => {
     test('should verify the booking form fields', async ({ page }) => {
         await expect(page.locator('input[placeholder="Your name"]')).toBeVisible();
         await expect(page.locator('input[placeholder="+91 88619 32535"]')).toBeVisible();
+        await expect(page.locator('input[placeholder="yourname@example.com"]')).toBeVisible();
         await expect(page.locator('button:has-text("Request Appointment")')).toBeVisible();
     });
 

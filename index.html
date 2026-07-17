@@ -1790,15 +1790,22 @@
             </div>
           </div>
 
-          <form id="bookingForm">
+          <form id="bookingForm" action="https://formspree.io/f/mnjepdkr" method="POST">
+            <input type="text" name="_gotcha" style="display:none">
+
             <div class="field">
               <label for="name">Full Name</label>
-              <input id="name" name="name" type="text" placeholder="Your name" required>
+              <input id="name" name="name" type="text" placeholder="Your name" autocomplete="name" required>
             </div>
 
             <div class="field">
               <label for="phone">Phone Number</label>
-              <input id="phone" name="phone" type="tel" placeholder="+91 88619 32535" required>
+              <input id="phone" name="phone" type="tel" placeholder="+91 88619 32535" autocomplete="tel" required>
+            </div>
+
+            <div class="field">
+              <label for="email">Email Address</label>
+              <input id="email" name="email" type="email" placeholder="yourname@example.com" autocomplete="email" required>
             </div>
 
             <div class="field">
@@ -1923,24 +1930,6 @@
       });
     });
 
-    /* Booking Form */
-    const form = document.getElementById("bookingForm");
-
-    form.addEventListener("submit", (event) => {
-      event.preventDefault();
-      const btn = form.querySelector("button");
-      const original = btn.innerHTML;
-
-      btn.innerHTML = "Request Sent ✓";
-      btn.style.pointerEvents = "none";
-
-      setTimeout(() => {
-        btn.innerHTML = original;
-        btn.style.pointerEvents = "";
-        form.reset();
-        alert("Thank you! Nagu Dental will contact you shortly.");
-      }, 1400);
-    });
 
     /* Three.js 3D Tooth */
     const canvas = document.getElementById("toothCanvas");
