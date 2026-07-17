@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://nagu-dentals.github.io/Nagu-Dentals/sitemap.xml
