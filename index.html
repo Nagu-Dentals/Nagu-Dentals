@@ -585,6 +585,83 @@
       line-height: 1.5;
     }
 
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .gallery-item {
+      border-radius: 24px;
+      overflow: hidden;
+      aspect-ratio: 4 / 3;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.06);
+      transition: 0.4s ease;
+      position: relative;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: 0.6s ease;
+    }
+
+    .gallery-item:hover {
+      border-color: var(--primary);
+      transform: translateY(-5px);
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.08);
+    }
+
+    .specialists-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .specialist-card {
+      border-radius: 32px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.06);
+      transition: 0.4s ease;
+    }
+
+    .specialist-card:hover {
+      transform: translateY(-10px);
+      border-color: var(--primary);
+    }
+
+    .specialist-img {
+      height: 280px;
+      display: grid;
+      place-items: center;
+      background: rgba(255,255,255,0.04);
+      font-size: 3.5rem;
+    }
+
+    .specialist-info {
+      padding: 24px;
+      text-align: center;
+    }
+
+    .specialist-info h3 {
+      font-size: 1.25rem;
+      margin-bottom: 6px;
+    }
+
+    .specialist-info p {
+      color: var(--primary);
+      font-weight: 800;
+      font-size: 0.86rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
     .services-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -871,7 +948,9 @@
       }
 
       .stats-grid,
-      .services-grid {
+      .services-grid,
+      .specialists-grid,
+      .gallery-grid {
         grid-template-columns: repeat(2, 1fr);
       }
 
@@ -936,7 +1015,9 @@
       }
 
       .stats-grid,
-      .services-grid {
+      .services-grid,
+      .specialists-grid,
+      .gallery-grid {
         grid-template-columns: 1fr;
       }
 
@@ -1090,10 +1171,8 @@
   <div class="particles" aria-hidden="true"></div>
 
   <nav class="nav" id="nav">
-    <a class="brand" href="#home" aria-label="Nagu Dental Home">
-      <img src="./assets/images/logo.png" alt="Nagu Dental Logo" class="brand-mark" width="42" height="42" />
     <a class="brand" href="index.html" aria-label="Nagu Dental Home">
-      <div class="brand-mark"></div>
+      <img src="./assets/images/logo.png" alt="Nagu Dental Logo" class="brand-mark" width="42" height="42" />
       <span>Nagu Dental</span>
     </a>
 
@@ -1319,10 +1398,136 @@
               </ul>
             </article>
           </a>
+
+          <a href="services/root-canal.html">
+            <article class="service-card tilt reveal">
+              <div class="service-visual tilt-inner">🦷</div>
+              <h3>Root Canal Treatment</h3>
+              <p>Save natural infected teeth painlessly using advanced rotary microscopic techniques.</p>
+              <ul>
+                <li>Single-visit rotary RCT</li>
+                <li>Microscopic precision</li>
+                <li>Comfortable, pain-free procedure</li>
+              </ul>
+            </article>
+          </a>
+
+          <a href="services/pediatric-dentistry.html">
+            <article class="service-card tilt reveal">
+              <div class="service-visual tilt-inner">🧸</div>
+              <h3>Kids Dentistry</h3>
+              <p>Gentle, stress-free dental care tailored specifically for children in a warm environment.</p>
+              <ul>
+                <li>Gentle pediatric checkups</li>
+                <li>Protective dental sealants</li>
+                <li>Positive, fun experience</li>
+              </ul>
+            </article>
+          </a>
+
+          <a href="services/emergency-dentistry.html">
+            <article class="service-card tilt reveal">
+              <div class="service-visual tilt-inner">🆘</div>
+              <h3>Emergency Dental Care</h3>
+              <p>Priority emergency scheduling for sudden severe toothaches and dental trauma.</p>
+              <ul>
+                <li>24/7 priority support</li>
+                <li>Instant pain management</li>
+                <li>Rapid diagnosis &amp; relief</li>
+              </ul>
+            </article>
+          </a>
         </div>
 
         <div style="text-align: center; margin-top: 40px;">
           <a href="services.html" class="btn secondary">View All Services →</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="specialists">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="section-kicker">Our Team</div>
+            <h2>Meet our dedicated clinical specialists.</h2>
+          </div>
+          <p>
+            Our team comprises highly qualified, compassionate dental experts dedicated to crafting your healthiest, brightest smile.
+          </p>
+        </div>
+
+        <div class="specialists-grid">
+          <div class="specialist-card reveal">
+            <div class="specialist-img">🩺</div>
+            <div class="specialist-info">
+              <h3>Dentist &amp; Oral Surgeon</h3>
+              <p>Clinical Associate</p>
+            </div>
+          </div>
+
+          <div class="specialist-card reveal">
+            <div class="specialist-img">🦷</div>
+            <div class="specialist-info">
+              <h3>Orthodontist Specialist</h3>
+              <p>Consultant Orthodontics</p>
+            </div>
+          </div>
+
+          <div class="specialist-card reveal">
+            <div class="specialist-img">✨</div>
+            <div class="specialist-info">
+              <h3>Pediatric Dentist</h3>
+              <p>Child Oral Care Expert</p>
+            </div>
+          </div>
+
+          <div class="specialist-card reveal">
+            <div class="specialist-img">🌟</div>
+            <div class="specialist-info">
+              <h3>Endodontist</h3>
+              <p>Rotary Root Canal Expert</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="section-kicker">Clinical Gallery</div>
+            <h2>State-of-the-art facilities &amp; comfortable spaces.</h2>
+          </div>
+          <p>
+            Take a virtual tour of our modern operatory suites, advanced 3D diagnostic equipment, and serene patient lounges.
+          </p>
+        </div>
+
+        <div class="gallery-grid">
+          <div class="gallery-item reveal" data-category="operatories">
+            <img src="assets/images/clinical-1.png" width="400" height="300" alt="Modern Dental Chair and Clean Clinical Operatory Room" loading="lazy">
+          </div>
+          <div class="gallery-item reveal" data-category="equipment">
+            <img src="assets/images/clinical-2.png" width="400" height="300" alt="Digital Panoramic X-Ray Scanning Machine on Wall" loading="lazy">
+          </div>
+          <div class="gallery-item reveal" data-category="equipment">
+            <img src="assets/images/clinical-3.png" width="400" height="300" alt="Close-up of Advanced Dental Diagnostic LCD Screen" loading="lazy">
+          </div>
+          <div class="gallery-item reveal" data-category="equipment">
+            <img src="assets/images/clinical-4.png" width="400" height="300" alt="State-of-the-Art Dental Sterilization Equipment" loading="lazy">
+          </div>
+          <div class="gallery-item reveal" data-category="clinic">
+            <img src="assets/images/clinical-5.png" width="400" height="300" alt="Welcoming Premium Clinic Interior Lounge and Reception Area" loading="lazy">
+          </div>
+          <div class="gallery-item reveal" data-category="clinic" style="display: flex; align-items: center; justify-content: center; background: var(--glass); border-style: dashed;">
+            <div style="text-align: center; padding: 20px;">
+              <div style="font-size: 2.2rem; margin-bottom: 10px;">✨</div>
+              <p style="font-weight: 800; color: var(--primary); margin-bottom: 4px;">More Coming Soon</p>
+              <p style="font-size: 0.85rem; color: var(--muted);">Updating with latest smile transformations</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
