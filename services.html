@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dental Treatments &amp; Services | Nagu Dental Clinic Bengaluru</title>
+  <meta name="description" content="Explore Nagu Dental's full spectrum of premium services in Bengaluru: Dental Implants, Invisalign, Teeth Whitening, Root Canal, Cosmetic Dentistry &amp; Emergency Care.">
+
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" as="style" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #06111f;
+      --bg-2: #091b2e;
+      --text: #f7fbff;
+      --muted: #9eb4c8;
+      --primary: #42e8c8;
+      --primary-2: #5ea8ff;
+      --accent: #ffcf6b;
+      --pink: #ff6b9a;
+      --glass: rgba(255, 255, 255, 0.08);
+      --glass-2: rgba(255, 255, 255, 0.13);
+      --border: rgba(255, 255, 255, 0.16);
+      --shadow: 0 30px 90px rgba(0, 0, 0, 0.45);
+      --radius: 28px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+      background:
+        radial-gradient(circle at 12% 12%, rgba(66, 232, 200, 0.18), transparent 34%),
+        radial-gradient(circle at 88% 18%, rgba(94, 168, 255, 0.18), transparent 32%),
+        radial-gradient(circle at 50% 80%, rgba(255, 107, 154, 0.12), transparent 34%),
+        linear-gradient(180deg, var(--bg), #04101b 55%, #030812);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+      background-size: 56px 56px;
+      mask-image: radial-gradient(circle at center, black, transparent 75%);
+      z-index: -2;
+    }
+    a { color: inherit; text-decoration: none; }
+    button, input, textarea { font: inherit; }
+
+    .noise {
+      position: fixed; inset: 0; pointer-events: none; opacity: 0.08;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='.75'/%3E%3C/svg%3E");
+      z-index: 999; mix-blend-mode: overlay;
+    }
+
+    .container {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .nav {
+      position: fixed; top: 18px; left: 50%; transform: translateX(-50%);
+      width: min(1180px, calc(100% - 32px)); z-index: 50;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(5, 17, 31, 0.58); backdrop-filter: blur(22px);
+      border-radius: 999px; padding: 10px 12px;
+      display: flex; align-items: center; justify-content: space-between;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.28);
+    }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 900; letter-spacing: -0.04em; }
+    .brand-mark {
+      width: 42px; height: 42px; border-radius: 16px; display: grid; place-items: center;
+      background: radial-gradient(circle at 30% 20%, #fff, transparent 22%), linear-gradient(135deg, var(--primary), var(--primary-2));
+      box-shadow: 0 12px 32px rgba(66,232,200,0.32); position: relative; overflow: hidden;
+    }
+    .brand-mark::after {
+      content: ""; width: 18px; height: 18px; background: #06111f;
+      clip-path: polygon(50% 0, 62% 35%, 100% 35%, 70% 55%, 82% 95%, 50% 72%, 18% 95%, 30% 55%, 0 35%, 38% 35%);
+    }
+    .brand span:last-child { font-size: 1.08rem; }
+    .nav-links { display: flex; align-items: center; gap: 4px; color: var(--muted); font-weight: 700; font-size: 0.92rem; }
+    .nav-links a { padding: 12px 14px; border-radius: 999px; transition: 0.25s ease; }
+    .nav-links a:hover { color: var(--text); background: rgba(255,255,255,0.08); }
+    .nav-actions { display: flex; align-items: center; gap: 10px; }
+
+    .btn {
+      border: 0; cursor: pointer; border-radius: 999px; padding: 14px 20px;
+      color: #06111f; background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      font-weight: 900; box-shadow: 0 16px 36px rgba(66,232,200,0.22);
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px; transition: 0.35s ease;
+      position: relative; overflow: hidden;
+    }
+    .btn:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 24px 52px rgba(66,232,200,0.32); }
+    .btn.secondary { color: var(--text); background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.16); box-shadow: none; }
+    .btn.secondary:hover { background: rgba(255,255,255,0.14); box-shadow: 0 20px 46px rgba(0,0,0,0.22); }
+    .mobile-toggle { display: none; width: 44px; height: 44px; border-radius: 14px; border: 1px solid var(--border); background: rgba(255,255,255,0.08); color: var(--text); font-size: 1.4rem; }
+
+    section { padding: 90px 0; position: relative; }
+    .section-head { display: flex; justify-content: space-between; gap: 32px; align-items: end; margin-bottom: 42px; }
+    .section-kicker { color: var(--primary); font-weight: 900; text-transform: uppercase; letter-spacing: 0.14em; font-size: 0.78rem; margin-bottom: 12px; }
+    h2 { font-size: clamp(2.2rem, 5vw, 4.3rem); line-height: 1; letter-spacing: -0.06em; max-width: 760px; }
+    .section-head p { color: var(--muted); line-height: 1.7; max-width: 420px; }
+
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .services-grid > a { display: block; height: 100%; }
+    .service-card {
+      height: 100%; min-height: 330px; border-radius: 32px; padding: 28px;
+      border: 1px solid var(--border);
+      background: radial-gradient(circle at top right, rgba(66,232,200,0.16), transparent 34%), rgba(255,255,255,0.065);
+      backdrop-filter: blur(18px); position: relative; overflow: hidden; transition: 0.35s ease;
+    }
+    .service-card:hover { transform: translateY(-8px); border-color: rgba(66,232,200,0.32); box-shadow: 0 30px 80px rgba(0,0,0,0.28); }
+    .service-visual { height: 145px; border-radius: 24px; background: radial-gradient(circle at 50% 45%, rgba(255,255,255,0.3), transparent 18%), linear-gradient(135deg, rgba(66,232,200,0.22), rgba(94,168,255,0.14)); border: 1px solid rgba(255,255,255,0.12); margin-bottom: 24px; display: grid; place-items: center; font-size: 3rem; }
+    .service-card h3 { font-size: 1.45rem; margin-bottom: 12px; letter-spacing: -0.03em; }
+    .service-card p { color: var(--muted); line-height: 1.65; margin-bottom: 22px; }
+    .service-card ul { list-style: none; color: #d8e7f5; display: grid; gap: 10px; font-weight: 700; font-size: 0.92rem; }
+    .service-card li::before { content: "✓"; color: var(--primary); margin-right: 8px; }
+
+    .reveal { opacity: 0; transform: translateY(34px); transition: 0.85s cubic-bezier(.2,.8,.2,1); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 980px) {
+      .nav-links, .nav-actions .btn.secondary { display: none; }
+      .mobile-toggle { display: grid; place-items: center; }
+      .nav.open .nav-links { display: grid; position: absolute; top: 72px; left: 0; right: 0; background: rgba(5,17,31,0.98); border-bottom: 1px solid var(--border); border-radius: 24px; padding: 24px; gap: 12px; text-align: center; }
+      .nav.open .nav-links a { padding: 18px; font-size: 1.1rem; background: rgba(255,255,255,0.05); }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .section-head { display: block; }
+      .section-head p { margin-top: 18px; }
+    }
+    @media (max-width: 640px) {
+      .brand span:last-child { display: none; }
+      .services-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+
+  <!-- SEO & Accessibility -->
+  <link rel="canonical" href="https://nagu-dentals.github.io/Nagu-Dentals/services.html" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Nagu Dental Clinic" />
+  <meta name="theme-color" content="#42e8c8" />
+  <link rel="manifest" href="./manifest.json" />
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/logo.png" />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://nagu-dentals.github.io/Nagu-Dentals/services.html" />
+  <meta property="og:title" content="Dental Treatments & Services | Nagu Dental Clinic Bengaluru" />
+  <meta property="og:description" content="Explore Nagu Dental's full spectrum of premium services in Bengaluru: Dental Implants, Invisalign, Teeth Whitening, Root Canal, Cosmetic Dentistry & Emergency Care." />
+  <meta property="og:image" content="https://nagu-dentals.github.io/Nagu-Dentals/assets/images/logo.png" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://nagu-dentals.github.io/Nagu-Dentals/services.html" />
+  <meta name="twitter:title" content="Dental Treatments & Services | Nagu Dental Clinic Bengaluru" />
+  <meta name="twitter:description" content="Explore Nagu Dental's full spectrum of premium services in Bengaluru: Dental Implants, Invisalign, Teeth Whitening, Root Canal, Cosmetic Dentistry & Emergency Care." />
+  <meta name="twitter:image" content="https://nagu-dentals.github.io/Nagu-Dentals/assets/images/logo.png" />
+
+  <link rel="stylesheet" href="./assets/css/ux-improvements.css" />
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://nagu-dentals.github.io/Nagu-Dentals/#organization",
+        "name": "Nagu Dental Clinic",
+        "url": "https://nagu-dentals.github.io/Nagu-Dentals/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://nagu-dentals.github.io/Nagu-Dentals/assets/images/logo.png"
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://nagu-dentals.github.io/Nagu-Dentals/#website",
+        "url": "https://nagu-dentals.github.io/Nagu-Dentals/",
+        "name": "Nagu Dental Clinic | Premium Dental Care & Digital Precision",
+        "publisher": {
+          "@id": "https://nagu-dentals.github.io/Nagu-Dentals/#organization"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://nagu-dentals.github.io/Nagu-Dentals/index.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Services",
+            "item": "https://nagu-dentals.github.io/Nagu-Dentals/services.html"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+
+<body>
+  <div class="noise"></div>
+
+  <!-- Navigation Bar -->
+  <nav class="nav" id="nav">
+    <a class="brand" href="index.html" aria-label="Nagu Dental Home">
+      <div class="brand-mark"></div>
+      <span>Nagu Dental</span>
+    </a>
+
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html" class="active">Services</a>
+      <a href="location.html">Locations</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact</a>
+    </div>
+
+    <div class="nav-actions">
+      <a class="btn secondary" href="tel:+918861932535">Call Now</a>
+      <a class="btn" href="contact.html">Book Visit</a>
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Open menu">☰</button>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Subpage Hero -->
+    <header class="subpage-hero">
+      <div class="container">
+        <div class="breadcrumb">
+          <a href="index.html">Home</a>
+          <span class="breadcrumb-separator">/</span>
+          <span>Our Services</span>
+        </div>
+        <h1>Comprehensive <span class="gradient-text" style="background: linear-gradient(135deg, #ffffff 10%, #b8fff2 38%, #8fc0ff 72%, #fff); -webkit-background-clip: text; background-clip: text; color: transparent;">Dental Treatments</span></h1>
+        <p style="color: var(--muted); max-width: 680px; margin: 0 auto; line-height: 1.7; font-size: 1.1rem;">
+          Everything your smile needs in one premium clinic. Click any service below to explore detailed procedures, benefits, and clinical results.
+        </p>
+      </div>
+    </header>
+
+    <!-- Services Overview Section -->
+    <section>
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="section-kicker">Clinical Care Spectrum</div>
+            <h2>Tailored treatments crafted with 3D digital precision.</h2>
+          </div>
+          <p>
+            From preventive checkups to transformative smile makeovers, our gentle approaches deliver lasting, natural results.
+          </p>
+        </div>
+
+        <div class="services-grid">
+          <a href="services/preventive-dentistry.html">
+            <article class="service-card reveal">
+              <div class="service-visual">🦷</div>
+              <h3>Preventive Care</h3>
+              <p>Keep your smile healthy with checkups, professional cleaning, and early protection plans.</p>
+              <ul>
+                <li>Digital checkups &amp; X-rays</li>
+                <li>Scaling &amp; polishing</li>
+                <li>Customized gum health plans</li>
+              </ul>
+            </article>
+          </a>
+
+          <a href="services/dental-implants.html">
+            <article class="service-card reveal">
+              <div class="service-visual">🦷</div>
+              <h3>Dental Implants</h3>
+              <p>Permanent tooth replacement solution designed with 3D guided surgical precision.</p>
+              <ul>
+                <li>Titanium &amp; ceramic implants</li>
+                <li>Full arch restoration</li>
+                <li>Bone grafting &amp; sinus lifts</li>
+              </ul>
+            </article>
+          </a>
+
+          <a href="services/invisalign.html">
+            <article class="service-card reveal">
+              <div class="service-visual">✨</div>
+              <h3>Invisalign® Aligners</h3>
+              <p>Straighten your teeth discreetly with comfortable, virtually invisible aligners.</p>
+              <ul>
+                <li>Clear removable aligners</li>
+                <li>No metal wires or brackets</li>
+                <li>3D digital progress preview</li>
+              </ul>
+            </article>
+          </a>
+
+          <a href="services/cosmetic-dentistry.html">
+            <article class="service-card reveal">
+              <div class="service-visual">💎</div>
+              <h3>Cosmetic Dentistry</h3>
+              <p>Custom porcelain veneers and aesthetic bonding crafted to harmonize with your features.</p>
+              <ul>
+                <li>Ultra-thin porcelain veneers</li>
+                <li>Digital smile design</li>
+                <li>Composite teeth bonding</li>
+              </ul>
+            </article>
+          </a>
+
+          <a href="services/teeth-whitening.html">
+            <article class="service-card reveal">
+              <div class="service-visual">✨</div>
+              <h3>Teeth Whitening</h3>
+              <p>Brighten your teeth by several shades safely in a single, comfortable clinic visit.</p>
+              <ul>
+                <li>Instant single-visit results</li>
+                <li>Enamel-safe laser tech</li>
+                <li>Long-lasting glow protection</li>
+              </ul>
+            </article>
+          </a>
+
+          <a href="services/smile-makeover.html">
+            <article class="service-card reveal">
+              <div class="service-visual">🌟</div>
+              <h3>Smile Makeover</h3>
+              <p>A comprehensive combination of aesthetic and restorative treatments for your ideal smile.</p>
+              <ul>
+                <li>Full mouth rehabilitation</li>
+                <li>Holistic smile harmony</li>
+                <li>Transformative natural beauty</li>
+              </ul>
+            </article>
+          </a>
+
+          <a href="services/root-canal.html">
+            <article class="service-card reveal">
+              <div class="service-visual">🦷</div>
+              <h3>Root Canal Treatment</h3>
+              <p>Save natural infected teeth painlessly using advanced rotary microscopic techniques.</p>
+              <ul>
+                <li>Single-visit rotary RCT</li>
+                <li>Microscopic precision</li>
+                <li>Comfortable, pain-free procedure</li>
+              </ul>
+            </article>
+          </a>
+
+          <a href="services/pediatric-dentistry.html">
+            <article class="service-card reveal">
+              <div class="service-visual">🧸</div>
+              <h3>Kids Dentistry</h3>
+              <p>Gentle, stress-free dental care tailored specifically for children in a warm environment.</p>
+              <ul>
+                <li>Gentle pediatric checkups</li>
+                <li>Protective dental sealants</li>
+                <li>Positive, fun experience</li>
+              </ul>
+            </article>
+          </a>
+
+          <a href="services/emergency-dentistry.html">
+            <article class="service-card reveal">
+              <div class="service-visual">🆘</div>
+              <h3>Emergency Dental Care</h3>
+              <p>Priority emergency scheduling for sudden severe toothaches and dental trauma.</p>
+              <ul>
+                <li>24/7 priority support</li>
+                <li>Instant pain management</li>
+                <li>Rapid diagnosis &amp; relief</li>
+              </ul>
+            </article>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="container footer" style="border-top: 1px solid var(--border); padding: 60px 0 40px; margin-top: 80px; color: var(--muted);">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 40px; width: 100%; margin-bottom: 40px; text-align: left;">
+      <div>
+        <h3 style="color: var(--text); margin-bottom: 20px; font-weight: 800; font-size: 1.2rem;">Nagu Dental</h3>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; max-width: 280px;">
+          Premium Dental Care combining clinical excellence and futuristic technology in Bengaluru.
+        </p>
+      </div>
+
+      <div>
+        <h3 style="color: var(--text); margin-bottom: 20px; font-weight: 800; font-size: 1.2rem;">Our Locations</h3>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6;">
+          <strong>Serving Hegganahalli Cross &amp; KTG College Road, Bengaluru</strong><br><br>
+          <strong>Branch 1 (Hegganahalli Cross):</strong> Mohan Theatre, 10/2, 1st floor, Chikkathimme Gowdru complex, 1st Main Rd, Bengaluru - 560091.<br>
+          <strong>Branch 2 (KTG College Road):</strong> KTG College Road, Kareem Sab Layout, Bengaluru.<br><br>
+          Phone: +91 88619 32535<br>
+          Email: nagunadental@gmail.com
+        </p>
+      </div>
+
+      <div>
+        <h3 style="color: var(--text); margin-bottom: 20px; font-weight: 800; font-size: 1.2rem;">Quick Links</h3>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.8;">
+          • <a href="about.html" style="color: var(--primary);">About Our Team</a><br>
+          • <a href="location.html" style="color: var(--primary);">Clinic Locations &amp; Maps</a><br>
+          • <a href="gallery.html" style="color: var(--primary);">Before &amp; After Gallery</a><br>
+          • <a href="contact.html" style="color: var(--primary);">Book Appointment</a>
+        </p>
+      </div>
+    </div>
+
+    <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 30px; flex-wrap: wrap; gap: 20px;">
+      <div>© <span id="year"></span> Nagu Dental. All rights reserved.</div>
+      <div style="font-size: 0.9rem; color: var(--muted);">Designed with 3D UI, motion, and patient-first UX.</div>
+    </div>
+  </footer>
+
+  <!-- Floating Sticky Widgets -->
+  <div class="floating-widgets" aria-label="Quick contact and booking">
+    <a href="https://wa.me/918861932535" target="_blank" rel="noopener noreferrer" class="floating-btn floating-whatsapp" title="Chat on WhatsApp" aria-label="Chat on WhatsApp">💬</a>
+    <a href="contact.html" class="floating-btn floating-appointment" title="Book Appointment" aria-label="Book Appointment">📅</a>
+  </div>
+
+  <script src="./assets/js/ux-improvements.js"></script>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const nav = document.getElementById("nav");
+    const mobileToggle = document.getElementById("mobileToggle");
+    mobileToggle.addEventListener("click", () => {
+      nav.classList.toggle("open");
+      mobileToggle.textContent = nav.classList.contains("open") ? "×" : "☰";
+    });
+
+    const revealItems = document.querySelectorAll(".reveal");
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.16 });
+    revealItems.forEach(item => revealObserver.observe(item));
+  </script>
+</body>
+</html>
