@@ -80,18 +80,13 @@ body {
 .brand-mark {
   width: 42px;
   height: 42px;
-  border-radius: 16px;
-  display: grid;
-  place-items: center;
-  background: linear-gradient(135deg, var(--primary), var(--primary-2));
+  object-fit: contain;
+  filter: drop-shadow(0 4px 12px rgba(66,232,200,0.32));
+  transition: transform 0.3s ease;
 }
 
-.brand-mark::after {
-  content: "";
-  width: 18px;
-  height: 18px;
-  background: #06111f;
-  clip-path: polygon(50% 0, 62% 35%, 100% 35%, 70% 55%, 82% 95%, 50% 72%, 18% 95%, 30% 55%, 0 35%, 38% 35%);
+.brand:hover .brand-mark {
+  transform: scale(1.08);
 }
 
 .nav-links {
