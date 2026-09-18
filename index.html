@@ -137,23 +137,13 @@
     .brand-mark {
       width: 42px;
       height: 42px;
-      border-radius: 16px;
-      display: grid;
-      place-items: center;
-      background:
-        radial-gradient(circle at 30% 20%, #fff, transparent 22%),
-        linear-gradient(135deg, var(--primary), var(--primary-2));
-      box-shadow: 0 12px 32px rgba(66,232,200,0.32);
-      position: relative;
-      overflow: hidden;
+      object-fit: contain;
+      filter: drop-shadow(0 4px 12px rgba(66,232,200,0.32));
+      transition: transform 0.3s ease;
     }
 
-    .brand-mark::after {
-      content: "";
-      width: 18px;
-      height: 18px;
-      background: #06111f;
-      clip-path: polygon(50% 0, 62% 35%, 100% 35%, 70% 55%, 82% 95%, 50% 72%, 18% 95%, 30% 55%, 0 35%, 38% 35%);
+    .brand:hover .brand-mark {
+      transform: scale(1.08);
     }
 
     .brand span:last-child {
@@ -1467,7 +1457,7 @@
 
   <nav class="nav" id="nav">
     <a class="brand" href="#home" aria-label="Nagu Dental Home">
-      <div class="brand-mark"></div>
+      <img src="./assets/images/logo.png" alt="Nagu Dental Logo" class="brand-mark" width="42" height="42" />
       <span>Nagu Dental</span>
     </a>
 
@@ -2041,7 +2031,10 @@
   <footer class="container footer" style="border-top: 1px solid var(--border); padding: 60px 0 40px; margin-top: 80px;">
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 40px; width: 100%; margin-bottom: 40px; text-align: left;">
       <div>
-        <h3 style="color: var(--text); margin-bottom: 20px; font-weight: 800; font-size: 1.2rem;">Nagu Dental</h3>
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
+          <img src="./assets/images/logo.png" alt="Nagu Dental Logo" style="width: 40px; height: 40px; object-fit: contain;" />
+          <h3 style="color: var(--text); margin: 0; font-weight: 800; font-size: 1.2rem;">Nagu Dental</h3>
+        </div>
         <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; max-width: 280px;">
           Premium Dental Care combining clinical excellence and futuristic technology in Bengaluru.
         </p>
