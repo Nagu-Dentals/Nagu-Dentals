@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us | Nagu Dental Clinic Bengaluru</title>
+  <meta name="description" content="Learn about Nagu Dental Clinic's 15+ years of clinical excellence, specialized team of dentists, and patient-first digital dentistry in Bengaluru.">
+
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" as="style" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #06111f;
+      --bg-2: #091b2e;
+      --text: #f7fbff;
+      --muted: #9eb4c8;
+      --primary: #42e8c8;
+      --primary-2: #5ea8ff;
+      --accent: #ffcf6b;
+      --pink: #ff6b9a;
+      --glass: rgba(255, 255, 255, 0.08);
+      --glass-2: rgba(255, 255, 255, 0.13);
+      --border: rgba(255, 255, 255, 0.16);
+      --shadow: 0 30px 90px rgba(0, 0, 0, 0.45);
+      --radius: 28px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+      background:
+        radial-gradient(circle at 12% 12%, rgba(66, 232, 200, 0.18), transparent 34%),
+        radial-gradient(circle at 88% 18%, rgba(94, 168, 255, 0.18), transparent 32%),
+        radial-gradient(circle at 50% 80%, rgba(255, 107, 154, 0.12), transparent 34%),
+        linear-gradient(180deg, var(--bg), #04101b 55%, #030812);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+      background-size: 56px 56px;
+      mask-image: radial-gradient(circle at center, black, transparent 75%);
+      z-index: -2;
+    }
+    a { color: inherit; text-decoration: none; }
+    button, input, textarea { font: inherit; }
+
+    .noise {
+      position: fixed; inset: 0; pointer-events: none; opacity: 0.08;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='.75'/%3E%3C/svg%3E");
+      z-index: 999; mix-blend-mode: overlay;
+    }
+
+    .container {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .nav {
+      position: fixed; top: 18px; left: 50%; transform: translateX(-50%);
+      width: min(1180px, calc(100% - 32px)); z-index: 50;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(5, 17, 31, 0.58); backdrop-filter: blur(22px);
+      border-radius: 999px; padding: 10px 12px;
+      display: flex; align-items: center; justify-content: space-between;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.28);
+    }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 900; letter-spacing: -0.04em; }
+    .brand-mark {
+      width: 42px; height: 42px; border-radius: 16px; display: grid; place-items: center;
+      background: radial-gradient(circle at 30% 20%, #fff, transparent 22%), linear-gradient(135deg, var(--primary), var(--primary-2));
+      box-shadow: 0 12px 32px rgba(66,232,200,0.32); position: relative; overflow: hidden;
+    }
+    .brand-mark::after {
+      content: ""; width: 18px; height: 18px; background: #06111f;
+      clip-path: polygon(50% 0, 62% 35%, 100% 35%, 70% 55%, 82% 95%, 50% 72%, 18% 95%, 30% 55%, 0 35%, 38% 35%);
+    }
+    .brand span:last-child { font-size: 1.08rem; }
+    .nav-links { display: flex; align-items: center; gap: 4px; color: var(--muted); font-weight: 700; font-size: 0.92rem; }
+    .nav-links a { padding: 12px 14px; border-radius: 999px; transition: 0.25s ease; }
+    .nav-links a:hover { color: var(--text); background: rgba(255,255,255,0.08); }
+    .nav-actions { display: flex; align-items: center; gap: 10px; }
+
+    .btn {
+      border: 0; cursor: pointer; border-radius: 999px; padding: 14px 20px;
+      color: #06111f; background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      font-weight: 900; box-shadow: 0 16px 36px rgba(66,232,200,0.22);
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px; transition: 0.35s ease;
+      position: relative; overflow: hidden;
+    }
+    .btn:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 24px 52px rgba(66,232,200,0.32); }
+    .btn.secondary { color: var(--text); background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.16); box-shadow: none; }
+    .btn.secondary:hover { background: rgba(255,255,255,0.14); box-shadow: 0 20px 46px rgba(0,0,0,0.22); }
+    .mobile-toggle { display: none; width: 44px; height: 44px; border-radius: 14px; border: 1px solid var(--border); background: rgba(255,255,255,0.08); color: var(--text); font-size: 1.4rem; }
+
+    section { padding: 90px 0; position: relative; }
+    .section-head { display: flex; justify-content: space-between; gap: 32px; align-items: end; margin-bottom: 42px; }
+    .section-kicker { color: var(--primary); font-weight: 900; text-transform: uppercase; letter-spacing: 0.14em; font-size: 0.78rem; margin-bottom: 12px; }
+    h2 { font-size: clamp(2.2rem, 5vw, 4.3rem); line-height: 1; letter-spacing: -0.06em; max-width: 760px; }
+    .section-head p { color: var(--muted); line-height: 1.7; max-width: 420px; }
+
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 42px; }
+    .stat-card { border: 1px solid var(--border); background: rgba(255,255,255,0.06); border-radius: var(--radius); padding: 26px; position: relative; overflow: hidden; }
+    .stat-card h3 { font-size: 2.4rem; letter-spacing: -0.05em; margin-bottom: 8px; }
+    .stat-card p { color: var(--muted); line-height: 1.5; }
+
+    .specialists-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    .specialist-card { border-radius: 32px; overflow: hidden; border: 1px solid var(--border); background: rgba(255,255,255,0.06); transition: 0.4s ease; }
+    .specialist-card:hover { transform: translateY(-10px); border-color: var(--primary); }
+    .specialist-img { height: 280px; display: grid; place-items: center; background: rgba(255,255,255,0.04); font-size: 3.5rem; }
+    .specialist-info { padding: 24px; text-align: center; }
+    .specialist-info h3 { font-size: 1.25rem; margin-bottom: 6px; }
+    .specialist-info p { color: var(--primary); font-weight: 800; font-size: 0.86rem; text-transform: uppercase; letter-spacing: 0.05em; }
+
+    .experience { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 42px; align-items: center; }
+    .experience-panel { border-radius: 40px; min-height: 520px; border: 1px solid var(--border); background: radial-gradient(circle at 40% 10%, rgba(66,232,200,0.18), transparent 30%), rgba(255,255,255,0.06); box-shadow: var(--shadow); position: relative; overflow: hidden; padding: 34px; }
+    .scanner { width: min(360px, 100%); aspect-ratio: 1; margin: 40px auto 0; border-radius: 50%; border: 1px solid rgba(255,255,255,0.16); position: relative; background: radial-gradient(circle, rgba(66,232,200,0.18), transparent 34%), repeating-radial-gradient(circle, rgba(255,255,255,0.08) 0 1px, transparent 1px 18px); }
+    .tooth-icon { position: absolute; inset: 0; display: grid; place-items: center; font-size: 6rem; }
+
+    .timeline { display: grid; gap: 18px; }
+    .timeline-item { display: grid; grid-template-columns: auto 1fr; gap: 18px; align-items: start; padding: 24px; border: 1px solid var(--border); border-radius: 28px; background: rgba(255,255,255,0.06); backdrop-filter: blur(16px); }
+    .step { width: 54px; height: 54px; border-radius: 18px; display: grid; place-items: center; background: linear-gradient(135deg, var(--primary), var(--primary-2)); color: #06111f; font-weight: 900; }
+    .timeline-item h3 { margin-bottom: 8px; font-size: 1.18rem; }
+    .timeline-item p { color: var(--muted); line-height: 1.65; }
+
+    .reviews { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 28px; align-items: stretch; }
+    .review-main, .review-side { border: 1px solid var(--border); background: rgba(255,255,255,0.06); border-radius: 36px; padding: 30px; backdrop-filter: blur(18px); }
+    .stars { color: var(--accent); letter-spacing: 0.12em; margin-bottom: 18px; }
+    .review-main blockquote { font-size: clamp(1.45rem, 3vw, 2.35rem); line-height: 1.25; letter-spacing: -0.04em; margin-bottom: 24px; }
+    .person { display: flex; align-items: center; gap: 14px; color: var(--muted); font-weight: 800; }
+    .person-avatar { width: 52px; height: 52px; border-radius: 18px; background: linear-gradient(135deg, var(--primary), var(--pink)); color: #06111f; display: grid; place-items: center; font-weight: 900; }
+    .mini-review { border-radius: 24px; padding: 20px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); margin-bottom: 16px; }
+    .mini-review p { color: var(--muted); line-height: 1.6; margin-top: 10px; }
+
+    .reveal { opacity: 0; transform: translateY(34px); transition: 0.85s cubic-bezier(.2,.8,.2,1); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 980px) {
+      .nav-links, .nav-actions .btn.secondary { display: none; }
+      .mobile-toggle { display: grid; place-items: center; }
+      .nav.open .nav-links { display: grid; position: absolute; top: 72px; left: 0; right: 0; background: rgba(5,17,31,0.98); border-bottom: 1px solid var(--border); border-radius: 24px; padding: 24px; gap: 12px; text-align: center; }
+      .nav.open .nav-links a { padding: 18px; font-size: 1.1rem; background: rgba(255,255,255,0.05); }
+      .stats-grid, .specialists-grid { grid-template-columns: repeat(2, 1fr); }
+      .experience, .reviews { grid-template-columns: 1fr; }
+      .section-head { display: block; }
+      .section-head p { margin-top: 18px; }
+    }
+    @media (max-width: 640px) {
+      .brand span:last-child { display: none; }
+      .stats-grid, .specialists-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+
+  <!-- SEO & Accessibility -->
+  <link rel="canonical" href="https://nagu-dentals.github.io/Nagu-Dentals/about.html" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Nagu Dental Clinic" />
+  <meta name="theme-color" content="#42e8c8" />
+  <link rel="manifest" href="./manifest.json" />
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/logo.png" />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://nagu-dentals.github.io/Nagu-Dentals/about.html" />
+  <meta property="og:title" content="About Us | Nagu Dental Clinic Bengaluru" />
+  <meta property="og:description" content="Learn about Nagu Dental Clinic's 15+ years of clinical excellence, specialized team of dentists, and patient-first digital dentistry in Bengaluru." />
+  <meta property="og:image" content="https://nagu-dentals.github.io/Nagu-Dentals/assets/images/logo.png" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://nagu-dentals.github.io/Nagu-Dentals/about.html" />
+  <meta name="twitter:title" content="About Us | Nagu Dental Clinic Bengaluru" />
+  <meta name="twitter:description" content="Learn about Nagu Dental Clinic's 15+ years of clinical excellence, specialized team of dentists, and patient-first digital dentistry in Bengaluru." />
+  <meta name="twitter:image" content="https://nagu-dentals.github.io/Nagu-Dentals/assets/images/logo.png" />
+
+  <link rel="stylesheet" href="./assets/css/ux-improvements.css" />
+
+  <!-- Structured Data: Organization, WebSite & BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://nagu-dentals.github.io/Nagu-Dentals/#organization",
+        "name": "Nagu Dental Clinic",
+        "url": "https://nagu-dentals.github.io/Nagu-Dentals/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://nagu-dentals.github.io/Nagu-Dentals/assets/images/logo.png"
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://nagu-dentals.github.io/Nagu-Dentals/#website",
+        "url": "https://nagu-dentals.github.io/Nagu-Dentals/",
+        "name": "Nagu Dental Clinic | Premium Dental Care & Digital Precision",
+        "publisher": {
+          "@id": "https://nagu-dentals.github.io/Nagu-Dentals/#organization"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://nagu-dentals.github.io/Nagu-Dentals/index.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "About Us",
+            "item": "https://nagu-dentals.github.io/Nagu-Dentals/about.html"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+
+<body>
+  <div class="noise"></div>
+
+  <!-- Navigation Bar -->
+  <nav class="nav" id="nav">
+    <a class="brand" href="index.html" aria-label="Nagu Dental Home">
+      <div class="brand-mark"></div>
+      <span>Nagu Dental</span>
+    </a>
+
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html" class="active">About</a>
+      <a href="services.html">Services</a>
+      <a href="location.html">Locations</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact</a>
+    </div>
+
+    <div class="nav-actions">
+      <a class="btn secondary" href="tel:+918861932535">Call Now</a>
+      <a class="btn" href="contact.html">Book Visit</a>
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Open menu">☰</button>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Lightweight Subpage Hero -->
+    <header class="subpage-hero">
+      <div class="container">
+        <div class="breadcrumb">
+          <a href="index.html">Home</a>
+          <span class="breadcrumb-separator">/</span>
+          <span>About Us</span>
+        </div>
+        <h1>About <span class="gradient-text" style="background: linear-gradient(135deg, #ffffff 10%, #b8fff2 38%, #8fc0ff 72%, #fff); -webkit-background-clip: text; background-clip: text; color: transparent;">Nagu Dental</span></h1>
+        <p style="color: var(--muted); max-width: 680px; margin: 0 auto; line-height: 1.7; font-size: 1.1rem;">
+          Combining 15+ years of clinical mastery, advanced 3D technology, and calm luxury to reimagine your dental care experience.
+        </p>
+      </div>
+    </header>
+
+    <!-- About Section & Stats Grid -->
+    <section class="stats">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="section-kicker">Clinical Mastery</div>
+            <h2>A legacy of clinical excellence and patient trust.</h2>
+          </div>
+          <p>
+            At Nagu Dental, we combine over 15 years of clinical expertise with cutting-edge digital dentistry to provide a treatment environment as comfortable as it is effective.
+          </p>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card reveal">
+            <h3>12k+</h3>
+            <p>Smiles transformed with trusted care.</p>
+          </div>
+          <div class="stat-card reveal">
+            <h3>4.9/5</h3>
+            <p>Average patient rating across platforms.</p>
+          </div>
+          <div class="stat-card reveal">
+            <h3>24h</h3>
+            <p>Fast appointment support and emergency response.</p>
+          </div>
+          <div class="stat-card reveal">
+            <h3>15+</h3>
+            <p>Years of advanced clinical experience.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Specialists / Team Section -->
+    <section id="specialists">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="section-kicker">Our Team</div>
+            <h2>Meet our dedicated clinical specialists.</h2>
+          </div>
+          <p>
+            Our team comprises highly qualified, compassionate dental experts dedicated to crafting your healthiest, brightest smile.
+          </p>
+        </div>
+
+        <div class="specialists-grid">
+          <div class="specialist-card reveal">
+            <div class="specialist-img">🩺</div>
+            <div class="specialist-info">
+              <h3>Dentist &amp; Oral Surgeon</h3>
+              <p>Clinical Associate</p>
+            </div>
+          </div>
+
+          <div class="specialist-card reveal">
+            <div class="specialist-img">🦷</div>
+            <div class="specialist-info">
+              <h3>Orthodontist Specialist</h3>
+              <p>Consultant Orthodontics</p>
+            </div>
+          </div>
+
+          <div class="specialist-card reveal">
+            <div class="specialist-img">✨</div>
+            <div class="specialist-info">
+              <h3>Pediatric Dentist</h3>
+              <p>Child Oral Care Expert</p>
+            </div>
+          </div>
+
+          <div class="specialist-card reveal">
+            <div class="specialist-img">🌟</div>
+            <div class="specialist-info">
+              <h3>Endodontist</h3>
+              <p>Rotary Root Canal Expert</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Digital Experience & Workflow -->
+    <section id="experience">
+      <div class="container experience">
+        <div class="experience-panel reveal">
+          <div class="section-kicker">Digital Precision</div>
+          <h2 style="font-size: 2.2rem; margin-top: 10px;">Designed to feel calm, clear, and futuristic.</h2>
+          <div class="scanner">
+            <div class="tooth-icon">🦷</div>
+          </div>
+        </div>
+
+        <div>
+          <div class="section-kicker reveal">How it works</div>
+          <h2 class="reveal">A smarter visit from first click to final smile.</h2>
+
+          <div class="timeline" style="margin-top: 28px;">
+            <div class="timeline-item reveal">
+              <div class="step">01</div>
+              <div>
+                <h3>Book online in seconds</h3>
+                <p>Choose your service, preferred time, and clinic branch. Seamless &amp; hassle-free.</p>
+              </div>
+            </div>
+
+            <div class="timeline-item reveal">
+              <div class="step">02</div>
+              <div>
+                <h3>Get a 3D smile scan</h3>
+                <p>We map your teeth digitally for highly accurate diagnosis and custom treatment planning.</p>
+              </div>
+            </div>
+
+            <div class="timeline-item reveal">
+              <div class="step">03</div>
+              <div>
+                <h3>Receive your custom plan</h3>
+                <p>See clear treatment steps, transparent timelines, and predicted smile outcomes prior to starting.</p>
+              </div>
+            </div>
+
+            <div class="timeline-item reveal">
+              <div class="step">04</div>
+              <div>
+                <h3>Enjoy comfortable treatment</h3>
+                <p>Modern techniques, gentle hands, and a tranquil clinic environment for total peace of mind.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Patient Reviews -->
+    <section id="reviews">
+      <div class="container reviews">
+        <div class="review-main reveal">
+          <div class="stars">★★★★★</div>
+          <blockquote>
+            “Nagu Dental feels like the future of dentistry. The 3D scan made everything clear, and I actually looked forward to coming back.”
+          </blockquote>
+          <div class="person">
+            <div class="person-avatar">SJ</div>
+            <div>
+              <strong>Sarah Johnson</strong><br>
+              <span>Smile Makeover Patient</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-side">
+          <div class="mini-review reveal">
+            <div class="stars">★★★★★</div>
+            <p>“The clinic is beautiful, the team is gentle, and booking was effortless.”</p>
+          </div>
+          <div class="mini-review reveal">
+            <div class="stars">★★★★★</div>
+            <p>“I had dental anxiety for years. Nagu Dental made me feel completely safe and relaxed.”</p>
+          </div>
+          <div class="mini-review reveal">
+            <div class="stars">★★★★★</div>
+            <p>“My whitening results were amazing. I felt confident the exact same day.”</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="container footer" style="border-top: 1px solid var(--border); padding: 60px 0 40px; margin-top: 80px; color: var(--muted);">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 40px; width: 100%; margin-bottom: 40px; text-align: left;">
+      <div>
+        <h3 style="color: var(--text); margin-bottom: 20px; font-weight: 800; font-size: 1.2rem;">Nagu Dental</h3>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; max-width: 280px;">
+          Premium Dental Care combining clinical excellence and futuristic technology in Bengaluru.
+        </p>
+      </div>
+
+      <div>
+        <h3 style="color: var(--text); margin-bottom: 20px; font-weight: 800; font-size: 1.2rem;">Our Locations</h3>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6;">
+          <strong>Serving Hegganahalli Cross &amp; KTG College Road, Bengaluru</strong><br><br>
+          <strong>Branch 1 (Hegganahalli Cross):</strong> Mohan Theatre, 10/2, 1st floor, Chikkathimme Gowdru complex, 1st Main Rd, Bengaluru - 560091.<br>
+          <strong>Branch 2 (KTG College Road):</strong> KTG College Road, Kareem Sab Layout, Bengaluru.<br><br>
+          Phone: +91 88619 32535<br>
+          Email: nagunadental@gmail.com
+        </p>
+      </div>
+
+      <div>
+        <h3 style="color: var(--text); margin-bottom: 20px; font-weight: 800; font-size: 1.2rem;">Quick Links</h3>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.8;">
+          • <a href="services.html" style="color: var(--primary);">All Dental Services</a><br>
+          • <a href="location.html" style="color: var(--primary);">Clinic Locations &amp; Maps</a><br>
+          • <a href="gallery.html" style="color: var(--primary);">Before &amp; After Gallery</a><br>
+          • <a href="contact.html" style="color: var(--primary);">Book Appointment</a>
+        </p>
+      </div>
+    </div>
+
+    <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 30px; flex-wrap: wrap; gap: 20px;">
+      <div>© <span id="year"></span> Nagu Dental. All rights reserved.</div>
+      <div style="font-size: 0.9rem; color: var(--muted);">Designed with 3D UI, motion, and patient-first UX.</div>
+    </div>
+  </footer>
+
+  <!-- Floating Sticky Widgets -->
+  <div class="floating-widgets" aria-label="Quick contact and booking">
+    <a href="https://wa.me/918861932535" target="_blank" rel="noopener noreferrer" class="floating-btn floating-whatsapp" title="Chat on WhatsApp" aria-label="Chat on WhatsApp">💬</a>
+    <a href="contact.html" class="floating-btn floating-appointment" title="Book Appointment" aria-label="Book Appointment">📅</a>
+  </div>
+
+  <script src="./assets/js/ux-improvements.js"></script>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const nav = document.getElementById("nav");
+    const mobileToggle = document.getElementById("mobileToggle");
+    mobileToggle.addEventListener("click", () => {
+      nav.classList.toggle("open");
+      mobileToggle.textContent = nav.classList.contains("open") ? "×" : "☰";
+    });
+
+    const revealItems = document.querySelectorAll(".reveal");
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.16 });
+    revealItems.forEach(item => revealObserver.observe(item));
+  </script>
+</body>
+</html>

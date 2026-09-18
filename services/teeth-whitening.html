@@ -94,14 +94,27 @@
   <nav class="nav">
     <a class="brand" href="../index.html">
       <img src="../assets/images/logo.png" alt="Nagu Dental Logo" class="brand-mark" width="42" height="42" />
+      <nav class="nav" id="nav">
+    <a class="brand" href="../index.html" aria-label="Nagu Dental Home">
+      <div class="brand-mark"></div>
       <span>Nagu Dental</span>
     </a>
+
     <div class="nav-links">
-      <a href="../index.html#home">Home</a>
-      <a href="../index.html#services">Services</a>
-      <a href="../index.html#gallery">Gallery</a>
+      <a href="../index.html">Home</a>
+      <a href="../about.html">About</a>
+      <a href="../services.html" class="active">Services</a>
+      <a href="../location.html">Locations</a>
+      <a href="../gallery.html">Gallery</a>
+      <a href="../blog.html">Blog</a>
+      <a href="../contact.html">Contact</a>
     </div>
-    <a class="btn" href="../index.html#booking">Book Now</a>
+
+    <div class="nav-actions">
+      <a class="btn secondary" href="tel:+918861932535">Call Now</a>
+      <a class="btn" href="../contact.html">Book Visit</a>
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Open menu">☰</button>
+    </div>
   </nav>
 
   <header class="service-hero">
@@ -111,7 +124,7 @@
         <h1>Teeth Whitening</h1>
         <p class="hero-text">Brighten your smile by several shades in just one session. Our professional whitening treatments are safe, effective, and tailored to your sensitivity needs.</p>
         <div style="display: flex; gap: 15px;">
-           <a href="../index.html#booking" class="btn">Schedule Consultation</a>
+           <a href="../contact.html" class="btn">Schedule Consultation</a>
            <a href="#details" class="btn secondary">Learn More</a>
         </div>
       </div>
@@ -167,7 +180,7 @@
           <p style="font-size: 0.9rem; color: var(--muted); margin-bottom: 20px;">
             Ready for a transformation? Join 12,000+ happy patients.
           </p>
-          <a href="../index.html#booking" class="btn" style="width: 100%; justify-content: center;">Get Started</a>
+          <a href="../contact.html" class="btn" style="width: 100%; justify-content: center;">Get Started</a>
         </div>
       </aside>
     </div>
@@ -190,7 +203,7 @@
         </div>
       </div>
       <div style="text-align: center; margin-top: 40px;">
-        <a href="../index.html#gallery" class="btn secondary">Back to Full Gallery</a>
+        <a href="../gallery.html" class="btn secondary">Back to Full Gallery</a>
       </div>
     </div>
   </section>
@@ -201,13 +214,44 @@
       <p style="color: var(--muted); max-width: 600px; margin: 0 auto 40px;">
         Book your appointment today and experience premium dental care with 3D precision.
       </p>
-      <a href="../index.html#booking" class="btn" style="padding: 18px 40px; font-size: 1.2rem;">Book Your Visit Now</a>
+      <a href="../contact.html" class="btn" style="padding: 18px 40px; font-size: 1.2rem;">Book Your Visit Now</a>
     </div>
   </section>
 
-  <footer class="footer">
-    <div class="container">
-      <p>© <span id="year"></span> Nagu Dental. All rights reserved.</p>
+      <footer class="container footer" style="border-top: 1px solid var(--border); padding: 60px 0 40px; margin-top: 80px; color: var(--muted);">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 40px; width: 100%; margin-bottom: 40px; text-align: left;">
+      <div>
+        <h3 style="color: var(--text); margin-bottom: 20px; font-weight: 800; font-size: 1.2rem;">Nagu Dental</h3>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; max-width: 280px;">
+          Premium Dental Care combining clinical excellence and futuristic technology in Bengaluru.
+        </p>
+      </div>
+
+      <div>
+        <h3 style="color: var(--text); margin-bottom: 20px; font-weight: 800; font-size: 1.2rem;">Our Locations</h3>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6;">
+          <strong>Serving Hegganahalli Cross &amp; KTG College Road, Bengaluru</strong><br><br>
+          <strong>Branch 1 (Hegganahalli Cross):</strong> Mohan Theatre, 10/2, 1st floor, Chikkathimme Gowdru complex, 1st Main Rd, Bengaluru - 560091.<br>
+          <strong>Branch 2 (KTG College Road):</strong> KTG College Road, Kareem Sab Layout, Bengaluru.<br><br>
+          Phone: +91 88619 32535<br>
+          Email: nagunadental@gmail.com
+        </p>
+      </div>
+
+      <div>
+        <h3 style="color: var(--text); margin-bottom: 20px; font-weight: 800; font-size: 1.2rem;">Quick Links</h3>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.8;">
+          • <a href="../services.html" style="color: var(--primary);">All Dental Services</a><br>
+          • <a href="../about.html" style="color: var(--primary);">About Our Doctors</a><br>
+          • <a href="../location.html" style="color: var(--primary);">Clinic Locations &amp; Maps</a><br>
+          • <a href="../contact.html" style="color: var(--primary);">Book Appointment</a>
+        </p>
+      </div>
+    </div>
+
+    <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 30px; flex-wrap: wrap; gap: 20px;">
+      <div>© <span id="year"></span> Nagu Dental. All rights reserved.</div>
+      <div style="font-size: 0.9rem; color: var(--muted);">Designed with 3D UI, motion, and patient-first UX.</div>
     </div>
   </footer>
 
@@ -233,10 +277,20 @@
       💬
     </a>
     <!-- Floating Appointment CTA -->
-    <a href="../index.html#booking" class="floating-btn floating-appointment" title="Book Appointment" aria-label="Book Appointment">
+    <a href="../contact.html" class="floating-btn floating-appointment" title="Book Appointment" aria-label="Book Appointment">
       📅
     </a>
   </div>
 
+  <script>
+    const nav = document.getElementById("nav");
+    const mobileToggle = document.getElementById("mobileToggle");
+    if (mobileToggle) {
+      mobileToggle.addEventListener("click", () => {
+        nav.classList.toggle("open");
+        mobileToggle.textContent = nav.classList.contains("open") ? "×" : "☰";
+      });
+    }
+  </script>
 </body>
 </html>
