@@ -6,7 +6,6 @@
   <title>Nagu Dental Clinic Bengaluru | Best Dentist in Hegganahalli &amp; KTG College Road</title>
   <meta name="description" content="Premium dental care in Bengaluru with 15+ years of experience. Visit our two clinics: Hegganahalli Cross (Sunkadakatte) &amp; KTG College Road (Kareem Sab Layout). Implants, Invisalign, Root Canal &amp; Emergency Care. Book now: +91 88619 32535.">
 
-
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" as="style" />
   <link rel="preload" href="./assets/images/hero-tooth.png" as="image" />
 
@@ -670,342 +669,6 @@
       margin-right: 8px;
     }
 
-    .specialists-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
-    }
-
-    .specialist-card {
-      border-radius: 32px;
-      overflow: hidden;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,0.06);
-      transition: 0.4s ease;
-    }
-
-    .specialist-card:hover {
-      transform: translateY(-10px);
-      border-color: var(--primary);
-    }
-
-    .specialist-img {
-      height: 320px;
-      overflow: hidden;
-      position: relative;
-    }
-
-    .specialist-img img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: 0.6s ease;
-    }
-
-    .specialist-card:hover .specialist-img img {
-      transform: scale(1.1);
-    }
-
-    .specialist-info {
-      padding: 24px;
-      text-align: center;
-    }
-
-    .specialist-info h3 {
-      font-size: 1.25rem;
-      margin-bottom: 6px;
-    }
-
-    .specialist-info p {
-      color: var(--primary);
-      font-weight: 800;
-      font-size: 0.86rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-
-    .gallery-item {
-      border-radius: 24px;
-      overflow: hidden;
-      aspect-ratio: 4 / 3;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,0.06);
-      transition: 0.4s ease;
-    }
-
-    .gallery-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: 0.6s ease;
-    }
-
-    .gallery-item:hover {
-      border-color: var(--primary);
-      transform: translateY(-5px);
-    }
-
-    .gallery-item:hover img {
-      transform: scale(1.1);
-    }
-
-    .experience {
-      display: grid;
-      grid-template-columns: 0.9fr 1.1fr;
-      gap: 42px;
-      align-items: center;
-    }
-
-    .experience-panel {
-      border-radius: 40px;
-      min-height: 620px;
-      border: 1px solid var(--border);
-      background:
-        radial-gradient(circle at 40% 10%, rgba(66,232,200,0.18), transparent 30%),
-        rgba(255,255,255,0.06);
-      box-shadow: var(--shadow);
-      position: relative;
-      overflow: hidden;
-      padding: 34px;
-      transform-style: preserve-3d;
-    }
-
-    .experience-panel::before {
-      content: "";
-      position: absolute;
-      width: 420px;
-      height: 420px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(66,232,200,0.22), transparent 65%);
-      right: -120px;
-      top: 80px;
-      animation: breathe 4s ease-in-out infinite;
-    }
-
-    @keyframes breathe {
-      50% { transform: scale(1.15); opacity: 0.75; }
-    }
-
-    .scanner {
-      width: min(420px, 100%);
-      aspect-ratio: 1;
-      margin: 55px auto 0;
-      border-radius: 50%;
-      border: 1px solid rgba(255,255,255,0.16);
-      position: relative;
-      background:
-        radial-gradient(circle, rgba(66,232,200,0.18), transparent 34%),
-        repeating-radial-gradient(circle, rgba(255,255,255,0.08) 0 1px, transparent 1px 18px);
-      box-shadow: inset 0 0 80px rgba(66,232,200,0.1);
-    }
-
-    .scanner::before,
-    .scanner::after {
-      content: "";
-      position: absolute;
-      inset: 12%;
-      border: 1px dashed rgba(255,255,255,0.22);
-      border-radius: 50%;
-      animation: spin 16s linear infinite;
-    }
-
-    .scanner::after {
-      inset: 28%;
-      animation-direction: reverse;
-      animation-duration: 11s;
-    }
-
-    .tooth-icon {
-      position: absolute;
-      inset: 0;
-      display: grid;
-      place-items: center;
-      font-size: 7rem;
-      filter: drop-shadow(0 20px 35px rgba(66,232,200,0.25));
-      animation: floatCard 4s ease-in-out infinite;
-    }
-
-    .timeline {
-      display: grid;
-      gap: 18px;
-    }
-
-    .timeline-item {
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 18px;
-      align-items: start;
-      padding: 24px;
-      border: 1px solid var(--border);
-      border-radius: 28px;
-      background: rgba(255,255,255,0.06);
-      backdrop-filter: blur(16px);
-      transition: 0.3s ease;
-    }
-
-    .timeline-item:hover {
-      transform: translateX(10px);
-      background: rgba(255,255,255,0.09);
-    }
-
-    .step {
-      width: 54px;
-      height: 54px;
-      border-radius: 18px;
-      display: grid;
-      place-items: center;
-      background: linear-gradient(135deg, var(--primary), var(--primary-2));
-      color: #06111f;
-      font-weight: 900;
-      box-shadow: 0 16px 34px rgba(66,232,200,0.22);
-    }
-
-    .timeline-item h3 {
-      margin-bottom: 8px;
-      font-size: 1.18rem;
-    }
-
-    .timeline-item p {
-      color: var(--muted);
-      line-height: 1.65;
-    }
-
-    .before-after {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 22px;
-      align-items: stretch;
-    }
-
-    .smile-card {
-      border-radius: 36px;
-      min-height: 520px;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,0.06);
-      padding: 26px;
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .smile-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at 50% 36%, rgba(66,232,200,0.18), transparent 24%),
-        radial-gradient(circle at 50% 62%, rgba(94,168,255,0.14), transparent 28%);
-      pointer-events: none;
-    }
-
-    .smile-face {
-      position: relative;
-      height: 330px;
-      border-radius: 28px;
-      background:
-        radial-gradient(circle at 50% 58%, #fff 0 12%, transparent 13%),
-        radial-gradient(circle at 39% 42%, #0d1826 0 5%, transparent 6%),
-        radial-gradient(circle at 61% 42%, #0d1826 0 5%, transparent 6%),
-        linear-gradient(135deg, rgba(66,232,200,0.22), rgba(94,168,255,0.12));
-      border: 1px solid rgba(255,255,255,0.12);
-      overflow: hidden;
-    }
-
-    .smile-card.after .smile-face {
-      background:
-        radial-gradient(circle at 50% 58%, #ffffff 0 14%, transparent 15%),
-        radial-gradient(circle at 39% 42%, #0d1826 0 5%, transparent 6%),
-        radial-gradient(circle at 61% 42%, #0d1826 0 5%, transparent 6%),
-        radial-gradient(circle at 50% 64%, rgba(66,232,200,0.26), transparent 28%),
-        linear-gradient(135deg, rgba(66,232,200,0.28), rgba(255,207,107,0.16));
-    }
-
-    .smile-card h3 {
-      font-size: 2rem;
-      letter-spacing: -0.05em;
-      margin-bottom: 10px;
-    }
-
-    .smile-card p {
-      color: var(--muted);
-      line-height: 1.65;
-      position: relative;
-    }
-
-    .reviews {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 28px;
-      align-items: stretch;
-    }
-
-    .review-main,
-    .review-side {
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,0.06);
-      border-radius: 36px;
-      padding: 30px;
-      backdrop-filter: blur(18px);
-    }
-
-    .stars {
-      color: var(--accent);
-      letter-spacing: 0.12em;
-      margin-bottom: 18px;
-    }
-
-    .review-main blockquote {
-      font-size: clamp(1.45rem, 3vw, 2.35rem);
-      line-height: 1.25;
-      letter-spacing: -0.04em;
-      margin-bottom: 24px;
-    }
-
-    .person {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      color: var(--muted);
-      font-weight: 800;
-    }
-
-    .person-avatar {
-      width: 52px;
-      height: 52px;
-      border-radius: 18px;
-      background: linear-gradient(135deg, var(--primary), var(--pink));
-      color: #06111f;
-      display: grid;
-      place-items: center;
-      font-weight: 900;
-    }
-
-    .review-side {
-      display: grid;
-      gap: 16px;
-    }
-
-    .mini-review {
-      border-radius: 24px;
-      padding: 20px;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.1);
-    }
-
-    .mini-review p {
-      color: var(--muted);
-      line-height: 1.6;
-      margin-top: 10px;
-    }
-
     .booking {
       padding-bottom: 130px;
     }
@@ -1205,9 +868,7 @@
       }
 
       .hero-grid,
-      .experience,
-      .booking-card,
-      .reviews {
+      .booking-card {
         grid-template-columns: 1fr;
       }
 
@@ -1220,8 +881,7 @@
       }
 
       .stats-grid,
-      .services-grid,
-      .specialists-grid {
+      .services-grid {
         grid-template-columns: repeat(2, 1fr);
       }
 
@@ -1286,16 +946,8 @@
       }
 
       .stats-grid,
-      .services-grid,
-      .before-after,
-      .specialists-grid,
-      .gallery-grid {
+      .services-grid {
         grid-template-columns: 1fr;
-      }
-
-      .experience-panel {
-        min-height: 480px;
-        padding: 22px;
       }
 
       .booking-card {
@@ -1305,16 +957,6 @@
 
       .cursor-glow {
         display: none !important;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *,
-      *::before,
-      *::after {
-        animation-duration: 0.001ms !important;
-        animation-iteration-count: 1 !important;
-        scroll-behavior: auto !important;
       }
     }
   </style>
@@ -1345,7 +987,6 @@
   <meta name="twitter:description" content="Premium dental care in Bengaluru with 15+ years of experience. Visit our two clinics: Hegganahalli Cross (Sunkadakatte) &amp; KTG College Road (Kareem Sab Layout). Implants, Invisalign, Root Canal &amp; Emergency Care. Book now: +91 88619 32535." />
   <meta name="twitter:image" content="https://nagu-dentals.github.io/Nagu-Dentals/assets/images/logo.png" />
 
-
   <link rel="stylesheet" href="./assets/css/ux-improvements.css" />
 
   <!-- Structured Data: Organization, Website, Dual-Location Dentist & FAQ -->
@@ -1361,14 +1002,7 @@
         "logo": {
           "@type": "ImageObject",
           "url": "https://nagu-dentals.github.io/Nagu-Dentals/assets/images/logo.png"
-        },
-        "sameAs": [
-          "<!-- TODO: Add official Facebook URL -->",
-          "<!-- TODO: Add official Instagram URL -->",
-          "<!-- TODO: Add official Google Business Profile URL -->",
-          "<!-- TODO: Add official LinkedIn URL -->",
-          "<!-- TODO: Add official YouTube URL -->"
-        ]
+        }
       },
       {
         "@type": "WebSite",
@@ -1382,7 +1016,7 @@
       {
         "@type": "Dentist",
         "name": "Nagu Dental - Hegganahalli Cross",
-        "image": "https://nagu-dentals.github.io/Nagu-Dentals/assets/clinic-logo.png",
+        "image": "https://nagu-dentals.github.io/Nagu-Dentals/assets/images/logo.png",
         "telephone": "+91 88619 32535",
         "email": "nagunadental@gmail.com",
         "address": {
@@ -1405,7 +1039,7 @@
       {
         "@type": "Dentist",
         "name": "Nagu Dental - KTG College Road",
-        "image": "https://nagu-dentals.github.io/Nagu-Dentals/assets/clinic-logo.png",
+        "image": "https://nagu-dentals.github.io/Nagu-Dentals/assets/images/logo.png",
         "telephone": "+91 88619 32535",
         "email": "nagunadental@gmail.com",
         "address": {
@@ -1466,23 +1100,24 @@
   <div class="particles" aria-hidden="true"></div>
 
   <nav class="nav" id="nav">
-    <a class="brand" href="#home" aria-label="Nagu Dental Home">
+    <a class="brand" href="index.html" aria-label="Nagu Dental Home">
       <div class="brand-mark"></div>
       <span>Nagu Dental</span>
     </a>
 
     <div class="nav-links">
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#services">Services</a>
-      <a href="#specialists">Specialists</a>
-      <a href="#gallery">Gallery</a>
-      <a href="#reviews">Reviews</a>
+      <a href="index.html" class="active">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="location.html">Locations</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact</a>
     </div>
 
     <div class="nav-actions">
       <a class="btn secondary" href="tel:+918861932535">Call Now</a>
-      <a class="btn" href="#booking">Book Visit</a>
+      <a class="btn" href="contact.html">Book Visit</a>
       <button class="mobile-toggle" id="mobileToggle" aria-label="Open menu">☰</button>
     </div>
   </nav>
@@ -1507,11 +1142,11 @@
           </p>
 
           <div class="hero-actions">
-            <a class="btn" href="#booking">
+            <a class="btn" href="contact.html">
               Book Your Smile Consultation
               <span>→</span>
             </a>
-            <a class="btn secondary" href="#services">Explore Treatments</a>
+            <a class="btn secondary" href="services.html">Explore Treatments</a>
           </div>
 
           <div class="trust-row">
@@ -1605,7 +1240,7 @@
       <div class="container">
         <div class="section-head reveal">
           <div>
-            <div class="section-kicker">Services</div>
+            <div class="section-kicker">Services Overview</div>
             <h2>Everything your smile needs, in one premium clinic.</h2>
           </div>
           <p>
@@ -1692,232 +1327,13 @@
               </ul>
             </article>
           </a>
+        </div>
 
-          <a href="services/root-canal.html">
-            <article class="service-card tilt reveal">
-              <div class="service-visual tilt-inner">🦷</div>
-              <h3>Root Canal</h3>
-              <p>Save your natural teeth with virtually painless microscopic precision.</p>
-              <ul>
-                <li>Single visit RCT</li>
-                <li>Advanced rotary tech</li>
-                <li>Microscopic accuracy</li>
-              </ul>
-            </article>
-          </a>
-
-          <a href="services/pediatric-dentistry.html">
-            <article class="service-card tilt reveal">
-              <div class="service-visual tilt-inner">🧸</div>
-              <h3>Kids Dentistry</h3>
-              <p>A fun, anxiety-free environment designed for our youngest patients.</p>
-              <ul>
-                <li>Gentle checkups</li>
-                <li>Protective sealants</li>
-                <li>Positive experience</li>
-              </ul>
-            </article>
-          </a>
-
-          <a href="services/emergency-dentistry.html">
-            <article class="service-card tilt reveal">
-              <div class="service-visual tilt-inner">🆘</div>
-              <h3>Emergency Care</h3>
-              <p>Priority scheduling for toothaches and urgent dental accidents.</p>
-              <ul>
-                <li>24/7 priority support</li>
-                <li>Instant pain relief</li>
-                <li>Rapid diagnosis</li>
-              </ul>
-            </article>
-          </a>
+        <div style="text-align: center; margin-top: 40px;">
+          <a href="services.html" class="btn secondary">View All Services →</a>
         </div>
       </div>
     </section>
-
-
-    <section id="specialists">
-      <div class="container">
-        <div class="section-head reveal">
-          <div>
-            <div class="section-kicker">Our Team</div>
-            <h2>Meet our dedicated clinical team.</h2>
-          </div>
-          <p>
-            Our clinic features highly qualified, experienced dental professionals dedicated to premium oral care.
-          </p>
-        </div>
-
-        <div class="specialists-grid">
-          <!-- TODO: Populate actual clinical doctor profiles, qualifications, and certificates once verified -->
-          <div class="specialist-card reveal">
-            <div class="specialist-img" style="background: rgba(255,255,255,0.05); height: 320px; display: grid; place-items: center;">
-              <span style="font-size: 3rem;">🩺</span>
-            </div>
-            <div class="specialist-info">
-              <h3>Dentist & Oral Surgeon</h3>
-              <p>Clinical Associate</p>
-            </div>
-          </div>
-
-          <div class="specialist-card reveal">
-            <div class="specialist-img" style="background: rgba(255,255,255,0.05); height: 320px; display: grid; place-items: center;">
-              <span style="font-size: 3rem;">🦷</span>
-            </div>
-            <div class="specialist-info">
-              <h3>Orthodontist Specialist</h3>
-              <p>Consultant orthodontics</p>
-            </div>
-          </div>
-
-          <div class="specialist-card reveal">
-            <div class="specialist-img" style="background: rgba(255,255,255,0.05); height: 320px; display: grid; place-items: center;">
-              <span style="font-size: 3rem;">✨</span>
-            </div>
-            <div class="specialist-info">
-              <h3>Pediatric Dentist</h3>
-              <p>Child Oral Care expert</p>
-            </div>
-          </div>
-
-          <div class="specialist-card reveal">
-            <div class="specialist-img" style="background: rgba(255,255,255,0.05); height: 320px; display: grid; place-items: center;">
-              <span style="font-size: 3rem;">🌟</span>
-            </div>
-            <div class="specialist-info">
-              <h3>Endodontist</h3>
-              <p>Rotary Root Canal expert</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-    <section id="experience">
-      <div class="container experience">
-        <div class="experience-panel tilt reveal">
-          <div class="section-kicker">Digital Experience</div>
-          <h2>Designed to feel calm, clear, and futuristic.</h2>
-          <div class="scanner">
-            <div class="tooth-icon">🦷</div>
-          </div>
-        </div>
-
-        <div>
-          <div class="section-kicker reveal">How it works</div>
-          <h2 class="reveal">A smarter visit from first click to final smile.</h2>
-
-          <div class="timeline" style="margin-top: 28px;">
-            <div class="timeline-item reveal">
-              <div class="step">01</div>
-              <div>
-                <h3>Book online in seconds</h3>
-                <p>Choose your service, preferred time, and dentist. No phone tag.</p>
-              </div>
-            </div>
-
-            <div class="timeline-item reveal">
-              <div class="step">02</div>
-              <div>
-                <h3>Get a 3D smile scan</h3>
-                <p>We map your teeth digitally for accurate diagnosis and beautiful planning.</p>
-              </div>
-            </div>
-
-            <div class="timeline-item reveal">
-              <div class="step">03</div>
-              <div>
-                <h3>Receive your custom plan</h3>
-                <p>See treatment options, timeline, cost, and expected results before you begin.</p>
-              </div>
-            </div>
-
-            <div class="timeline-item reveal">
-              <div class="step">04</div>
-              <div>
-                <h3>Enjoy a comfortable treatment</h3>
-                <p>Modern techniques, gentle care, and a premium clinic environment.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="gallery">
-      <div class="container">
-        <div class="section-head reveal">
-          <div>
-            <div class="section-kicker">Clinical Gallery</div>
-            <h2>Premium results, precision care.</h2>
-          </div>
-          <p>
-            A glimpse into our clinical excellence and the modern environment
-            where we craft your perfect smile.
-          </p>
-        </div>
-
-        <div class="gallery-grid">
-          <div class="gallery-item reveal">
-            <img src="assets/images/clinical-1.png" width="400" height="300" alt="Modern Dental Chair and Clean Clinical Operatory Room" loading="lazy">
-          </div>
-          <div class="gallery-item reveal">
-            <img src="assets/images/clinical-2.png" width="400" height="300" alt="Digital Panoramic X-Ray Scanning Machine on Wall" loading="lazy">
-          </div>
-          <div class="gallery-item reveal">
-            <img src="assets/images/clinical-3.png" width="400" height="300" alt="Close-up of Advanced Dental Diagnostic LCD Screen" loading="lazy">
-          </div>
-          <div class="gallery-item reveal">
-            <img src="assets/images/clinical-4.png" width="400" height="300" alt="State-of-the-Art Dental Sterilization Equipment" loading="lazy">
-          </div>
-          <div class="gallery-item reveal">
-            <img src="assets/images/clinical-5.png" width="400" height="300" alt="Welcoming Premium Clinic Interior Lounge and Reception Area" loading="lazy">
-          </div>
-          <div class="gallery-item reveal" style="display: flex; align-items: center; justify-content: center; background: var(--glass); border-style: dashed;">
-            <div style="text-align: center; padding: 20px;">
-              <div style="font-size: 2rem; margin-bottom: 10px;">✨</div>
-              <p style="font-size: 0.9rem; color: var(--muted);">More transformations coming soon</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="reviews">
-      <div class="container reviews">
-        <div class="review-main reveal">
-          <div class="stars">★★★★★</div>
-          <blockquote>
-            “Nagu Dental feels like the future of dentistry. The 3D scan made everything clear,
-            and I actually looked forward to coming back.”
-          </blockquote>
-          <div class="person">
-            <div class="person-avatar">SJ</div>
-            <div>
-              <strong>Sarah Johnson</strong><br>
-              <span>Smile Makeover Patient</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="review-side">
-          <div class="mini-review reveal">
-            <div class="stars">★★★★★</div>
-            <p>“The clinic is beautiful, the team is gentle, and booking was effortless.”</p>
-          </div>
-          <div class="mini-review reveal">
-            <div class="stars">★★★★★</div>
-            <p>“I had dental anxiety for years. Nagu Dental made me feel safe.”</p>
-          </div>
-          <div class="mini-review reveal">
-            <div class="stars">★★★★★</div>
-            <p>“My whitening results were amazing. I felt confident the same day.”</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
 
     <section class="faq-section" id="faq">
       <div class="container">
@@ -1943,7 +1359,7 @@
               <span class="faq-icon-indicator">+</span>
             </button>
             <div class="faq-answer" id="faq-ans-2">
-              You can request an appointment easily by using our online booking form on the website, tapping the floating WhatsApp button, or calling our clinic directly at +91 88619 32535.
+              You can request an appointment easily by using our online booking form on the contact page, tapping the floating WhatsApp button, or calling our clinic directly at +91 88619 32535.
             </div>
           </div>
 
@@ -2013,7 +1429,7 @@
               <label for="service">Treatment Interest</label>
               <select id="service" name="service" required>
                 <option value="">Choose a service</option>
-                <option>Checkup & Cleaning</option>
+                <option>Checkup &amp; Cleaning</option>
                 <option>Teeth Whitening</option>
                 <option>Invisalign</option>
                 <option>Dental Implants</option>
@@ -2037,8 +1453,7 @@
     </section>
   </main>
 
-
-  <footer class="container footer" style="border-top: 1px solid var(--border); padding: 60px 0 40px; margin-top: 80px;">
+  <footer class="container footer" style="border-top: 1px solid var(--border); padding: 60px 0 40px; margin-top: 80px; color: var(--muted);">
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 40px; width: 100%; margin-bottom: 40px; text-align: left;">
       <div>
         <h3 style="color: var(--text); margin-bottom: 20px; font-weight: 800; font-size: 1.2rem;">Nagu Dental</h3>
@@ -2050,7 +1465,7 @@
       <div>
         <h3 style="color: var(--text); margin-bottom: 20px; font-weight: 800; font-size: 1.2rem;">Our Locations</h3>
         <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6;">
-          <strong>Serving Hegganahalli Cross (Sunkadakatte) &amp; KTG College Road (Kareem Sab Layout), Bengaluru</strong><br><br>
+          <strong>Serving Hegganahalli Cross &amp; KTG College Road, Bengaluru</strong><br><br>
           <strong>Branch 1 (Hegganahalli Cross):</strong> Mohan Theatre, 10/2, 1st floor, Chikkathimme Gowdru complex, 1st Main Rd, Bengaluru - 560091.<br>
           <strong>Branch 2 (KTG College Road):</strong> KTG College Road, Kareem Sab Layout, Bengaluru.<br><br>
           Phone: +91 88619 32535<br>
@@ -2059,12 +1474,12 @@
       </div>
 
       <div>
-        <h3 style="color: var(--text); margin-bottom: 20px; font-weight: 800; font-size: 1.2rem;">Additional Network</h3>
-        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6;">
-          <!-- TODO: Populate full addresses, maps and business timings for additional branch locations when available -->
-          • JP Nagar (Scalable Placeholder)<br>
-          • Chandra Layout (Scalable Placeholder)<br>
-          • RR Nagar (Scalable Placeholder)
+        <h3 style="color: var(--text); margin-bottom: 20px; font-weight: 800; font-size: 1.2rem;">Quick Links</h3>
+        <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.8;">
+          • <a href="services.html" style="color: var(--primary);">All Dental Services</a><br>
+          • <a href="about.html" style="color: var(--primary);">About Our Doctors</a><br>
+          • <a href="location.html" style="color: var(--primary);">Clinic Locations &amp; Maps</a><br>
+          • <a href="contact.html" style="color: var(--primary);">Book Appointment</a>
         </p>
       </div>
     </div>
@@ -2074,7 +1489,6 @@
       <div style="font-size: 0.9rem; color: var(--muted);">Designed with 3D UI, motion, and patient-first UX.</div>
     </div>
   </footer>
-
 
   <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
 
@@ -2165,7 +1579,6 @@
       });
     });
 
-
     /* Three.js 3D Tooth */
     const canvas = document.getElementById("toothCanvas");
 
@@ -2198,7 +1611,7 @@
     const toothPlane = new THREE.Mesh(planeGeom, toothMaterial);
     group.add(toothPlane);
 
-    // Holographic shell (matches tooth shape)
+    // Holographic shell
     const shellMaterial = new THREE.MeshBasicMaterial({
       map: toothTexture,
       transparent: true,
@@ -2266,7 +1679,6 @@
       if (!prefersReducedMotion) {
         const time = Date.now() * 0.001;
 
-        // Group rotation follows mouse and has a gentle auto-sway
         group.rotation.y = mouseX * 0.4 + Math.sin(time * 0.5) * 0.2;
         group.rotation.x = -mouseY * 0.2 + Math.cos(time * 0.5) * 0.1;
         group.position.y = Math.sin(time * 0.8) * 0.15;
@@ -2275,7 +1687,6 @@
         ring2.rotation.z = -time * 0.32;
         ring3.rotation.z = time * 0.28;
 
-        // Pulse the holographic shell
         if (shell.material) {
           shell.material.opacity = 0.2 + Math.sin(time * 2) * 0.15;
           shell.scale.setScalar(1 + Math.sin(time * 2) * 0.02);
@@ -2292,14 +1703,8 @@
 
   <!-- Floating Sticky Call-To-Action Widgets -->
   <div class="floating-widgets" aria-label="Quick contact and booking">
-    <!-- WhatsApp Floating CTA -->
-    <a href="https://wa.me/918861932535" target="_blank" rel="noopener noreferrer" class="floating-btn floating-whatsapp" title="Chat on WhatsApp" aria-label="Chat on WhatsApp">
-      💬
-    </a>
-    <!-- Floating Appointment CTA -->
-    <a href="#booking" class="floating-btn floating-appointment" title="Book Appointment" aria-label="Book Appointment">
-      📅
-    </a>
+    <a href="https://wa.me/918861932535" target="_blank" rel="noopener noreferrer" class="floating-btn floating-whatsapp" title="Chat on WhatsApp" aria-label="Chat on WhatsApp">💬</a>
+    <a href="contact.html" class="floating-btn floating-appointment" title="Book Appointment" aria-label="Book Appointment">📅</a>
   </div>
 
 </body>
