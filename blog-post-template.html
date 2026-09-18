@@ -3,13 +3,36 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dental Health &amp; Oral Care Blog | Nagu Dental Clinic Bengaluru</title>
-  <meta name="description" content="Read expert oral health tips, dental guides, and insights on teeth whitening, Invisalign, implants, and oral hygiene from Nagu Dental specialists in Bengaluru.">
+  <title>{{ARTICLE_TITLE}} | Nagu Dental Blog</title>
+  <meta name="description" content="{{ARTICLE_META_DESCRIPTION}}">
 
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" as="style" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- SEO & Accessibility -->
+  <link rel="canonical" href="{{CANONICAL_URL}}" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Nagu Dental Clinic" />
+  <meta name="theme-color" content="#42e8c8" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/logo.png" />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="{{CANONICAL_URL}}" />
+  <meta property="og:title" content="{{ARTICLE_TITLE}}" />
+  <meta property="og:description" content="{{ARTICLE_META_DESCRIPTION}}" />
+  <meta property="og:image" content="https://nagu-dentals.github.io/Nagu-Dentals/assets/images/logo.png" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="{{CANONICAL_URL}}" />
+  <meta name="twitter:title" content="{{ARTICLE_TITLE}}" />
+  <meta name="twitter:description" content="{{ARTICLE_META_DESCRIPTION}}" />
+  <meta name="twitter:image" content="https://nagu-dentals.github.io/Nagu-Dentals/assets/images/logo.png" />
+
+  <link rel="stylesheet" href="assets/css/ux-improvements.css" />
 
   <style>
     :root {
@@ -21,11 +44,11 @@
       --primary-2: #5ea8ff;
       --accent: #ffcf6b;
       --pink: #ff6b9a;
-      --glass: rgba(255, 255, 255, 0.08);
-      --glass-2: rgba(255, 255, 255, 0.13);
-      --border: rgba(255, 255, 255, 0.16);
+      --glass: rgba(255, 255, 255, 0.06);
+      --glass-2: rgba(255, 255, 255, 0.12);
+      --border: rgba(255, 255, 255, 0.14);
       --shadow: 0 30px 90px rgba(0, 0, 0, 0.45);
-      --radius: 28px;
+      --radius: 24px;
       --max: 1180px;
     }
 
@@ -40,12 +63,11 @@
         linear-gradient(180deg, var(--bg), #04101b 55%, #030812);
       color: var(--text);
       overflow-x: hidden;
+      line-height: 1.7;
     }
     body::before {
       content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
+      position: fixed; inset: 0; pointer-events: none;
       background-image:
         linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
@@ -69,6 +91,7 @@
       z-index: 1;
     }
 
+    /* Navigation Bar */
     .nav {
       position: fixed; top: 18px; left: 50%; transform: translateX(-50%);
       width: min(1180px, calc(100% - 32px)); z-index: 50;
@@ -91,7 +114,7 @@
     .brand span:last-child { font-size: 1.08rem; }
     .nav-links { display: flex; align-items: center; gap: 4px; color: var(--muted); font-weight: 700; font-size: 0.92rem; }
     .nav-links a { padding: 12px 14px; border-radius: 999px; transition: 0.25s ease; }
-    .nav-links a:hover { color: var(--text); background: rgba(255,255,255,0.08); }
+    .nav-links a:hover, .nav-links a.active { color: var(--text); background: rgba(255,255,255,0.08); }
     .nav-actions { display: flex; align-items: center; gap: 10px; }
 
     .btn {
@@ -106,25 +129,126 @@
     .btn.secondary:hover { background: rgba(255,255,255,0.14); box-shadow: 0 20px 46px rgba(0,0,0,0.22); }
     .mobile-toggle { display: none; width: 44px; height: 44px; border-radius: 14px; border: 1px solid var(--border); background: rgba(255,255,255,0.08); color: var(--text); font-size: 1.4rem; }
 
-    section { padding: 90px 0; position: relative; }
-    .section-head { display: flex; justify-content: space-between; gap: 32px; align-items: end; margin-bottom: 42px; }
-    .section-kicker { color: var(--primary); font-weight: 900; text-transform: uppercase; letter-spacing: 0.14em; font-size: 0.78rem; margin-bottom: 12px; }
-    h2 { font-size: clamp(2.2rem, 5vw, 4.3rem); line-height: 1; letter-spacing: -0.06em; max-width: 760px; }
-    .section-head p { color: var(--muted); line-height: 1.7; max-width: 420px; }
-
-    .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-    .blog-card {
-      border-radius: 28px; border: 1px solid var(--border);
-      background: rgba(255,255,255,0.06); padding: 28px;
-      backdrop-filter: blur(18px); display: flex; flex-direction: column; justify-content: space-between;
-      min-height: 320px; transition: 0.35s ease;
+    /* Header & Breadcrumb */
+    .article-header { padding: 140px 0 40px; text-align: center; }
+    .breadcrumb {
+      display: inline-flex; align-items: center; gap: 10px; font-size: 0.9rem;
+      color: var(--muted); background: rgba(255, 255, 255, 0.05);
+      padding: 8px 18px; border-radius: 999px; border: 1px solid var(--border);
+      margin-bottom: 24px;
     }
-    .blog-card:hover { transform: translateY(-8px); border-color: var(--primary); }
-    .blog-badge { display: inline-block; padding: 6px 14px; border-radius: 999px; background: rgba(66,232,200,0.12); color: var(--primary); font-size: 0.82rem; font-weight: 800; margin-bottom: 16px; }
-    .blog-card h3 { font-size: 1.35rem; margin-bottom: 12px; line-height: 1.35; }
-    .blog-card p { color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px; }
+    .breadcrumb a { color: var(--primary); font-weight: 600; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .breadcrumb-separator { color: var(--muted); opacity: 0.6; }
 
-    .reveal { opacity: 0; transform: translateY(34px); transition: 0.85s cubic-bezier(.2,.8,.2,1); }
+    .article-header h1 {
+      font-size: clamp(2.2rem, 4.5vw, 3.5rem);
+      line-height: 1.15; letter-spacing: -0.04em;
+      max-width: 900px; margin: 0 auto 20px;
+    }
+    .article-meta {
+      display: flex; align-items: center; justify-content: center; gap: 20px;
+      color: var(--muted); font-size: 0.92rem; font-weight: 500;
+    }
+    .article-meta span { display: flex; align-items: center; gap: 6px; }
+
+    /* Article Content Container */
+    .article-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px 20px 80px;
+    }
+
+    /* Table of Contents */
+    .toc-box {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px 32px;
+      margin-bottom: 40px;
+      backdrop-filter: blur(16px);
+    }
+    .toc-title {
+      font-size: 1.2rem; font-weight: 800; color: var(--primary);
+      margin-bottom: 16px; display: flex; align-items: center; gap: 10px;
+    }
+    .toc-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .toc-list li a {
+      color: var(--text); font-weight: 600; font-size: 0.98rem; transition: color 0.2s;
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .toc-list li a:hover { color: var(--primary); }
+
+    /* Typography & Content Formatting */
+    .article-content {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #e2ebf3;
+    }
+    .article-content h2 {
+      font-size: clamp(1.6rem, 3vw, 2.1rem);
+      margin: 48px 0 20px;
+      letter-spacing: -0.03em;
+      color: #ffffff;
+      border-left: 4px solid var(--primary);
+      padding-left: 16px;
+    }
+    .article-content h3 {
+      font-size: 1.35rem;
+      margin: 32px 0 14px;
+      color: var(--primary-2);
+    }
+    .article-content p { margin-bottom: 24px; }
+    .article-content ul, .article-content ol {
+      margin: 0 0 28px 24px;
+    }
+    .article-content li { margin-bottom: 10px; }
+    .article-content strong { color: #ffffff; font-weight: 700; }
+
+    /* Related Services Box */
+    .related-services-box {
+      background: linear-gradient(135deg, rgba(66, 232, 200, 0.08), rgba(94, 168, 255, 0.08));
+      border: 1px solid rgba(66, 232, 200, 0.3);
+      border-radius: var(--radius);
+      padding: 30px;
+      margin: 48px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .related-services-title {
+      font-size: 1.15rem; font-weight: 800; color: var(--primary);
+      display: flex; align-items: center; gap: 8px;
+    }
+
+    /* FAQ accordion styling */
+    .faq-item {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 20px 24px;
+      margin-bottom: 16px;
+    }
+    .faq-item h4 {
+      font-size: 1.15rem; font-weight: 700; color: #ffffff; margin-bottom: 10px;
+    }
+    .faq-item p { margin: 0; color: var(--muted); font-size: 1rem; }
+
+    /* CTA Section Banner */
+    .cta-banner {
+      background: linear-gradient(135deg, rgba(94, 168, 255, 0.15), rgba(66, 232, 200, 0.15));
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 44px 32px;
+      text-align: center;
+      margin-top: 60px;
+      backdrop-filter: blur(20px);
+      box-shadow: var(--shadow);
+    }
+    .cta-banner h3 { font-size: 1.8rem; font-weight: 800; margin-bottom: 14px; color: #ffffff; }
+    .cta-banner p { color: var(--muted); max-width: 580px; margin: 0 auto 28px; font-size: 1.05rem; }
+
+    .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
     @media (max-width: 980px) {
@@ -132,79 +256,63 @@
       .mobile-toggle { display: grid; place-items: center; }
       .nav.open .nav-links { display: grid; position: absolute; top: 72px; left: 0; right: 0; background: rgba(5,17,31,0.98); border-bottom: 1px solid var(--border); border-radius: 24px; padding: 24px; gap: 12px; text-align: center; }
       .nav.open .nav-links a { padding: 18px; font-size: 1.1rem; background: rgba(255,255,255,0.05); }
-      .blog-grid { grid-template-columns: repeat(2, 1fr); }
-      .section-head { display: block; }
-      .section-head p { margin-top: 18px; }
-    }
-    @media (max-width: 640px) {
-      .brand span:last-child { display: none; }
-      .blog-grid { grid-template-columns: 1fr; }
     }
   </style>
 
-  <!-- SEO & Accessibility -->
-  <link rel="canonical" href="https://nagu-dentals.github.io/Nagu-Dentals/blog.html" />
-  <meta name="robots" content="index, follow" />
-  <meta name="author" content="Nagu Dental Clinic" />
-  <meta name="theme-color" content="#42e8c8" />
-  <link rel="manifest" href="./manifest.json" />
-  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/logo.png" />
-
-  <!-- Open Graph / Twitter -->
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://nagu-dentals.github.io/Nagu-Dentals/blog.html" />
-  <meta property="og:title" content="Dental Health & Oral Care Blog | Nagu Dental Clinic Bengaluru" />
-  <meta property="og:description" content="Read expert oral health tips, dental guides, and insights on teeth whitening, Invisalign, implants, and oral hygiene from Nagu Dental specialists in Bengaluru." />
-  <meta property="og:image" content="https://nagu-dentals.github.io/Nagu-Dentals/assets/images/logo.png" />
-
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:url" content="https://nagu-dentals.github.io/Nagu-Dentals/blog.html" />
-  <meta name="twitter:title" content="Dental Health & Oral Care Blog | Nagu Dental Clinic Bengaluru" />
-  <meta name="twitter:description" content="Read expert oral health tips, dental guides, and insights on teeth whitening, Invisalign, implants, and oral hygiene from Nagu Dental specialists in Bengaluru." />
-  <meta name="twitter:image" content="https://nagu-dentals.github.io/Nagu-Dentals/assets/images/logo.png" />
-
-  <link rel="stylesheet" href="./assets/css/ux-improvements.css" />
-
-  <!-- Structured Data -->
+  <!-- Structured Data: Article & BreadcrumbList Schema -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "Organization",
-        "@id": "https://nagu-dentals.github.io/Nagu-Dentals/#organization",
-        "name": "Nagu Dental Clinic",
-        "url": "https://nagu-dentals.github.io/Nagu-Dentals/",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://nagu-dentals.github.io/Nagu-Dentals/assets/images/logo.png"
-        }
-      },
-      {
-        "@type": "WebSite",
-        "@id": "https://nagu-dentals.github.io/Nagu-Dentals/#website",
-        "url": "https://nagu-dentals.github.io/Nagu-Dentals/",
-        "name": "Nagu Dental Clinic | Premium Dental Care & Digital Precision",
-        "publisher": {
-          "@id": "https://nagu-dentals.github.io/Nagu-Dentals/#organization"
-        }
-      },
-      {
         "@type": "BreadcrumbList",
+        "@id": "{{CANONICAL_URL}}#breadcrumb",
         "itemListElement": [
           {
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://nagu-dentals.github.io/Nagu-Dentals/index.html"
+            "item": "https://nagu-dentals.github.io/Nagu-Dentals/"
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "Blog",
             "item": "https://nagu-dentals.github.io/Nagu-Dentals/blog.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "{{ARTICLE_TITLE}}",
+            "item": "{{CANONICAL_URL}}"
           }
         ]
+      },
+      {
+        "@type": "Article",
+        "@id": "{{CANONICAL_URL}}#article",
+        "headline": "{{ARTICLE_TITLE}}",
+        "description": "{{ARTICLE_META_DESCRIPTION}}",
+        "url": "{{CANONICAL_URL}}",
+        "datePublished": "{{PUBLISH_DATE_ISO}}",
+        "dateModified": "{{PUBLISH_DATE_ISO}}",
+        "author": {
+          "@type": "Organization",
+          "name": "Nagu Dental Clinic",
+          "url": "https://nagu-dentals.github.io/Nagu-Dentals/"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Nagu Dental Clinic",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://nagu-dentals.github.io/Nagu-Dentals/assets/images/logo.png"
+          }
+        },
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "{{CANONICAL_URL}}"
+        }
       }
     ]
   }
@@ -239,76 +347,62 @@
   </nav>
 
   <main>
-    <!-- Subpage Hero -->
-    <header class="subpage-hero">
-      <div class="container">
-        <div class="breadcrumb">
-          <a href="index.html">Home</a>
-          <span class="breadcrumb-separator">/</span>
-          <span>Blog</span>
-        </div>
-        <h1>Dental Health <span class="gradient-text" style="background: linear-gradient(135deg, #ffffff 10%, #b8fff2 38%, #8fc0ff 72%, #fff); -webkit-background-clip: text; background-clip: text; color: transparent;">Insights &amp; Guides</span></h1>
-        <p style="color: var(--muted); max-width: 680px; margin: 0 auto; line-height: 1.7; font-size: 1.1rem;">
-          Expert advice, patient care tips, and deep dives into modern dentistry written by our senior clinicians.
-        </p>
+    <!-- Article Header -->
+    <header class="article-header container reveal">
+      <div class="breadcrumb">
+        <a href="index.html">Home</a>
+        <span class="breadcrumb-separator">›</span>
+        <a href="blog.html">Blog</a>
+        <span class="breadcrumb-separator">›</span>
+        <span>{{ARTICLE_SHORT_TITLE}}</span>
+      </div>
+      <h1>{{ARTICLE_TITLE}}</h1>
+      <div class="article-meta">
+        <span>📅 Published {{PUBLISH_DATE_FORMATTED}}</span>
+        <span>•</span>
+        <span>⏱️ {{READ_TIME}} Read</span>
+        <span>•</span>
+        <span>👨‍⚕️ By Nagu Dental Specialists</span>
       </div>
     </header>
 
-    <!-- Blog Posts Grid / Upcoming Articles -->
-    <section>
-      <div class="container">
-        <div class="section-head reveal">
-          <div>
-            <div class="section-kicker">Latest Articles</div>
-            <h2>Knowledge for a healthier, brighter smile.</h2>
-          </div>
-          <p>
-            Stay informed with our upcoming clinical guides and patient wellness articles.
-          </p>
-        </div>
+    <!-- Main Article Body Container (Centered, max 800px) -->
+    <article class="article-container reveal">
+      <!-- Table of Contents -->
+      <nav class="toc-box" aria-label="Table of contents">
+        <div class="toc-title">📌 Table of Contents</div>
+        <ul class="toc-list">
+          {{TOC_ITEMS}}
+        </ul>
+      </nav>
 
-        <div class="blog-grid">
-          <!-- Featured Published Article -->
-          <article class="blog-card reveal" style="border-color: var(--primary); background: linear-gradient(135deg, rgba(66,232,200,0.08), rgba(94,168,255,0.08));">
-            <div>
-              <!-- CSS Gradient Header Placeholder -->
-              <div style="height: 140px; border-radius: 18px; background: linear-gradient(135deg, var(--primary), var(--primary-2)); margin-bottom: 20px; display: flex; align-items: center; justify-content: center; color: #06111f; font-weight: 900; font-size: 1.2rem; text-align: center; padding: 15px; box-shadow: 0 10px 30px rgba(66,232,200,0.25);">
-                🦷 2026 Dental Implant Guide
-              </div>
-              <span class="blog-badge">Dental Implants &amp; Cost</span>
-              <h3>Dental Implants in Bengaluru: Complete Cost &amp; Procedure Guide (2026)</h3>
-              <p>Discover transparent 2026 implant pricing in Bengaluru, step-by-step procedure details, and why Nagu Dental in Hegganahalli &amp; KTG College Road is your top choice.</p>
-            </div>
-            <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 18px; border-top: 1px solid var(--border); padding-top: 16px;">
-              <span style="font-size: 0.82rem; color: var(--muted); font-weight: 600;">Published on March 2026</span>
-              <a href="blog/dental-implants-cost-bengaluru-2026.html" class="btn secondary" style="padding: 8px 16px; font-size: 0.85rem;">Read Article →</a>
-            </div>
-          </article>
-
-          <article class="blog-card reveal">
-            <div>
-              <span class="blog-badge">Invisalign &amp; Orthodontics</span>
-              <h3>The Complete Guide to Clear Aligners: What to Expect</h3>
-              <p>Discover how Invisalign clear aligners discreetly transform misaligned teeth without metal wires or diet restrictions.</p>
-            </div>
-            <div>
-              <span style="font-size: 0.85rem; color: var(--primary); font-weight: 700;">Coming Soon</span>
-            </div>
-          </article>
-
-          <article class="blog-card reveal">
-            <div>
-              <span class="blog-badge">Oral Hygiene</span>
-              <h3>5 Essential Daily Tips to Prevent Cavities &amp; Gum Disease</h3>
-              <p>Simple daily habits recommended by dental professionals to maintain optimal oral health between clinic visits.</p>
-            </div>
-            <div>
-              <span style="font-size: 0.85rem; color: var(--primary); font-weight: 700;">Coming Soon</span>
-            </div>
-          </article>
-        </div>
+      <!-- Main Text Body -->
+      <div class="article-content">
+        {{ARTICLE_CONTENT}}
       </div>
-    </section>
+
+      <!-- Related Services Callout Box -->
+      <section class="related-services-box">
+        <div class="related-services-title">💡 Related Service</div>
+        <p style="margin:0; color: var(--muted);">
+          {{RELATED_SERVICE_TEXT}}
+        </p>
+        <div>
+          <a href="{{RELATED_SERVICE_LINK}}" class="btn secondary" style="display:inline-flex; padding:10px 20px; font-size:0.92rem;">
+            Explore {{RELATED_SERVICE_NAME}} →
+          </a>
+        </div>
+      </section>
+
+      <!-- Book an Appointment CTA Banner -->
+      <section class="cta-banner">
+        <h3>Ready to Transform Your Smile?</h3>
+        <p>Book your 3D scan consultation at our Hegganahalli Cross or KTG College Road clinic today.</p>
+        <a href="contact.html" class="btn" style="padding: 16px 36px; font-size: 1.1rem;">
+          Book Your Appointment Now
+        </a>
+      </section>
+    </article>
   </main>
 
   <!-- Global Footer -->
@@ -355,16 +449,18 @@
     <a href="contact.html" class="floating-btn floating-appointment" title="Book Appointment" aria-label="Book Appointment">📅</a>
   </div>
 
-  <script src="./assets/js/ux-improvements.js"></script>
+  <script src="assets/js/ux-improvements.js"></script>
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
 
     const nav = document.getElementById("nav");
     const mobileToggle = document.getElementById("mobileToggle");
-    mobileToggle.addEventListener("click", () => {
-      nav.classList.toggle("open");
-      mobileToggle.textContent = nav.classList.contains("open") ? "×" : "☰";
-    });
+    if (mobileToggle) {
+      mobileToggle.addEventListener("click", () => {
+        nav.classList.toggle("open");
+        mobileToggle.textContent = nav.classList.contains("open") ? "×" : "☰";
+      });
+    }
 
     const revealItems = document.querySelectorAll(".reveal");
     const revealObserver = new IntersectionObserver((entries) => {
@@ -374,7 +470,7 @@
           revealObserver.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.16 });
+    }, { threshold: 0.1 });
     revealItems.forEach(item => revealObserver.observe(item));
   </script>
 </body>
